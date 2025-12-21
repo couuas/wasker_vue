@@ -12,6 +12,7 @@ const categories = getCategories('portfolio')
 
 const activeCategory = ref('All')
 const isExpanded = ref(false)
+const toggledSlug = ref(null)
 
 const filteredWorks = computed(() => {
     let works = allWorks.value
@@ -41,6 +42,12 @@ const switchToFullWidth = () => {
     isExpanded.value = true
 }
 
+const toggleCard = (slug) => {
+    if (window.innerWidth <= 768) {
+        toggledSlug.value = toggledSlug.value === slug ? null : slug
+    }
+}
+
 // Watch for changes in displayed works to trigger animations
 watch(displayedWorks, async () => {
     await nextTick()
@@ -54,7 +61,11 @@ watch(displayedWorks, async () => {
             <div class="mil-row-fix">
                 <div class="row">
                     <div v-for="work in displayedWorks" :key="work.slug" class="col-lg-6">
-                        <div class="mil-blog-card mil-sm mil-mb-15 mil-up">
+                        <div 
+                            class="mil-blog-card mil-sm mil-mb-15 mil-up"
+                            :class="{ 'mil-active': toggledSlug === work.slug }"
+                            @click="toggleCard(work.slug)"
+                        >
                             <img :src="work.image" :alt="work.title" v-if="work.image">
                             <div class="mil-descr">
                                 <div class="mil-post-text">

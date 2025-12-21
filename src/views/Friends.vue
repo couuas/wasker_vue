@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watch, nextTick } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import { useScrollAnimations } from '@/composables/useScrollAnimations'
@@ -9,6 +9,13 @@ const { initAnimations } = useScrollAnimations()
 
 // Get Friend Links
 const friends = getPosts('friend')
+const toggledSlug = ref(null)
+
+const toggleCard = (slug) => {
+    if (window.innerWidth <= 768) {
+        toggledSlug.value = toggledSlug.value === slug ? null : slug
+    }
+}
 
 // Re-init animations when list changes/loads
 watch(friends, () => {
@@ -25,7 +32,11 @@ watch(friends, () => {
                  <div class="row">
                     <!-- Dynamic Friends List -->
                     <div class="col-lg-6" v-for="friend in friends" :key="friend.slug">
-                        <div class="mil-blog-card mil-sm mil-mb-15 mil-up">
+                        <div 
+                            class="mil-blog-card mil-sm mil-mb-15 mil-up"
+                            :class="{ 'mil-active': toggledSlug === friend.slug }"
+                            @click="toggleCard(friend.slug)"
+                        >
                             <img :src="friend.image" :alt="friend.shortname" v-if="friend.image">
                             <div class="mil-descr">
                                 <div class="mil-post-text">
@@ -57,3 +68,6 @@ watch(friends, () => {
         </div>
     </div>
 </template>
+
+<style scoped>
+</style>

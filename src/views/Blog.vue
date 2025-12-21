@@ -12,6 +12,7 @@ const categories = getCategories('blog')
 
 const activeCategory = ref('All')
 const isExpanded = ref(false)
+const toggledSlug = ref(null)
 
 const filteredPosts = computed(() => {
     let posts = allPosts.value
@@ -42,6 +43,13 @@ const switchToFullWidth = () => {
     document.body.classList.remove('mil-half-page')
     document.body.classList.add('mil-fw-page')
 }
+
+const toggleCard = (slug) => {
+    if (window.innerWidth <= 768) {
+        toggledSlug.value = toggledSlug.value === slug ? null : slug
+    }
+}
+
 // Watch for changes in displayed posts to trigger animations
 watch(displayedPosts, async () => {
     await nextTick()
@@ -56,9 +64,11 @@ watch(displayedPosts, async () => {
                 <div class="row">
                     <!-- Posts Loop -->
                     <div v-for="post in displayedPosts" :key="post.slug" class="col-lg-6">
-                         <!-- Simplified Layout: Assuming col-lg-12 for full width list or col-lg-6 for grid. 
-                              The original had a mix. Let's use a standard list card for Blog. -->
-                        <div class="mil-blog-card mil-mb-15 mil-up">
+                        <div 
+                            class="mil-blog-card mil-mb-15 mil-up"
+                            :class="{ 'mil-active': toggledSlug === post.slug }"
+                            @click="toggleCard(post.slug)"
+                        >
                             <img :src="post.image" :alt="post.title" v-if="post.image">
                             <div class="mil-descr">
                                 <div class="mil-post-text">

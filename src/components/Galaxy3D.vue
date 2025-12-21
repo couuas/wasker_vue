@@ -91,6 +91,7 @@ onMounted(async () => {
       
       return sprite;
     })
+    .enableNodeDrag(false) // Disable dragging to prevent nodes from scattering and improve navigation
     .onNodeClick(node => {
         focusNode(node);
         props.onNodeClick(node);
@@ -108,8 +109,8 @@ onMounted(async () => {
 
   // Optimize simulation speed
   graph.cooldownTicks(60);      // Extremely fast stabilization for instant feedback
-  graph.d3AlphaDecay(0.08);     // Very aggressive settling
-  graph.d3VelocityDecay(0.4);   // Rapidly bleed off kinetic energy
+  graph.d3AlphaDecay(0.1);      // Even more aggressive settling (was 0.08)
+  graph.d3VelocityDecay(0.6);   // Higher friction to prevent "jitter" (was 0.4)
   
   // Custom force to keep separate clusters from drifting too far
   // This pulls nodes towards the center even if they aren't linked to the origin
