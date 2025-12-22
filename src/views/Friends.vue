@@ -31,7 +31,7 @@ watch(friends, () => {
              <div class="mil-row-fix">
                  <div class="row">
                     <!-- Dynamic Friends List -->
-                    <div class="col-lg-6" v-for="friend in friends" :key="friend.slug">
+                    <div v-for="(friend, index) in friends" :key="friend.slug" :class="(friends.length % 2 !== 0 && index === 0) ? 'col-lg-12' : 'col-lg-6'">
                         <div 
                             class="mil-blog-card mil-mb-15 mil-up"
                             :class="{ 'mil-active': toggledSlug === friend.slug }"

@@ -9,7 +9,11 @@ const outputFile = path.resolve('public/galaxy-data.json');
 async function generateGraph() {
     console.log('Generating knowledge graph...');
 
-    const files = await glob(`${contentDir}/**/*.md`);
+    // Restrict scan to 'page' and 'portfolio' directories
+    const pageFiles = await glob(`${contentDir}/blog/**/*.md`);
+    const portfolioFiles = await glob(`${contentDir}/portfolio/**/*.md`);
+    const files = [...pageFiles, ...portfolioFiles];
+
     const nodes = [];
     const links = [];
     const idMap = new Map(); // Map file path to node ID
@@ -19,13 +23,35 @@ async function generateGraph() {
         const content = fs.readFileSync(file, 'utf-8');
         const { data } = matter(content);
 
-        // Use relative path as ID to match links
+        // Normalize path
         const relativePath = path.relative(contentDir, file).replace(/\\/g, '/');
-        const id = relativePath.replace(/\.md$/, ''); // Remove extension for cleaner IDs
 
-        const pathParts = id.split('/');
-        const type = pathParts[0];
-        const slug = pathParts[pathParts.length - 1];
+        // Determine Language
+        let lang = 'zh';
+        if (relativePath.includes('/en/')) lang = 'en';
+        else if (relativePath.includes('/zh/')) lang = 'zh';
+
+        // Extract basic ID components
+        // file path: blog/zh/post.md OR blog/post.md
+        // We want a clean ID: lang/type/slug
+
+        const pathParts = relativePath.split('/');
+
+        // Find type
+        const isBlog = relativePath.includes('blog/');
+        const isPortfolio = relativePath.includes('portfolio/');
+        // If neither, maybe 'profile' or 'friend'
+
+        let type = 'other';
+        if (isBlog) type = 'blog';
+        else if (isPortfolio) type = 'portfolio';
+        else if (pathParts[0]) type = pathParts[0];
+
+        const slug = pathParts[pathParts.length - 1].replace('.md', '');
+
+        // New ID format: lang/type/slug
+        // e.g. zh/blog/post-a
+        const id = `${lang}/${type}/${slug}`;
 
         idMap.set(relativePath, id);
 
@@ -33,20 +59,19 @@ async function generateGraph() {
             id: id,
             slug: slug,
             type: type,
-            name: data.title || id,
+            lang: lang, // Add lang property
+            name: data.title || slug,
             category: data.category || 'Uncategorized',
-            val: 1, // Base weight, will increment based on citations
-            desc: data.description || '', // For bottom sheet
-            filePath: relativePath // Store for linking
+            val: 1, // Base weight
+            desc: data.description || '',
+            filePath: relativePath
         });
     });
 
     // 2. Second pass: Create links and calculate weights
     files.forEach((file) => {
         const content = fs.readFileSync(file, 'utf-8');
-        // Regex for [[Wiki Link]]
         const wikiLinkRegex = /\[\[(.*?)\]\]/g;
-        // Regex for standard markdown link [Label](./path/to/file.md)
         const mdLinkRegex = /\[.*?\]\((.*?)\)/g;
 
         const sourcePath = path.relative(contentDir, file).replace(/\\/g, '/');
@@ -54,23 +79,40 @@ async function generateGraph() {
 
         if (!sourceId) return;
 
+        const sourceNode = nodes.find(n => n.id === sourceId);
+        const sourceLang = sourceNode ? sourceNode.lang : 'zh';
+
+        // Helper to add link
+        const addLink = (targetNode) => {
+            if (targetNode && targetNode.id !== sourceId) {
+                // Prevent duplicate links
+                const exists = links.some(l => l.source === sourceId && l.target === targetNode.id);
+                if (!exists) {
+                    links.push({ source: sourceId, target: targetNode.id });
+                    targetNode.val += 1;
+                }
+            }
+        };
+
         // Process Wiki Links
         let match;
         while ((match = wikiLinkRegex.exec(content)) !== null) {
-            const targetTitle = match[1];
-            // Find target node by title, ID, or slug
-            const targetNode = nodes.find(n =>
-                n.name === targetTitle ||
-                n.id === targetTitle ||
-                n.slug === targetTitle
+            const targetRef = match[1];
+
+            // Try to find target node
+            // 1. Exact match on title/slug/id AND same language
+            let targetNode = nodes.find(n =>
+                n.lang === sourceLang &&
+                (n.name === targetRef || n.slug === targetRef || n.id === targetRef)
             );
 
-            if (targetNode && targetNode.id !== sourceId) {
-                links.push({
-                    source: sourceId,
-                    target: targetNode.id
-                });
-                targetNode.val += 1; // Increase target weight
+            // 2. Fallback to any language if not found (optional, maybe not desired?)
+            // If user wants strict separation, we shouldn't link cross-lang unless explicit.
+            // Let's stick to same language preference, but if only one exists (e.g. term definition), maybe fallback?
+            // "Cross-reference logic... links usually point to wrong language" -> enforce same lang.
+
+            if (targetNode) {
+                addLink(targetNode);
             }
         }
 
@@ -79,7 +121,7 @@ async function generateGraph() {
             let linkPath = match[1];
             let targetNode = null;
 
-            // 1. Handle relative paths (e.g., ./post.md, ../other/post.md)
+            // Resolve path relative to current file
             if (linkPath.startsWith('./') || linkPath.startsWith('../')) {
                 const absoluteLinkPath = path.resolve(path.dirname(file), linkPath);
                 const relativeLinkPath = path.relative(contentDir, absoluteLinkPath).replace(/\\/g, '/');
@@ -88,27 +130,23 @@ async function generateGraph() {
                     targetNode = nodes.find(n => n.id === targetId);
                 }
             }
-            // 2. Handle absolute-style paths (e.g., /blog/slug, /portfolio/slug)
+            // Absolute path in source (e.g. /blog/slug)
             else if (linkPath.startsWith('/')) {
-                const parts = linkPath.split('/').filter(Boolean); // ["blog", "slug"]
+                // Need to guess the node from URL path
+                // /blog/slug -> type: blog, slug: slug. Lang: match source.
+                const parts = linkPath.split('/').filter(Boolean);
                 if (parts.length >= 2) {
-                    const type = parts[0];
-                    const slug = parts[parts.length - 1];
-                    targetNode = nodes.find(n => n.type === type && n.slug === slug);
+                    const type = parts[0]; // 'blog' or 'portfolio'
+                    const slug = parts[parts.length - 1]; // 'slug'
+
+                    targetNode = nodes.find(n => n.type === type && n.slug === slug && n.lang === sourceLang);
                 }
             }
 
-            if (targetNode && targetNode.id !== sourceId) {
-                links.push({
-                    source: sourceId,
-                    target: targetNode.id
-                });
-                targetNode.val += 1;
-            }
+            addLink(targetNode);
         }
     });
 
-    // 3. Finalize data
     const graphData = {
         nodes: nodes,
         links: links

@@ -1,10 +1,19 @@
 <script setup>
-import { ref, onMounted, onUnmounted, shallowRef, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, shallowRef, nextTick, computed } from 'vue';
 import Galaxy3D from '../components/Galaxy3D.vue';
 import GalaxyBottomSheet from '../components/GalaxyBottomSheet.vue';
 
 const selectedNode = shallowRef(null);
 const graphData = shallowRef({ nodes: [], links: [] });
+const currentLang = ref('en');
+
+const filteredGraphData = computed(() => {
+  const nodes = graphData.value.nodes.filter(n => n.lang === currentLang.value);
+  const nodeIds = new Set(nodes.map(n => n.id));
+  const links = graphData.value.links.filter(l => nodeIds.has(l.source) && nodeIds.has(l.target));
+  return { nodes, links };
+});
+
 const galaxy3dRef = ref(null);
 const bottomSheetRef = ref(null);
 const currentSheetHeight = ref(0);
@@ -60,7 +69,7 @@ function handleNodeClick(node) {
 }
 
 function handleLocate(nodeId) {
-  const node = graphData.value.nodes.find(n => n.id === nodeId);
+  const node = filteredGraphData.value.nodes.find(n => n.id === nodeId);
   if (node && galaxy3dRef.value) {
     galaxy3dRef.value.focusNode(node);
     selectedNode.value = node;
@@ -78,6 +87,23 @@ function handleReset() {
 
 <template>
   <div class="galaxy-page">
+    <div class="ui-overlay">
+        <!-- Back Link (optional or removed if we use main nav, but keeping placeholder) -->
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="galaxy-lang-switch">
+        <span 
+            class="lang-btn" 
+            :class="{ 'active': currentLang === 'zh' }" 
+            @click="currentLang = 'zh'">ZH</span>
+        <span class="divider">/</span>
+        <span 
+            class="lang-btn" 
+            :class="{ 'active': currentLang === 'en' }" 
+            @click="currentLang = 'en'">EN</span>
+    </div>
+
     <div 
       class="galaxy-viewport" 
       :class="{ 'detail-open': !!selectedNode }"
@@ -85,7 +111,7 @@ function handleReset() {
     >
         <Galaxy3D 
           ref="galaxy3dRef"
-          :graphData="graphData"
+          :graphData="filteredGraphData"
           :onNodeClick="handleNodeClick" 
         />
     </div>
@@ -97,7 +123,7 @@ function handleReset() {
     <GalaxyBottomSheet 
       ref="bottomSheetRef"
       :node="selectedNode" 
-      :graphData="graphData"
+      :graphData="filteredGraphData"
       :visible="!!selectedNode" 
       @close="selectedNode = null" 
       @locate="handleLocate"
@@ -201,5 +227,54 @@ function handleReset() {
 
 @media (max-width: 1200px) {
     /* No hardcoded height here, managed by JS for precision */
+}
+
+.galaxy-lang-switch {
+    position: absolute;
+    z-index: 2200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 1201px) {
+    .galaxy-lang-switch {
+        bottom: 40px;
+        left: 40px;
+        top: auto;
+        right: auto;
+    }
+}
+
+.galaxy-lang-switch .lang-btn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.galaxy-lang-switch .lang-btn.active {
+    color: #DBA91C;
+    text-shadow: 0 0 10px rgba(219, 169, 28, 0.5);
+    opacity: 1;
+}
+
+.galaxy-lang-switch .lang-btn:hover:not(.active) {
+    color: #fff;
+}
+
+@media (max-width: 1200px) {
+    .galaxy-lang-switch {
+        top: 10.5rem;
+        right: 20px;
+        bottom: auto;
+        left: auto;
+    }
 }
 </style>

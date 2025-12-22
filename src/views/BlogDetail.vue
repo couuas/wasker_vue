@@ -1,17 +1,45 @@
 <script setup>
-import { computed, onMounted, onUpdated, nextTick } from 'vue'
+import { computed, onMounted, onUpdated, nextTick, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import md from '@/utils/markdown'
 
 const route = useRoute()
 const router = useRouter()
-const { getPostBySlug, getAdjacentPosts } = useMarkdown()
+const { posts, getAdjacentPosts } = useMarkdown()
 
 // The router param is named 'id' but serves as the slug
 const slug = computed(() => route.params.id)
-const post = getPostBySlug(slug.value, 'blog')
-const adjacentPosts = getAdjacentPosts(slug.value, 'blog')
+const currentLang = ref('en')
+
+const post = computed(() => {
+    // Find post matching slug AND currentLang
+    // Fallback: if default language post is missing but switching was allowed, it might be empty.
+    // However, we assume at least one version exists if we are here (implied by router link).
+    // If the requested language version is missing, we could fallback to the other language or show a message.
+    const found = posts.value.find(p => p.slug === slug.value && p.type === 'blog' && p.lang === currentLang.value);
+    
+    // Auto-fallback to other language if current one doesn't exist? 
+    // User Reqt: "If missing, toggle should be gray or fallback"
+    // Let's implement strict matching here, and handle availability in the toggle logic.
+    return found;
+});
+
+const adjacentPosts = getAdjacentPosts(slug.value, 'blog', currentLang.value)
+
+// Check availability of other language
+const hasEn = computed(() => posts.value.some(p => p.slug === slug.value && p.type === 'blog' && p.lang === 'en'));
+const hasZh = computed(() => posts.value.some(p => p.slug === slug.value && p.type === 'blog' && p.lang === 'zh'));
+
+const switchLang = (lang) => {
+    if (lang === 'zh' && hasZh.value) currentLang.value = 'zh';
+    if (lang === 'en' && hasEn.value) currentLang.value = 'en';
+}
+
+const toggleLang = () => {
+    if (currentLang.value === 'zh' && hasEn.value) currentLang.value = 'en';
+    else if (currentLang.value === 'en' && hasZh.value) currentLang.value = 'zh';
+}
 
 const renderedBody = computed(() => {
     return post.value ? md.render(post.value.body) : ''
@@ -93,6 +121,19 @@ onUpdated(() => {
                     <div class="mil-banner-content mil-type-2">
                         <div class="mil-link mil-mb-20">{{ post.category }}</div>
                         <h1>{{ post.title }}</h1>
+                        
+                        <!-- Language Switcher -->
+                        <div class="mil-lang-switch mil-mt-20">
+                            <span 
+                                class="mil-lang-btn" 
+                                :class="{ 'active': currentLang === 'zh', 'disabled': !hasZh }" 
+                                @click="switchLang('zh')">ZH</span>
+                            <span class="mil-divider">/</span>
+                            <span 
+                                class="mil-lang-btn" 
+                                :class="{ 'active': currentLang === 'en', 'disabled': !hasEn }" 
+                                @click="switchLang('en')">EN</span>
+                        </div>
                     </div>
                 </div>
                 <div class="mil-space-90 mil-p-0-75">
@@ -115,10 +156,23 @@ onUpdated(() => {
                                 <i class="fas fa-chevron-left"></i> <span>Previous</span>
                              </router-link>
                              <span v-else class="mil-link mil-disabled" style="opacity: 0.5;"><i class="fas fa-chevron-left"></i> Previous</span>
-                        </div>
+                         </div>
 
-                        <!-- Back to Listing -->
-                        <router-link to="/blog" class="mil-link">Back to Blog</router-link>
+                        <!-- Center Group: Back + Lang Switch -->
+                        <div class="mil-bottom-centered">
+                            <router-link to="/blog" class="mil-link">Back to Blog</router-link>
+                            
+                            <span class="mil-divider">/</span>
+
+                            <span 
+                                class="mil-link mil-icon-link" 
+                                :class="{ 'mil-disabled': !hasEn && !hasZh || (currentLang === 'zh' && !hasEn) || (currentLang === 'en' && !hasZh) }"
+                                @click="toggleLang"
+                                title="Switch Language"
+                                style="cursor: pointer;">
+                                <i class="fas fa-language" style="font-size: 24px;"></i>
+                            </span>
+                        </div>
 
                         <!-- Next Post (Older) -->
                         <div class="mil-next-nav">
@@ -148,5 +202,44 @@ onUpdated(() => {
     max-width: 100%;
     border-radius: 10px;
     margin: 20px 0;
+}
+
+/* Language Switcher Styles */
+.mil-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.mil-lang-btn {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.mil-lang-btn.active {
+    opacity: 1;
+    color: var(--accent); /* Assuming accent color variable exists, else use gold/red */
+}
+.mil-lang-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+    pointer-events: none;
+}
+.mil-lang-btn:hover:not(.disabled) {
+    opacity: 1;
+}
+
+/* Bottom Bar Layout Styling */
+.mil-bottom-centered {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.mil-divider {
+    opacity: 0.2;
 }
 </style>

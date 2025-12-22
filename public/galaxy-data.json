@@ -1,256 +1,49 @@
 {
   "nodes": [
     {
-      "id": "profile/profile",
-      "slug": "profile",
-      "type": "profile",
-      "name": "profile/profile",
-      "category": "Uncategorized",
+      "id": "zh/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "zh",
+      "name": "关于 Wasker Vue",
+      "category": "Project",
       "val": 1,
-      "desc": "",
-      "filePath": "profile/profile.md"
+      "desc": "一个基于 Vue 3 的现代个人作品集与博客主题，融合了 3D 交互与响应式设计。",
+      "filePath": "blog/zh/about-wasker.md"
     },
     {
-      "id": "portfolio/brand-identity",
-      "slug": "brand-identity",
+      "id": "en/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "en",
+      "name": "About Wasker Vue",
+      "category": "Project",
+      "val": 1,
+      "desc": "A modern portfolio and blog theme based on Vue 3, featuring 3D interactions and responsive design.",
+      "filePath": "blog/en/about-wasker.md"
+    },
+    {
+      "id": "zh/portfolio/wasker-vue",
+      "slug": "wasker-vue",
       "type": "portfolio",
-      "name": "Modern Brand Identity",
-      "category": "Branding",
+      "lang": "zh",
+      "name": "Wasker Vue 作品集主题",
+      "category": "Web Development",
       "val": 1,
-      "desc": "A complete rebranding for a tech startup.",
-      "filePath": "portfolio/brand-identity.md"
+      "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
+      "filePath": "portfolio/zh/wasker-vue.md"
     },
     {
-      "id": "friend/vuejs",
-      "slug": "vuejs",
-      "type": "friend",
-      "name": "friend/vuejs",
-      "category": "Uncategorized",
+      "id": "en/portfolio/wasker-vue",
+      "slug": "wasker-vue",
+      "type": "portfolio",
+      "lang": "en",
+      "name": "Wasker Vue Portfolio Theme",
+      "category": "Web Development",
       "val": 1,
-      "desc": "The Progressive JavaScript Framework.",
-      "filePath": "friend/vuejs.md"
-    },
-    {
-      "id": "friend/vite",
-      "slug": "vite",
-      "type": "friend",
-      "name": "friend/vite",
-      "category": "Uncategorized",
-      "val": 1,
-      "desc": "Next Generation Frontend Tooling.",
-      "filePath": "friend/vite.md"
-    },
-    {
-      "id": "blog/ui-ux-guide",
-      "slug": "ui-ux-guide",
-      "type": "blog",
-      "name": "The Ultimate Guide to UI/UX Design",
-      "category": "UI/UX",
-      "val": 2,
-      "desc": "Detailed guide on UI/UX best practices.",
-      "filePath": "blog/ui-ux-guide.md"
-    },
-    {
-      "id": "blog/typography-guide",
-      "slug": "typography-guide",
-      "type": "blog",
-      "name": "Typography Essentials",
-      "category": "Design",
-      "val": 1,
-      "desc": "Choosing the right fonts.",
-      "filePath": "blog/typography-guide.md"
-    },
-    {
-      "id": "blog/table-examples",
-      "slug": "table-examples",
-      "type": "blog",
-      "name": "Working with Tables",
-      "category": "Data",
-      "val": 1,
-      "desc": "Displaying tabular data.",
-      "filePath": "blog/table-examples.md"
-    },
-    {
-      "id": "blog/python-data-science",
-      "slug": "python-data-science",
-      "type": "blog",
-      "name": "Python for Data Science",
-      "category": "Data",
-      "val": 1,
-      "desc": "Using Pandas and NumPy for data analysis.",
-      "filePath": "blog/python-data-science.md"
-    },
-    {
-      "id": "blog/mixed-content",
-      "slug": "mixed-content",
-      "type": "blog",
-      "name": "The Kitchen Sink",
-      "category": "Misc",
-      "val": 1,
-      "desc": "A little bit of everything in one post.",
-      "filePath": "blog/mixed-content.md"
-    },
-    {
-      "id": "blog/markdown-syntax-guide",
-      "slug": "markdown-syntax-guide",
-      "type": "blog",
-      "name": "Markdown Syntax Master Guide",
-      "category": "Code",
-      "val": 1,
-      "desc": "A comprehensive test of standard Markdown syntax elements.",
-      "filePath": "blog/markdown-syntax-guide.md"
-    },
-    {
-      "id": "blog/javascript-tutorial",
-      "slug": "javascript-tutorial",
-      "type": "blog",
-      "name": "Modern JavaScript Features",
-      "category": "Code",
-      "val": 2,
-      "desc": "Exploring ES6+ features with code examples.",
-      "filePath": "blog/javascript-tutorial.md"
-    },
-    {
-      "id": "blog/html5-features",
-      "slug": "html5-features",
-      "type": "blog",
-      "name": "Semantic HTML5",
-      "category": "Code",
-      "val": 1,
-      "desc": "writing accessible and semantic markup.",
-      "filePath": "blog/html5-features.md"
-    },
-    {
-      "id": "blog/graphic-designer",
-      "slug": "graphic-designer",
-      "type": "blog",
-      "name": "How to Become a Graphic Designer in 10 Simple Steps",
-      "category": "Design",
-      "val": 2,
-      "desc": "Repellendus minima repellat fuga tempora impedit alias dolores odit id, placeat ut officia dicta.",
-      "filePath": "blog/graphic-designer.md"
-    },
-    {
-      "id": "blog/design-principles",
-      "slug": "design-principles",
-      "type": "blog",
-      "name": "Minimalist Design Principles",
-      "category": "Design",
-      "val": 2,
-      "desc": "Less is more.",
-      "filePath": "blog/design-principles.md"
-    },
-    {
-      "id": "blog/css-tricks",
-      "slug": "css-tricks",
-      "type": "blog",
-      "name": "Advanced CSS Layouts",
-      "category": "Design",
-      "val": 1,
-      "desc": "Mastering Flexbox and Grid.",
-      "filePath": "blog/css-tricks.md"
-    },
-    {
-      "id": "blog/test/link-test",
-      "slug": "link-test",
-      "type": "blog",
-      "name": "Internal Link Demo",
-      "category": "Test",
-      "val": 1,
-      "desc": "Demonstrating how to link between markdown files.",
-      "filePath": "blog/test/link-test.md"
-    },
-    {
-      "id": "blog/test/code-blocks-demo",
-      "slug": "code-blocks-demo",
-      "type": "blog",
-      "name": "Deep Dive into Code Blocks",
-      "category": "Uncategorized",
-      "val": 1,
-      "desc": "Testing various programming languages in markdown code blocks.",
-      "filePath": "blog/test/code-blocks-demo.md"
-    },
-    {
-      "id": "blog/Demo/threejs-basics",
-      "slug": "threejs-basics",
-      "type": "blog",
-      "name": "Three.js Basics for Data Viz",
-      "category": "Demo",
-      "val": 2,
-      "desc": "Simple starters for 3D web graphics.",
-      "filePath": "blog/Demo/threejs-basics.md"
-    },
-    {
-      "id": "blog/Demo/galaxy-visual-style",
-      "slug": "galaxy-visual-style",
-      "type": "blog",
-      "name": "Defining the Visual Style",
-      "category": "Demo",
-      "val": 2,
-      "desc": "Aesthetic choices for the Knowledge Galaxy.",
-      "filePath": "blog/Demo/galaxy-visual-style.md"
-    },
-    {
-      "id": "blog/Demo/galaxy-tech-stack",
-      "slug": "galaxy-tech-stack",
-      "type": "blog",
-      "name": "The Tech Stack Behind the Galaxy",
-      "category": "Demo",
-      "val": 3,
-      "desc": "How we use Three.js and Vue 3 to build a performant 3D graph.",
-      "filePath": "blog/Demo/galaxy-tech-stack.md"
-    },
-    {
-      "id": "blog/Demo/galaxy-introduction",
-      "slug": "galaxy-introduction",
-      "type": "blog",
-      "name": "Introduction to Knowledge Galaxy",
-      "category": "Demo",
-      "val": 3,
-      "desc": "Exploring the concept of a 3D knowledge graph for local markdown content.",
-      "filePath": "blog/Demo/galaxy-introduction.md"
+      "desc": "A minimal, high-performance, and design-centric Vue 3 portfolio & blog theme.",
+      "filePath": "portfolio/en/wasker-vue.md"
     }
   ],
-  "links": [
-    {
-      "source": "blog/test/link-test",
-      "target": "blog/graphic-designer"
-    },
-    {
-      "source": "blog/test/link-test",
-      "target": "blog/ui-ux-guide"
-    },
-    {
-      "source": "blog/test/link-test",
-      "target": "blog/javascript-tutorial"
-    },
-    {
-      "source": "blog/Demo/threejs-basics",
-      "target": "blog/Demo/galaxy-tech-stack"
-    },
-    {
-      "source": "blog/Demo/galaxy-visual-style",
-      "target": "blog/Demo/galaxy-introduction"
-    },
-    {
-      "source": "blog/Demo/galaxy-visual-style",
-      "target": "blog/design-principles"
-    },
-    {
-      "source": "blog/Demo/galaxy-tech-stack",
-      "target": "blog/Demo/galaxy-introduction"
-    },
-    {
-      "source": "blog/Demo/galaxy-tech-stack",
-      "target": "blog/Demo/threejs-basics"
-    },
-    {
-      "source": "blog/Demo/galaxy-introduction",
-      "target": "blog/Demo/galaxy-tech-stack"
-    },
-    {
-      "source": "blog/Demo/galaxy-introduction",
-      "target": "blog/Demo/galaxy-visual-style"
-    }
-  ]
+  "links": []
 }
