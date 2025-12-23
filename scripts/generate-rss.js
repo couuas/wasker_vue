@@ -4,8 +4,8 @@ import fm from 'front-matter';
 import { fileURLToPath } from 'url';
 
 // Configuration
-const SITE_URL = 'https://6660.pp.ua';
-const SITE_TITLE = '6660.pp.ua';
+const SITE_URL = 'https://couuas.pp.ua';
+const SITE_TITLE = 'couuas.pp.ua';
 const SITE_DESCRIPTION = 'Personal portfolio and blog of a creative designer/developer.';
 const CONTENT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/content/blog');
 const PUBLIC_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../public');
