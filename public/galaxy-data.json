@@ -1,17 +1,6 @@
 {
   "nodes": [
     {
-      "id": "zh/blog/about-wasker",
-      "slug": "about-wasker",
-      "type": "blog",
-      "lang": "zh",
-      "name": "关于 Wasker Vue",
-      "category": "Project",
-      "val": 1,
-      "desc": "一个基于 Vue 3 的现代个人作品集与博客主题，融合了 3D 交互与响应式设计。",
-      "filePath": "blog/zh/about-wasker.md"
-    },
-    {
       "id": "en/blog/about-wasker",
       "slug": "about-wasker",
       "type": "blog",
@@ -21,6 +10,17 @@
       "val": 1,
       "desc": "A modern portfolio and blog theme based on Vue 3, featuring 3D interactions and responsive design.",
       "filePath": "blog/en/about-wasker.md"
+    },
+    {
+      "id": "zh/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "zh",
+      "name": "关于 Wasker Vue",
+      "category": "Project",
+      "val": 1,
+      "desc": "一个基于 Vue 3 的现代个人作品集与博客主题，融合了 3D 交互与响应式设计。",
+      "filePath": "blog/zh/about-wasker.md"
     },
     {
       "id": "zh/portfolio/wasker-vue",

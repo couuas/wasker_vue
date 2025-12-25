@@ -3,6 +3,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import { useScrollAnimations } from '@/composables/useScrollAnimations'
+import ToastNotification from '@/components/ToastNotification.vue'
 
 const { getPosts } = useMarkdown()
 const { initAnimations } = useScrollAnimations()
@@ -14,6 +15,54 @@ const toggledSlug = ref(null)
 const toggleCard = (slug) => {
     if (window.innerWidth <= 768) {
         toggledSlug.value = toggledSlug.value === slug ? null : slug
+    }
+}
+
+// Friend Application Logic
+const friendUrl = ref('')
+const isSubmitting = ref(false)
+const toast = ref(null)
+
+const submitFriendUrl = async () => {
+    // Basic URL validation (browser 'type="url"' handles most, but good to double check)
+    if (!friendUrl.value || !friendUrl.value.startsWith('http')) {
+        toast.value.show('Please enter a valid URL (starting with http:// or https://)', 'error')
+        return
+    }
+
+    const apiUrl = import.meta.env.VITE_API_URL
+    if (!apiUrl) {
+        toast.value.show('System Config Error: API URL missing', 'error')
+        return
+    }
+
+    isSubmitting.value = true
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: 'Friend Applicant',
+                email: 'link-submission@wasker.site', // Dummy email to satisfy worker validation
+                subject: '🔗 New Friend Link Application',
+                message: `User submitted a new friend link:\n\n${friendUrl.value}`
+            })
+        })
+
+        if (response.ok) {
+            toast.value.show('Link sent to my Telegram successfully! I will check it out.', 'success')
+            friendUrl.value = ''
+        } else {
+            const errText = await response.text()
+            console.error('API Error:', errText)
+            toast.value.show('Failed to send link.', 'error')
+        }
+    } catch (e) {
+        console.error(e)
+        toast.value.show('Network error. Please try again.', 'error')
+    } finally {
+        isSubmitting.value = false
     }
 }
 
@@ -55,19 +104,37 @@ watch(friends, () => {
              </div>
              
              <!-- Apply Interface (Placeholder) -->
+            <!-- Apply Interface -->
             <div class="mil-bottom-panel">
                 <div class="mil-jcc mil-space-15 mil-w-100">
-                    <form class="mil-subscribe">
+                    <form class="mil-subscribe" @submit.prevent="submitFriendUrl">
                         <div class="mil-input-frame">
-                            <input type="text" placeholder="Want to be friends? Apply simply." name="url">
+                            <input 
+                                type="url" 
+                                placeholder="Want to be friends? Paste your link here (https://...)" 
+                                name="url"
+                                v-model="friendUrl"
+                                required
+                            >
                         </div>
-                        <button type="submit" class="mil-btn-sm"><i class="far fa-envelope"></i></button>
+                        <button type="submit" class="mil-btn-sm" :disabled="isSubmitting">
+                            <i class="far fa-paper-plane" v-if="!isSubmitting"></i>
+                            <i class="fas fa-spinner fa-spin" v-else></i>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
+        <ToastNotification ref="toast" />
     </div>
 </template>
 
 <style scoped>
+@media (max-width: 768px) {
+    .mil-subscribe .mil-btn-sm {
+        min-width: 60px; /* Ensure button doesn't shrink too much */
+        width: auto; /* Allow it to take only necessary width */
+        flex: 0 0 auto; /* Prevent growing */
+    }
+}
 </style>
