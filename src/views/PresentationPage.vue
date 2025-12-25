@@ -94,9 +94,12 @@ function goBack() {
                 :direction="'vertical'"
                 :slidesPerView="1"
                 :spaceBetween="0"
-                :mousewheel="true"
+                :mousewheel="{ sensitivity: 1, thresholdTime: 400 }"
                 :keyboard="{ enabled: true }"
                 :modules="modules"
+                :speed="700"
+                :resistance="true"
+                :resistanceRatio="0.85"
                 class="pdf-swiper"
                 @swiper="onSwiper"
                 @slideChange="onSlideChange"
@@ -321,7 +324,7 @@ function goBack() {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
