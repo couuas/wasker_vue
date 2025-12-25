@@ -189,10 +189,22 @@ onMounted(async () => {
   // Watch for data changes (async load from parent)
   watch(() => props.graphData, (newData) => {
     if (graph && newData && newData.nodes && newData.nodes.length > 0) {
+      // Capture current camera state to prevent jumps during language switch
+      const camPos = graph.cameraPosition();
+      const camLookAt = graph.controls().target.clone();
+      
       graph.graphData(structuredClone(toRaw(newData)));
       
+      // Restore camera state after a short delay to ensure internal library resets are bypassed
+      if (initialFitDone) {
+          setTimeout(() => {
+              if (graph) {
+                  graph.cameraPosition(camPos, camLookAt, 0);
+              }
+          }, 50);
+      }
+      
       // If it's the very first time we get real data, ensure we fit view 
-      // even if onEngineStop didn't trigger perfectly
       if (!initialFitDone) {
           setTimeout(() => {
               if (!initialFitDone && graph) {

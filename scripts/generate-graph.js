@@ -149,17 +149,40 @@ async function generateGraph() {
     });
 
     // 3. Third pass: Pre-calculate 3D physics coordinates
-    console.log(`Running 3D physics simulation for ${nodes.length} nodes...`);
+    console.log(`Running 3D physics simulation...`);
 
-    // Convert links to references for D3
-    const d3Links = links.map(l => ({
-        source: l.source,
-        target: l.target
-    }));
+    // To ensure language-agnostic POV, we run simulation on "virtual nodes" 
+    // where translations share the same physical entity.
+    const virtualMap = new Map();
+    nodes.forEach(n => {
+        const vId = `${n.type}/${n.slug}`;
+        if (!virtualMap.has(vId)) {
+            virtualMap.set(vId, { id: vId, langVariants: [] });
+        }
+        virtualMap.get(vId).langVariants.push(n);
+    });
 
-    const simulation = forceSimulation(nodes, 3)
-        .force('link', forceLink(d3Links).id(d => d.id).distance(50))
-        .force('charge', forceManyBody().strength(-100))
+    const vNodes = Array.from(virtualMap.values()).map(v => ({ id: v.id }));
+    const vLinks = [];
+    const processedVLinks = new Set();
+
+    links.forEach(l => {
+        const sourceNode = nodes.find(n => n.id === l.source);
+        const targetNode = nodes.find(n => n.id === l.target);
+        if (sourceNode && targetNode) {
+            const vSourceId = `${sourceNode.type}/${sourceNode.slug}`;
+            const vTargetId = `${targetNode.type}/${targetNode.slug}`;
+            const vLinkId = `${vSourceId}->${vTargetId}`;
+            if (vSourceId !== vTargetId && !processedVLinks.has(vLinkId)) {
+                vLinks.push({ source: vSourceId, target: vTargetId });
+                processedVLinks.add(vLinkId);
+            }
+        }
+    });
+
+    const simulation = forceSimulation(vNodes, 3)
+        .force('link', forceLink(vLinks).id(d => d.id).distance(60))
+        .force('charge', forceManyBody().strength(-120))
         .force('center', forceCenter(0, 0, 0))
         .stop();
 
@@ -168,16 +191,19 @@ async function generateGraph() {
         simulation.tick();
     }
 
-    // Round coordinates for smaller file size
-    nodes.forEach(node => {
-        node.x = Math.round(node.x * 10) / 10;
-        node.y = Math.round(node.y * 10) / 10;
-        node.z = Math.round(node.z * 10) / 10;
+    // Map virtual coordinates back to all language variants
+    vNodes.forEach(v => {
+        const variants = virtualMap.get(v.id).langVariants;
+        variants.forEach(node => {
+            node.x = Math.round(v.x * 10) / 10;
+            node.y = Math.round(v.y * 10) / 10;
+            node.z = Math.round(v.z * 10) / 10;
+        });
     });
 
     const graphData = {
         nodes: nodes,
-        links: links // keep IDs for frontend filtering
+        links: links
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(graphData, null, 2));
