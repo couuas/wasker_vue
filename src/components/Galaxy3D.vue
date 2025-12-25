@@ -21,6 +21,47 @@ const props = defineProps({
 const galaxyContainer = ref(null);
 let graph = null;
 
+// Resource Cache to prevent redundant object creation
+const materialCache = new Map();
+const textureCache = new Map();
+
+function getOrCreateNodeMaterial(category, isSelected = false) {
+    const cacheKey = `${category}-${isSelected}`;
+    if (materialCache.has(cacheKey)) return materialCache.get(cacheKey);
+
+    const color = isSelected ? '#DBA91C' : getNodeColor(category);
+    
+    // Create Texture
+    let texture = textureCache.get(color);
+    if (!texture) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64;
+        canvas.height = 64;
+        const context = canvas.getContext('2d');
+        const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+        
+        gradient.addColorStop(0, color);
+        gradient.addColorStop(0.2, color);
+        gradient.addColorStop(0.5, 'rgba(' + hexToRgb(color) + ', 0.3)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 64, 64);
+        texture = new THREE.CanvasTexture(canvas);
+        textureCache.set(color, texture);
+    }
+
+    const material = new THREE.SpriteMaterial({ 
+        map: texture,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+    });
+    
+    materialCache.set(cacheKey, material);
+    return material;
+}
+
 const focusNode = (node) => {
   if (!graph || !node) return;
   
@@ -66,40 +107,13 @@ onMounted(async () => {
     .linkOpacity(0.3)
     .linkColor(() => '#ffffff') // White links
     .nodeThreeObject(node => {
-      // Create a sprite for the node
-      // Using a simple circle texture generated on canvas for performance/simplicity
-      // or we could load a "glow.png" if we had one.
-      // Let's generate a glowing circle texture.
-      
-      const canvas = document.createElement('canvas');
-      canvas.width = 64;
-      canvas.height = 64;
-      const context = canvas.getContext('2d');
-      const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
-      
-      // Color based on category (simple hash or preset)
-      const color = node.id === props.selectedNodeId ? '#DBA91C' : getNodeColor(node.category);
-      
-      gradient.addColorStop(0, color);
-      gradient.addColorStop(0.2, color);
-      gradient.addColorStop(0.5, 'rgba(' + hexToRgb(color) + ', 0.3)');
-      gradient.addColorStop(1, 'rgba(0,0,0,0)');
-      
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, 64, 64);
-      
-      const texture = new THREE.CanvasTexture(canvas);
-      const material = new THREE.SpriteMaterial({ 
-          map: texture,
-          transparent: true,
-          depthWrite: false,
-          blending: THREE.AdditiveBlending
-      });
+      const isSelected = node.id === props.selectedNodeId;
+      const material = getOrCreateNodeMaterial(node.category, isSelected);
       const sprite = new THREE.Sprite(material);
       
       // Scale based on "val" (citation count/weight)
       let scale = 4 + (node.val || 0) * 2;
-      if (node.id === props.selectedNodeId) scale *= 1.5; // Make selected node larger
+      if (isSelected) scale *= 1.5;
       sprite.scale.set(scale, scale, scale);
       
       return sprite;
@@ -120,10 +134,10 @@ onMounted(async () => {
         }
     });
 
-  // Optimize simulation speed
-  graph.cooldownTicks(60);      // Extremely fast stabilization for instant feedback
-  graph.d3AlphaDecay(0.1);      // Even more aggressive settling (was 0.08)
-  graph.d3VelocityDecay(0.6);   // Higher friction to prevent "jitter" (was 0.4)
+  // Optimize simulation speed - Now using static coordinates
+  graph.cooldownTicks(0);       // Instant start - no dynamic simulation needed
+  graph.d3AlphaDecay(0);        // Prevent further movement
+  graph.d3VelocityDecay(0);     
   
   // Custom force to keep separate clusters from drifting too far
   // This pulls nodes towards the center even if they aren't linked to the origin
@@ -134,8 +148,10 @@ onMounted(async () => {
   let initialFitDone = false;
   graph.onEngineStop(() => {
     if (!initialFitDone) {
-      graph.zoomToFit(1000, 150); // Faster animation, generous padding
-      initialFitDone = true;
+      setTimeout(() => {
+          graph.zoomToFit(1000, 200); // More padding for better overview
+          initialFitDone = true;
+      }, 100);
     }
   });  // Custom controls settings based on device
   const controls = graph.controls();
@@ -174,8 +190,17 @@ onMounted(async () => {
   watch(() => props.graphData, (newData) => {
     if (graph && newData && newData.nodes && newData.nodes.length > 0) {
       graph.graphData(structuredClone(toRaw(newData)));
-      // Note: We don't reset initialFitDone here anymore to prevent camera jumping 
-      // when switching languages or filtering data.
+      
+      // If it's the very first time we get real data, ensure we fit view 
+      // even if onEngineStop didn't trigger perfectly
+      if (!initialFitDone) {
+          setTimeout(() => {
+              if (!initialFitDone && graph) {
+                  graph.zoomToFit(1400, 200);
+                  initialFitDone = true;
+              }
+          }, 300);
+      }
     }
   }, { deep: true });
 
@@ -192,6 +217,11 @@ onMounted(async () => {
       if (graph) {
           graph._destructor();
       }
+      // Clear caches
+      materialCache.forEach(m => m.dispose());
+      textureCache.forEach(t => t.dispose());
+      materialCache.clear();
+      textureCache.clear();
   });
 });
 
@@ -215,7 +245,8 @@ function hexToRgb(hex) {
 function addCosmicDust(scene) {
     const geometry = new THREE.BufferGeometry();
     const vertices = [];
-    for (let i = 0; i < 2000; i++) {
+    const count = window.innerWidth < 768 ? 500 : 1500; // Reduce count on mobile
+    for (let i = 0; i < count; i++) {
         vertices.push(
             Math.random() * 2000 - 1000,
             Math.random() * 2000 - 1000,

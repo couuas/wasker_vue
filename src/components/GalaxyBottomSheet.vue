@@ -21,12 +21,15 @@ const emit = defineEmits(['close', 'locate']);
 const isRelatedExpanded = ref(false);
 
 const neighbors = computed(() => {
-    if (!props.node || !props.graphData.links) return [];
+    if (!props.node || !props.graphData.links || !props.graphData.nodes) return [];
+    
+    // Create a quick lookup map for nodes
+    const nodeMap = new Map(props.graphData.nodes.map(n => [n.id, n]));
     
     // Find all links connected to current node
     const relatedLinks = props.graphData.links.filter(link => 
         link.source === props.node.id || link.target === props.node.id ||
-        (link.source.id === props.node.id) || (link.target.id === props.node.id) // handle both object and ID forms
+        (link.source.id === props.node.id) || (link.target.id === props.node.id)
     );
     
     // Get unique neighbor IDs
@@ -39,10 +42,8 @@ const neighbors = computed(() => {
         if (tId !== props.node.id) neighborIds.add(tId);
     });
     
-    // Map to full node objects
-    return Array.from(neighborIds).map(id => {
-        return props.graphData.nodes.find(n => n.id === id);
-    }).filter(n => n); // remove undefined
+    // Map to full node objects using the lookup map
+    return Array.from(neighborIds).map(id => nodeMap.get(id)).filter(n => n);
 });
 
 function getLink(node) {

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
+import { forceSimulation, forceManyBody, forceLink, forceCenter } from 'd3-force-3d';
 
 const contentDir = path.resolve('src/content');
 const outputFile = path.resolve('public/galaxy-data.json');
@@ -147,9 +148,36 @@ async function generateGraph() {
         }
     });
 
+    // 3. Third pass: Pre-calculate 3D physics coordinates
+    console.log(`Running 3D physics simulation for ${nodes.length} nodes...`);
+
+    // Convert links to references for D3
+    const d3Links = links.map(l => ({
+        source: l.source,
+        target: l.target
+    }));
+
+    const simulation = forceSimulation(nodes, 3)
+        .force('link', forceLink(d3Links).id(d => d.id).distance(50))
+        .force('charge', forceManyBody().strength(-100))
+        .force('center', forceCenter(0, 0, 0))
+        .stop();
+
+    // Run simulation synchronously
+    for (let i = 0; i < 300; i++) {
+        simulation.tick();
+    }
+
+    // Round coordinates for smaller file size
+    nodes.forEach(node => {
+        node.x = Math.round(node.x * 10) / 10;
+        node.y = Math.round(node.y * 10) / 10;
+        node.z = Math.round(node.z * 10) / 10;
+    });
+
     const graphData = {
         nodes: nodes,
-        links: links
+        links: links // keep IDs for frontend filtering
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(graphData, null, 2));

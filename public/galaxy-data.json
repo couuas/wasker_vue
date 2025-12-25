@@ -9,7 +9,14 @@
       "category": "Project",
       "val": 1,
       "desc": "Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.",
-      "filePath": "blog/en/about-wasker.md"
+      "filePath": "blog/en/about-wasker.md",
+      "index": 0,
+      "x": 11.9,
+      "y": 16.7,
+      "z": -129.8,
+      "vx": -0.0016945758643232736,
+      "vy": -0.0007336208992837406,
+      "vz": -0.0015736519505915546
     },
     {
       "id": "zh/blog/about-wasker",
@@ -20,7 +27,14 @@
       "category": "Project",
       "val": 1,
       "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
-      "filePath": "blog/zh/about-wasker.md"
+      "filePath": "blog/zh/about-wasker.md",
+      "index": 1,
+      "x": 33.6,
+      "y": 28.1,
+      "z": 93.1,
+      "vx": 0.00042139462782484627,
+      "vy": 0.0013003901260451927,
+      "vz": 0.0020094654754997873
     },
     {
       "id": "zh/portfolio/wasker_vue",
@@ -31,7 +45,14 @@
       "category": "Uncategorized",
       "val": 2,
       "desc": "融合 3D 星系交互与 AI 增强体验，具备全球感知优选能力的 Vue 3 终极个人站。",
-      "filePath": "portfolio/zh/wasker series/wasker_vue.md"
+      "filePath": "portfolio/zh/wasker series/wasker_vue.md",
+      "index": 2,
+      "x": -32.6,
+      "y": 12.9,
+      "z": 151.1,
+      "vx": -0.0003608511019400278,
+      "vy": 0.0006058818566591778,
+      "vz": 0.0017648387384210217
     },
     {
       "id": "zh/portfolio/wasker_tempalte",
@@ -42,7 +63,14 @@
       "category": "Uncategorized",
       "val": 3,
       "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
-      "filePath": "portfolio/zh/wasker series/wasker_tempalte.md"
+      "filePath": "portfolio/zh/wasker series/wasker_tempalte.md",
+      "index": 3,
+      "x": 9.8,
+      "y": 45,
+      "z": 139.1,
+      "vx": -0.0003880006663911043,
+      "vy": 0.0006190077713009219,
+      "vz": 0.0018456884015791285
     },
     {
       "id": "en/portfolio/wasker_vue",
@@ -53,7 +81,14 @@
       "category": "Uncategorized",
       "val": 2,
       "desc": "An ultimate Vue 3 personal site featuring 3D galaxy interaction, AI-enhanced experiences, and global routing optimization.",
-      "filePath": "portfolio/en/wasker series/wasker_vue.md"
+      "filePath": "portfolio/en/wasker series/wasker_vue.md",
+      "index": 4,
+      "x": -2.4,
+      "y": -76.4,
+      "z": -121.3,
+      "vx": -0.000707914561601179,
+      "vy": -0.0009836366738035938,
+      "vz": -0.0010096219646224898
     },
     {
       "id": "en/portfolio/wasker_tempalte",
@@ -64,7 +99,14 @@
       "category": "Uncategorized",
       "val": 3,
       "desc": "A minimalist, high-performance, and beautifully designed Vue 3 portfolio and blog theme.",
-      "filePath": "portfolio/en/wasker series/wasker_tempalte.md"
+      "filePath": "portfolio/en/wasker series/wasker_tempalte.md",
+      "index": 5,
+      "x": -20.3,
+      "y": -26.3,
+      "z": -132.2,
+      "vx": -0.0010701557579489308,
+      "vy": -0.001201964427604328,
+      "vz": -0.0012578522113034362
     }
   ],
   "links": [
