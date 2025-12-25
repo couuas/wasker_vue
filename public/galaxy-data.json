@@ -1,17 +1,6 @@
 {
   "nodes": [
     {
-      "id": "en/blog/about-wasker",
-      "slug": "about-wasker",
-      "type": "blog",
-      "lang": "en",
-      "name": "About Wasker Vue",
-      "category": "Project",
-      "val": 1,
-      "desc": "A modern portfolio and blog theme based on Vue 3, featuring 3D interactions and responsive design.",
-      "filePath": "blog/en/about-wasker.md"
-    },
-    {
       "id": "zh/blog/about-wasker",
       "slug": "about-wasker",
       "type": "blog",
@@ -19,31 +8,89 @@
       "name": "关于 Wasker Vue",
       "category": "Project",
       "val": 1,
-      "desc": "一个基于 Vue 3 的现代个人作品集与博客主题，融合了 3D 交互与响应式设计。",
+      "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
       "filePath": "blog/zh/about-wasker.md"
     },
     {
-      "id": "zh/portfolio/wasker-vue",
-      "slug": "wasker-vue",
-      "type": "portfolio",
-      "lang": "zh",
-      "name": "Wasker Vue 作品集主题",
-      "category": "Web Development",
+      "id": "en/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "en",
+      "name": "About Wasker Vue",
+      "category": "Project",
       "val": 1,
-      "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
-      "filePath": "portfolio/zh/wasker-vue.md"
+      "desc": "Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.",
+      "filePath": "blog/en/about-wasker.md"
     },
     {
-      "id": "en/portfolio/wasker-vue",
-      "slug": "wasker-vue",
+      "id": "zh/portfolio/wasker_vue",
+      "slug": "wasker_vue",
+      "type": "portfolio",
+      "lang": "zh",
+      "name": "Wasker Vue Site",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "融合 3D 星系交互与 AI 增强体验，具备全球感知优选能力的 Vue 3 终极个人站。",
+      "filePath": "portfolio/zh/wasker series/wasker_vue.md"
+    },
+    {
+      "id": "zh/portfolio/wasker_tempalte",
+      "slug": "wasker_tempalte",
+      "type": "portfolio",
+      "lang": "zh",
+      "name": "Wasker Tempalte Theme",
+      "category": "Uncategorized",
+      "val": 3,
+      "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
+      "filePath": "portfolio/zh/wasker series/wasker_tempalte.md"
+    },
+    {
+      "id": "en/portfolio/wasker_vue",
+      "slug": "wasker_vue",
       "type": "portfolio",
       "lang": "en",
-      "name": "Wasker Vue Portfolio Theme",
-      "category": "Web Development",
-      "val": 1,
-      "desc": "A minimal, high-performance, and design-centric Vue 3 portfolio & blog theme.",
-      "filePath": "portfolio/en/wasker-vue.md"
+      "name": "Wasker Vue Site",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "An ultimate Vue 3 personal site featuring 3D galaxy interaction, AI-enhanced experiences, and global routing optimization.",
+      "filePath": "portfolio/en/wasker series/wasker_vue.md"
+    },
+    {
+      "id": "en/portfolio/wasker_tempalte",
+      "slug": "wasker_tempalte",
+      "type": "portfolio",
+      "lang": "en",
+      "name": "Wasker Template Theme",
+      "category": "Uncategorized",
+      "val": 3,
+      "desc": "A minimalist, high-performance, and beautifully designed Vue 3 portfolio and blog theme.",
+      "filePath": "portfolio/en/wasker series/wasker_tempalte.md"
     }
   ],
-  "links": []
+  "links": [
+    {
+      "source": "zh/blog/about-wasker",
+      "target": "zh/portfolio/wasker_tempalte"
+    },
+    {
+      "source": "en/blog/about-wasker",
+      "target": "en/portfolio/wasker_tempalte"
+    },
+    {
+      "source": "zh/portfolio/wasker_vue",
+      "target": "zh/portfolio/wasker_tempalte"
+    },
+    {
+      "source": "zh/portfolio/wasker_tempalte",
+      "target": "zh/portfolio/wasker_vue"
+    },
+    {
+      "source": "en/portfolio/wasker_vue",
+      "target": "en/portfolio/wasker_tempalte"
+    },
+    {
+      "source": "en/portfolio/wasker_tempalte",
+      "target": "en/portfolio/wasker_vue"
+    }
+  ]
 }

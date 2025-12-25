@@ -1,11 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted, shallowRef, nextTick, computed, watch } from 'vue';
+import { useAppStore } from '@/stores/app'
+import { storeToRefs } from 'pinia'
 import Galaxy3D from '../components/Galaxy3D.vue';
 import GalaxyBottomSheet from '../components/GalaxyBottomSheet.vue';
 
+const appStore = useAppStore()
+const { currentLang } = storeToRefs(appStore)
+
 const selectedNode = shallowRef(null);
 const graphData = shallowRef({ nodes: [], links: [] });
-const currentLang = ref('en');
 
 const filteredGraphData = computed(() => {
   const nodes = graphData.value.nodes.filter(n => n.lang === currentLang.value);
@@ -112,12 +116,12 @@ watch(currentLang, (newLang) => {
         <span 
             class="lang-btn" 
             :class="{ 'active': currentLang === 'zh' }" 
-            @click="currentLang = 'zh'">ZH</span>
+            @click="appStore.setLang('zh')">ZH</span>
         <span class="divider">/</span>
         <span 
             class="lang-btn" 
             :class="{ 'active': currentLang === 'en' }" 
-            @click="currentLang = 'en'">EN</span>
+            @click="appStore.setLang('en')">EN</span>
         <span class="divider">/</span>
         <span 
             class="lang-btn" 

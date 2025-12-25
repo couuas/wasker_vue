@@ -118,7 +118,7 @@ async function generateGraph() {
 
         // Process Standard Links
         while ((match = mdLinkRegex.exec(content)) !== null) {
-            let linkPath = match[1];
+            let linkPath = decodeURIComponent(match[1]);
             let targetNode = null;
 
             // Resolve path relative to current file

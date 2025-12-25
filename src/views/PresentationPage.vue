@@ -9,15 +9,21 @@ import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
 import { Mousewheel, Pagination, Keyboard } from 'swiper/modules';
 
+import { useAppStore } from '@/stores/app'
+import { storeToRefs } from 'pinia'
+
 const route = useRoute();
 const router = useRouter();
 const { posts } = useMarkdown();
+const appStore = useAppStore();
+const { currentLang } = storeToRefs(appStore);
 
 const slug = computed(() => route.params.id);
 const work = computed(() => {
-    // Search in all languages just in case, or default to current locale logic if needed.
-    // Ideally we should handle language, but for now find the first matching slug.
-    return posts.value.find(p => p.slug === slug.value && p.pdf);
+    // Prefer the version matching the current language preference
+    const found = posts.value.find(p => p.slug === slug.value && p.pdf && p.lang === currentLang.value);
+    // Fallback to any version if specific language version doesn't have PDF or doesn't exist
+    return found || posts.value.find(p => p.slug === slug.value && p.pdf);
 });
 
 const pdfSource = computed(() => work.value?.pdf);

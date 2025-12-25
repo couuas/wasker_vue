@@ -6,9 +6,6 @@ export const useAppStore = defineStore('app', () => {
 
     function toggleMenu() {
         isMenuOpen.value = !isMenuOpen.value
-        // Toggle class on body or main wrapper if needed by CSS
-        // The original template likely toggles a class on .mil-menu-btn or .mil-menu-part
-        // We will handle this in components or here
     }
 
     function closeMenu() {
@@ -27,5 +24,22 @@ export const useAppStore = defineStore('app', () => {
         closeMenu()
     }
 
-    return { isMenuOpen, toggleMenu, closeMenu, isLoading, setLoading, triggerAssistant, openAssistant }
+    const currentLang = ref(localStorage.getItem('wasker_lang') || 'en')
+
+    function setLang(lang) {
+        currentLang.value = lang
+        localStorage.setItem('wasker_lang', lang)
+    }
+
+    function toggleLang() {
+        const newLang = currentLang.value === 'zh' ? 'en' : 'zh'
+        setLang(newLang)
+    }
+
+    return {
+        isMenuOpen, toggleMenu, closeMenu,
+        isLoading, setLoading,
+        triggerAssistant, openAssistant,
+        currentLang, setLang, toggleLang
+    }
 })

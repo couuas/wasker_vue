@@ -3,9 +3,13 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import { useScrollAnimations } from '@/composables/useScrollAnimations'
+import { useAppStore } from '@/stores/app'
+import { storeToRefs } from 'pinia'
 
 const { getPosts, getCategories } = useMarkdown()
 const { initAnimations } = useScrollAnimations()
+const appStore = useAppStore()
+const { currentLang } = storeToRefs(appStore)
 
 const allPosts = getPosts('blog')
 const categories = getCategories('blog')
@@ -13,7 +17,6 @@ const categories = getCategories('blog')
 const activeCategory = ref('All')
 const isExpanded = ref(false)
 const toggledSlug = ref(null)
-const currentLang = ref('en')
 
 const filteredPosts = computed(() => {
     let posts = allPosts.value.filter(p => p.lang === currentLang.value)
@@ -24,7 +27,7 @@ const filteredPosts = computed(() => {
 })
 
 const toggleLang = () => {
-    currentLang.value = currentLang.value === 'zh' ? 'en' : 'zh'
+    appStore.toggleLang()
 }
 
 const displayedPosts = computed(() => {

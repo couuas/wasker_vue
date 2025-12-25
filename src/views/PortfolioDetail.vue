@@ -4,13 +4,16 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import md from '@/utils/markdown'
 import SimplePdfViewer from '@/components/SimplePdfViewer.vue'
+import { useAppStore } from '@/stores/app'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const router = useRouter()
 const { posts, getAdjacentPosts } = useMarkdown()
+const appStore = useAppStore()
+const { currentLang } = storeToRefs(appStore)
 
 const slug = computed(() => route.params.id)
-const currentLang = ref('en')
 
 const work = computed(() => {
     return posts.value.find(p => p.slug === slug.value && p.type === 'portfolio' && p.lang === currentLang.value);
@@ -22,13 +25,13 @@ const hasEn = computed(() => posts.value.some(p => p.slug === slug.value && p.ty
 const hasZh = computed(() => posts.value.some(p => p.slug === slug.value && p.type === 'portfolio' && p.lang === 'zh'));
 
 const switchLang = (lang) => {
-    if (lang === 'zh' && hasZh.value) currentLang.value = 'zh';
-    if (lang === 'en' && hasEn.value) currentLang.value = 'en';
+    if (lang === 'zh' && hasZh.value) appStore.setLang('zh');
+    if (lang === 'en' && hasEn.value) appStore.setLang('en');
 }
 
 const toggleLang = () => {
-    if (currentLang.value === 'zh' && hasEn.value) currentLang.value = 'en';
-    else if (currentLang.value === 'en' && hasZh.value) currentLang.value = 'zh';
+    if (currentLang.value === 'zh' && hasEn.value) appStore.setLang('en');
+    else if (currentLang.value === 'en' && hasZh.value) appStore.setLang('zh');
 }
 
 const renderedBody = computed(() => {
@@ -55,16 +58,27 @@ const handleLinkClick = (event) => {
         const currentOrigin = window.location.origin;
 
         if (targetUrl.origin === currentOrigin) {
-            event.preventDefault();
             let path = targetUrl.pathname;
             if (path.endsWith('.md')) {
-                path = path.replace('.md', '');
-                // Prepend /portfolio/ if missing
-                if (!path.startsWith('/blog/') && !path.startsWith('/portfolio/')) {
-                    path = '/portfolio' + path;
+                event.preventDefault();
+                
+                const isPortfolio = path.includes('/portfolio/');
+                const isBlog = path.includes('/blog/');
+                
+                const parts = path.split('/');
+                const slug = decodeURIComponent(parts.pop().replace('.md', ''));
+                
+                if (isPortfolio) {
+                    path = '/portfolio/' + slug;
+                } else if (isBlog) {
+                    path = '/blog/' + slug;
+                } else {
+                    // Fallback to same section
+                    path = '/portfolio/' + slug;
                 }
+                
+                router.push(path);
             }
-            router.push(path);
         } else {
             link.target = '_blank';
         }

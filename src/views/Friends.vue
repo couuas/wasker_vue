@@ -136,5 +136,8 @@ watch(friends, () => {
         width: auto; /* Allow it to take only necessary width */
         flex: 0 0 auto; /* Prevent growing */
     }
+    .mil-input-frame input {
+        font-size: 10px; /* Slightly smaller for mobile mobility */
+    }
 }
 </style>
