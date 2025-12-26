@@ -151,7 +151,7 @@ onMounted(async () => {
     if (!initialFitDone) {
       setTimeout(() => {
           // First fit should be very fast or instant to hide jumping
-          graph.zoomToFit(300, 200); 
+          graph.zoomToFit(2000); 
           initialFitDone = true;
       }, 50);
     }
@@ -210,7 +210,7 @@ onMounted(async () => {
       if (!initialFitDone) {
           setTimeout(() => {
               if (!initialFitDone && graph) {
-                  graph.zoomToFit(600, 200); // Reasonably fast first fit
+                  graph.zoomToFit(2000); // Align with resetView feel
                   initialFitDone = true;
               }
           }, 100);
