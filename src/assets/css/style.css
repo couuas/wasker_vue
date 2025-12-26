@@ -136,6 +136,26 @@ Markdown Styles
   -webkit-overflow-scrolling: touch;
 }
 
+.mil-markdown-content ul,
+.mil-markdown-content ol {
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mil-markdown-content ul li,
+.mil-markdown-content ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* Optimize spacing for nested lists */
+.mil-markdown-content ul li ul,
+.mil-markdown-content ul li ol,
+.mil-markdown-content ol li ul,
+.mil-markdown-content ol li ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mil-markdown-content table {
   width: 100%;
   border-collapse: collapse;
@@ -172,14 +192,31 @@ Markdown Styles
 
 /* Blockquotes */
 .mil-markdown-content blockquote {
-  border-left: 4px solid #dba91c;
-  padding-left: 1rem;
-  margin-left: 0;
-  color: #aaa;
+  position: relative;
+  margin: 30px 0;
+  padding: 30px 30px 30px 50px;
+  /* Left padding for icon space if inside, or just general spacing */
+  background-color: #1A1A1A;
+  border-left: 4px solid #DBA91C;
+  border-radius: 0 10px 10px 0;
+  font-size: 1.6rem;
   font-style: italic;
-  background: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 0 4px 4px 0;
+  color: #ccc;
+  overflow: hidden;
+  /* Keep icon contained */
+}
+
+.mil-markdown-content blockquote:before {
+  content: '\f10d';
+  /* FontAwesome Quote Left */
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  font-size: 2rem;
+  color: #DBA91C;
+  opacity: 0.5;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
