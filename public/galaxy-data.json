@@ -1,20 +1,6 @@
 {
   "nodes": [
     {
-      "id": "en/blog/about-wasker",
-      "slug": "about-wasker",
-      "type": "blog",
-      "lang": "en",
-      "name": "About Wasker Vue",
-      "category": "Project",
-      "val": 1,
-      "desc": "Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.",
-      "filePath": "blog/en/about-wasker.md",
-      "x": 9.9,
-      "y": 52,
-      "z": 14.6
-    },
-    {
       "id": "zh/blog/about-wasker",
       "slug": "about-wasker",
       "type": "blog",
@@ -24,6 +10,20 @@
       "val": 1,
       "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
       "filePath": "blog/zh/about-wasker.md",
+      "x": 9.9,
+      "y": 52,
+      "z": 14.6
+    },
+    {
+      "id": "en/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "en",
+      "name": "About Wasker Vue",
+      "category": "Project",
+      "val": 1,
+      "desc": "Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.",
+      "filePath": "blog/en/about-wasker.md",
       "x": 9.9,
       "y": 52,
       "z": 14.6
@@ -87,12 +87,12 @@
   ],
   "links": [
     {
-      "source": "en/blog/about-wasker",
-      "target": "en/portfolio/wasker_tempalte"
-    },
-    {
       "source": "zh/blog/about-wasker",
       "target": "zh/portfolio/wasker_tempalte"
+    },
+    {
+      "source": "en/blog/about-wasker",
+      "target": "en/portfolio/wasker_tempalte"
     },
     {
       "source": "zh/portfolio/wasker_vue",

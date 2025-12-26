@@ -188,11 +188,6 @@ onUnmounted(() => {
           </ul>
           <div class="mil-divider mil-mb-60 mil-up"></div>
           <div class="mil-mb-30 mil-up" v-html="profile.body"></div>
-          <ul class="mil-social mil-up">
-            <li v-for="(social, index) in profile.social" :key="index">
-                <a :href="social.link" target="_blank"><i :class="social.icon"></i></a>
-            </li>
-          </ul>
         </div>
       </div>
       <footer>

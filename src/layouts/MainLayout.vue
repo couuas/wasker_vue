@@ -82,14 +82,18 @@ const onEnter = (el, done) => {
   gsap.set(el, {
     opacity: 0,
     y: 30, // Slight slide up effect
+    scale: 0.95, // Start slightly scaled down
     filter: 'blur(10px)',
+    zIndex: 1, // Ensure new element is on top if overlapping (though we delay, safety first)
   })
 
   // Animate in
   gsap.to(el, {
     duration: 0.6,
+    delay: 0.1, // Wait for the leaving element to finish (0.4s) for sequential feel
     opacity: 1,
     y: 0,
+    scale: 1,
     filter: 'blur(0px)',
     ease: 'power3.out',
     onComplete: () => {
@@ -103,9 +107,8 @@ const onEnter = (el, done) => {
 const onLeave = (el, done) => {
   // Kill old animations to prevent interference
   killAnimations()
-
-  // Make leaving element absolute so it doesn't take up layout space
-  // This allows the new element to occupy the correct position immediately (overlap)
+  
+  // Make leaving element absolute to keep layout stable during cross-fade window
   gsap.set(el, { 
     position: 'absolute', 
     width: '100%',

@@ -53,9 +53,6 @@ const appStore = useAppStore()
               </a>
             </li>
           </router-link>
-
-          <li class="mil-sidebar-separator"></li>
-
           <router-link to="/galaxy" custom v-slot="{ href, navigate, isActive }">
             <li :class="{ 'mil-current': isActive }" @click="appStore.closeMenu" class="mil-lab-item">
               <a :href="href" @click="navigate" :class="{ 'mil-active': isActive }">
@@ -92,6 +89,7 @@ const appStore = useAppStore()
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center icons */
 }
 
 .mil-lab-badge {
@@ -116,11 +114,29 @@ const appStore = useAppStore()
 /* Separator */
 .mil-sidebar-separator {
     border-top: dotted 2px #2C2C2C;
-    margin:px 0;
+    margin: 15px 0; /* Fixed typo */
     list-style: none;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Ensure icons have fixed width for accurate centering on wide screens only */
+@media (min-width: 1201px) {
+    .mil-main-menu ul li a i {
+        width: 3rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Ensure vertical center too */
+    }
+}
+
+/* Explicitly hide icons on narrow screens to prevent custom scoped styles from overriding global media queries */
+@media (max-width: 1200px) {
+    .mil-main-menu ul li a i {
+        display: none !important;
+    }
 }
 </style>
 

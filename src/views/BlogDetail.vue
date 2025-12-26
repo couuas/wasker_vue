@@ -167,7 +167,7 @@ onUpdated(() => {
                 <h1>Post not found</h1>
             </div>
 
-            <div class="mil-bottom-panel">
+            <div class="mil-bottom-panel mil-up-instant">
                 <div class="mil-jcc mil-space-15 mil-w-100">
                     <div class="mil-jcb mil-w-100 mil-p-30-0">
                          <!-- Full Screen Toggle (Left) -->

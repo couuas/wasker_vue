@@ -65,7 +65,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <div class="mil-content-frame mil-contact-frame">
+    <div class="mil-content-frame mil-contact-frame" style="background-color: #121212; border-radius: 1rem;">
         <ToastNotification ref="toast" />
         <div class="mil-scroll mil-bp-fix-2 mil-half-1">
             <div class="mil-main-content">
@@ -86,37 +86,37 @@ const onSubmit = async () => {
                     <form @submit.prevent="onSubmit">
                         <div class="row mil-aic">
                             <div class="col-sm-6 mil-mb-15">
-                                <div class="mil-input-frame mil-up">
+                                <div class="mil-input-frame">
                                     <input type="text" placeholder="Your Name" name="name" v-model="formData.name" required>
                                     <i class="fal fa-user"></i>
                                 </div>
                             </div>
                             <div class="col-sm-6 mil-mb-15">
-                                <div class="mil-input-frame mil-up">
+                                <div class="mil-input-frame">
                                     <input type="email" placeholder="Email" name="email" v-model="formData.email" required>
                                     <i class="fal fa-at"></i>
                                 </div>
                             </div>
                             <div class="col-lg-12 mil-mb-15">
-                                <div class="mil-input-frame mil-up">
+                                <div class="mil-input-frame">
                                     <input type="text" placeholder="Subject" name="subject" v-model="formData.subject" required>
                                     <i class="fal fa-lightbulb"></i>
                                 </div>
                             </div>
                             <div class="col-lg-12 mil-mb-15">
-                                <div class="mil-input-frame mil-up">
+                                <div class="mil-input-frame">
                                     <textarea placeholder="Your message" name="message" v-model="formData.message" required></textarea>
                                     <i class="fal fa-user"></i>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 mil-mb-15">
-                                <label class="custom-checkbox mil-up">
+                                <label class="custom-checkbox">
                                     <input type="checkbox" v-model="formData.consent">
                                     <span class="checkmark"></span>
                                     I consent to the processing of my personal data
                                 </label>
                             </div>
-                            <div class="col-lg-12 mil-mb-15 mil-up">
+                            <div class="col-lg-12 mil-mb-15">
                                 <button type="submit" class="mil-btn-sm" style="width: 100%; justify-content: center;" :disabled="isSending">{{ isSending ? 'Sending...' : 'Send' }}</button>
                             </div>
                         </div>

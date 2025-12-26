@@ -68,6 +68,35 @@ export function useScrollAnimations() {
             })
         })
 
+        // 1.5. Instant Appearance Animation (.mil-up-instant)
+        const instantAppearance = document.querySelectorAll(".mil-up-instant")
+        instantAppearance.forEach((section, index) => {
+            if (section.classList.contains('mil-animated')) return;
+
+            // Explicitly set initial state to prevent flash if CSS failed
+            if (!document.body.contains(section)) return;
+
+            gsap.fromTo(section, {
+                opacity: 0,
+                y: 40,
+                scale: 0.95,
+                pointerEvents: 'none',
+            }, {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.4,
+                delay: 0.1, // Fixed delay, remove stagger index to prevent layout shift chaos if items added dynamically
+                onComplete: () => {
+                    section.style.pointerEvents = 'all'
+                    section.classList.add('mil-animated')
+                    // Clear GSAP transform to prevent sticky positioning conflicts?
+                    // section.style.transform = ''; 
+                    // No, transform is needed for the look.
+                }
+            })
+        })
+
         // 2. Scale Image Animation (.mil-scale-img)
         const scaleImage = document.querySelectorAll(".mil-scale-img")
         scaleImage.forEach(section => {

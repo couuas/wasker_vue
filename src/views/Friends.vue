@@ -75,7 +75,7 @@ watch(friends, () => {
 </script>
 
 <template>
-    <div class="mil-content-frame mil-up">
+    <div class="mil-content-frame">
         <div class="mil-scroll mil-half-1 mil-bp-fix">
              <div class="mil-row-fix">
                  <div class="row">
@@ -105,7 +105,7 @@ watch(friends, () => {
              
              <!-- Apply Interface (Placeholder) -->
             <!-- Apply Interface -->
-            <div class="mil-bottom-panel">
+            <div class="mil-bottom-panel mil-up-instant">
                 <div class="mil-jcc mil-space-15 mil-w-100">
                     <form class="mil-subscribe" @submit.prevent="submitFriendUrl">
                         <div class="mil-input-frame">
@@ -139,5 +139,9 @@ watch(friends, () => {
     .mil-input-frame input {
         font-size: 10px; /* Slightly smaller for mobile mobility */
     }
+}
+
+.mil-row-fix {
+    min-height: 70vh; /* Prevent footer jump on load */
 }
 </style>

@@ -12,7 +12,8 @@ import TheAiAssistant from './components/TheAiAssistant.vue'
 /* Global styles are imported in main.js */
 
 /* Initially hide scroll animation elements to prevent flash */
-.mil-up {
+.mil-up,
+.mil-up-instant {
     opacity: 0;
     pointer-events: none;
 }
