@@ -13,6 +13,14 @@ const appStore = useAppStore()
 const route = useRoute()
 const { initAnimations, killAnimations } = useScrollAnimations()
 
+// Responsive window width detection
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+const isDesktop = computed(() => windowWidth.value >= 1200)
+
+const updateWindowWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
 // State for layout management
 // We use a separate ref for body class to delay updates until AFTER the leave animation
 const currentBodyClass = ref(route.meta.bodyClass)
@@ -44,6 +52,7 @@ const applyBodyClass = () => {
 onMounted(() => {
    setHeight()
    window.addEventListener('resize', setHeight)
+   window.addEventListener('resize', updateWindowWidth)
    // Initial body class set
    currentBodyClass.value = route.meta.bodyClass
    applyBodyClass()
@@ -73,6 +82,7 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('resize', setHeight)
+    window.removeEventListener('resize', updateWindowWidth)
     Fancybox.destroy();
 })
 
@@ -221,8 +231,8 @@ const onAfterLeave = () => {
           </div>
         </div>
         
-        <!-- Desktop RightBar -->
-        <div class="mil-right-part" :class="{ 'mil-hidden-trigger': !shouldShowRightBar }">
+        <!-- Desktop RightBar - Only render on desktop (>= 1200px) -->
+        <div v-if="isDesktop" class="mil-right-part" :class="{ 'mil-hidden-trigger': !shouldShowRightBar }">
            <TheRightBar />
         </div>
         

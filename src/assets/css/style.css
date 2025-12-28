@@ -876,7 +876,7 @@ form .mil-input-frame input {
   border-radius: 0.5rem;
   color: #E0E0E0;
   font-family: "Outfit", sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   /* Prevent iOS Safari auto-zoom */
   -webkit-transition: 0.2s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.2s cubic-bezier(0, 0, 0.3642, 1);
@@ -1977,12 +1977,8 @@ frame
     opacity: 0;
     max-width: 0;
     max-height: 0;
-  }
-
-  /* Extra safeguard: Completely hide right sidebar on mobile in full-width mode */
-  /* This prevents iOS zoom from revealing the sidebar */
-  .mil-fw-page .mil-right-part,
-  body.mil-fw-page .mil-right-part {
+    /* Completely hide right sidebar on mobile for all page types */
+    /* This prevents any zoom or layout issues */
     display: none !important;
   }
 }
