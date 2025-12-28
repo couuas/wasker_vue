@@ -1225,53 +1225,73 @@ html.is-animating .mil-main-menu {
   transform: scale(1.001);
 }
 
+/* -------------------------------------------
+
+Half-Page Layout: 50/50 Split with Sidebar Visible
+
+------------------------------------------- */
 .mil-half-page .mil-left-part {
   width: calc(50% - 0.75rem);
+  -webkit-transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mil-half-page .mil-left-part .mil-content-frame {
-  -webkit-transform: translateY(0) scale(1);
-  transform: translateY(0) scale(1);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
   opacity: 1;
-  -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  -webkit-transition: opacity 0.4s cubic-bezier(0, 0, 0.3642, 1), transform 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  transition: opacity 0.4s cubic-bezier(0, 0, 0.3642, 1), transform 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
 
 .mil-half-page .mil-right-part {
   width: calc(50% - 0.75rem);
   position: relative !important;
-  -webkit-transform: translateY(0) scale(1);
-  transform: translateY(0) scale(1);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
   pointer-events: all;
-  -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  -webkit-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
+/* During animation: content fades out */
 html.is-animating .mil-half-page .mil-left-part .mil-content-frame {
-  -webkit-transform: translateY(30px) scale(0.95);
-  transform: translateY(30px) scale(0.95);
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
   opacity: 0;
 }
 
+/* Sidebar stays in place during half-to-half transitions */
 html.is-animating .mil-half-page .mil-right-part {
-  -webkit-transform: translateY(0) scale(1);
-  transform: translateY(0) scale(1);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
 }
 
+/* Special class for when sidebar needs to exit (half to full) */
 html.is-animating .mil-half-page .mil-right-part.mil-go {
-  -webkit-transform: translateY(30px) scale(0.95);
-  transform: translateY(30px) scale(0.95);
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
   opacity: 0;
 }
 
+/* -------------------------------------------
+
+Full-Width Page Layout: Left 100%, Sidebar Hidden
+
+------------------------------------------- */
 .mil-fw-page .mil-left-part {
   width: 100% !important;
+  -webkit-transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mil-fw-page .mil-left-part .mil-content-frame {
-  -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+  -webkit-transition: opacity 0.4s cubic-bezier(0, 0, 0.3642, 1), transform 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  transition: opacity 0.4s cubic-bezier(0, 0, 0.3642, 1), transform 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
 
 .mil-fw-page .mil-right-part {
@@ -1279,23 +1299,68 @@ html.is-animating .mil-half-page .mil-right-part.mil-go {
   position: absolute !important;
   top: 0;
   right: 0;
+  width: calc(50% - 0.75rem);
+  /* Slide out to the right - drawer effect with extra offset to hide borders */
+  -webkit-transform: translateX(110%);
+  transform: translateX(110%);
   opacity: 0;
-  -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1) !important;
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1) !important;
+  /* Faster opacity fade and synchronized transform */
+  -webkit-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
+/* During animation: content fades out */
 html.is-animating .mil-fw-page .mil-left-part .mil-content-frame {
-  -webkit-transform: translateY(30px) scale(0.95);
-  transform: translateY(30px) scale(0.95);
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
   opacity: 0;
 }
 
+/* Sidebar stays slid out during full-to-full transitions */
 html.is-animating .mil-fw-page .mil-right-part {
-  -webkit-transform: translateY(30px) scale(0.95);
-  transform: translateY(30px) scale(0.95);
-  -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  -webkit-transform: translateX(110%);
+  transform: translateX(110%);
+  opacity: 0;
 }
+
+/* -------------------------------------------
+
+Unified Page Transition Classes
+
+------------------------------------------- */
+
+/* Page entering state - content starts slightly below and transparent */
+.mil-page-entering {
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+/* Page leaving state - content ends slightly above and transparent */
+.mil-page-leaving {
+  opacity: 0;
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  -webkit-transition: all 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  transition: all 0.4s cubic-bezier(0, 0, 0.3642, 1);
+}
+
+/* Right sidebar state modifiers for JS orchestration */
+.mil-right-part.mil-leaving {
+  pointer-events: none !important;
+}
+
+.mil-right-part.mil-entering,
+.mil-right-part.mil-ready {
+  pointer-events: all;
+}
+
+/* Page content smooth transitions */
+.mil-content-frame {
+  -webkit-transition: opacity 0.6s cubic-bezier(0, 0, 0.3642, 1), transform 0.6s cubic-bezier(0, 0, 0.3642, 1);
+  transition: opacity 0.6s cubic-bezier(0, 0, 0.3642, 1), transform 0.6s cubic-bezier(0, 0, 0.3642, 1);
+}
+
 
 /* -------------------------------------------
 

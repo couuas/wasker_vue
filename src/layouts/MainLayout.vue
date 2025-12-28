@@ -16,6 +16,7 @@ const { initAnimations, killAnimations } = useScrollAnimations()
 // State for layout management
 // We use a separate ref for body class to delay updates until AFTER the leave animation
 const currentBodyClass = ref(route.meta.bodyClass)
+const previousBodyClass = ref(route.meta.bodyClass) // Track previous layout for transition logic
 
 // Determine if RightBar should be visible based on DELAYED route state (currentBodyClass)
 // This prevents the sidebar from snapping before the page fades out
@@ -78,37 +79,88 @@ onUnmounted(() => {
 // --- Transition Hooks with GSAP ---
 
 const onEnter = (el, done) => {
-  // Set initial state
-  gsap.set(el, {
-    opacity: 0,
-    y: 30, // Slight slide up effect
-    scale: 0.95, // Start slightly scaled down
-    filter: 'blur(10px)',
-    zIndex: 1, // Ensure new element is on top if overlapping (though we delay, safety first)
-  })
-
-  // Animate in
-  gsap.to(el, {
-    duration: 0.6,
-    delay: 0.1, // Wait for the leaving element to finish (0.4s) for sequential feel
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: 'blur(0px)',
-    ease: 'power3.out',
-    onComplete: () => {
-      // Re-init scroll trigger animations after the element is settled
+  // 1. Add entering class for initial state
+  el.classList.add('mil-page-entering')
+  el.style.zIndex = '1'
+  
+  // 2. Determine if right sidebar needs to enter
+  const isEnteringHalfPage = currentBodyClass.value === 'mil-half-page'
+  const wasFullWidth = previousBodyClass.value === 'mil-fw-page'
+  const rightPart = document.querySelector('.mil-right-part')
+  
+  // 3. Setup right sidebar for entrance ONLY if transitioning from Full → Half
+  // If Half → Half, sidebar stays visible without animation
+  const shouldAnimateSidebar = isEnteringHalfPage && wasFullWidth
+  
+  if (shouldAnimateSidebar && rightPart) {
+    // Scenario: Full → Half (sidebar needs to enter)
+    rightPart.classList.add('mil-entering')
+    rightPart.classList.remove('mil-leaving', 'mil-ready')
+  }
+  
+  // 4. Small delay then trigger entrance animation by removing entering class
+  setTimeout(() => {
+    // Remove entering class to trigger CSS transition to normal state
+    el.classList.remove('mil-page-entering')
+    
+    // Animate right sidebar to ready state if entering (only for Full → Half)
+    if (shouldAnimateSidebar && rightPart) {
+      rightPart.classList.remove('mil-entering')
+      rightPart.classList.add('mil-ready')
+    }
+    
+    // 5. Wait for animation to complete (0.8s), then cleanup
+    setTimeout(() => {
+      // Cleanup
+      document.documentElement.classList.remove('is-animating')
+      el.classList.remove('mil-page-leaving')
+      
+      if (rightPart) {
+        rightPart.classList.remove('mil-leaving', 'mil-entering')
+        // Keep mil-ready if sidebar is visible
+      }
+      
+      // Re-init scroll trigger animations
       initAnimations()
       done()
-    }
-  })
+    }, 800)
+  }, 100)
 }
 
 const onLeave = (el, done) => {
   // Kill old animations to prevent interference
   killAnimations()
   
-  // Make leaving element absolute to keep layout stable during cross-fade window
+  // 0. Save current body class as previous for next transition
+  previousBodyClass.value = currentBodyClass.value
+  
+  // 1. Add is-animating class to trigger CSS animations
+  document.documentElement.classList.add('is-animating')
+  
+  // 2. Determine transition type
+  const isLeavingHalfPage = currentBodyClass.value === 'mil-half-page'
+  const isGoingToFullWidth = route.meta.bodyClass === 'mil-fw-page'
+  const isGoingToHalfPage = route.meta.bodyClass === 'mil-half-page'
+  const rightPart = document.querySelector('.mil-right-part')
+  
+  // 3. Handle right sidebar based on transition type
+  if (rightPart) {
+    // Scenario: Half → Full (sidebar needs to leave)
+    if (isLeavingHalfPage && isGoingToFullWidth) {
+      rightPart.classList.add('mil-leaving')
+      rightPart.classList.remove('mil-ready', 'mil-entering')
+    }
+    // Scenario: Keep sidebar visible (Half → Half)
+    // No action needed, sidebar stays
+  }
+  
+  // 4. Update body class EARLY for synchronized layout transitions
+  if (route.meta.bodyClass !== currentBodyClass.value) {
+    currentBodyClass.value = route.meta.bodyClass
+    applyBodyClass()
+  }
+  
+  // 5. Setup leaving element positioning
   gsap.set(el, { 
     position: 'absolute', 
     width: '100%',
@@ -116,28 +168,19 @@ const onLeave = (el, done) => {
     left: 0,
     zIndex: 0 
   })
-
-  // Animate out
-  gsap.to(el, {
-    duration: 0.4,
-    opacity: 0,
-    y: -30, // Slide up while fading out
-    filter: 'blur(10px)',
-    ease: 'power3.in',
-    onComplete: done
-  })
+  
+  // 6. Add CSS class to trigger leave animation
+  el.classList.add('mil-page-leaving')
+  
+  // 7. Wait for CSS animation to complete (0.8s for drawer effect), then callback
+  setTimeout(() => {
+    done()
+  }, 800)
 }
 
 const onAfterLeave = () => {
-  // CRITICAL: Update the body class (and thus the layout) ONLY after the old page has left.
-  // This happens in the "blank" state between pages.
-  if (route.meta.bodyClass !== currentBodyClass.value) {
-      currentBodyClass.value = route.meta.bodyClass
-      applyBodyClass()
-  }
-  
-  // Also ensuring scroll is reset if needed, though Vue Router usually handles this.
-  // window.scrollTo(0, 0) 
+  // Body class update is now handled in onLeave for synchronized transitions
+  // This hook can be used for any cleanup if needed in the future
 }
 
 </script>
