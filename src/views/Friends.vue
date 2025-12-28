@@ -135,9 +135,7 @@ watch(friends, async () => {
         width: auto; /* Allow it to take only necessary width */
         flex: 0 0 auto; /* Prevent growing */
     }
-    .mil-input-frame input {
-        font-size: 10px; /* Slightly smaller for mobile mobility */
-    }
+    /* Removed font-size override - using global 16px to prevent iOS Safari auto-zoom */
 }
 
 .mil-row-fix {
