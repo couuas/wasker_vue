@@ -53,6 +53,10 @@ const appStore = useAppStore()
               </a>
             </li>
           </router-link>
+          
+          <!-- Separator between Contact and Galaxy -->
+          <li class="mil-sidebar-separator"></li>
+          
           <router-link to="/galaxy" custom v-slot="{ href, navigate, isActive }">
             <li :class="{ 'mil-current': isActive }" @click="appStore.closeMenu" class="mil-lab-item">
               <a :href="href" @click="navigate" :class="{ 'mil-active': isActive }">
@@ -114,7 +118,7 @@ const appStore = useAppStore()
 /* Separator */
 .mil-sidebar-separator {
     border-top: dotted 2px #2C2C2C;
-    margin: 15px 0; /* Fixed typo */
+    margin: 0 0 3rem 0; /* Top margin 0 to avoid double-counting with previous item's margin-bottom */
     list-style: none;
     width: 60%;
     margin-left: auto;
