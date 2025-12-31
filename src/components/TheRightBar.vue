@@ -208,4 +208,11 @@ onUnmounted(() => {
 
 <style scoped>
 /* Any component specific overrides */
+
+/* Semi-transparent blur for cover image overlay */
+.mil-banner-overlay {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+}
 </style>
