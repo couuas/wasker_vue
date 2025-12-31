@@ -2037,6 +2037,10 @@ frame
     position: fixed;
     top: calc(100% - 9rem);
     left: 0;
+    background-color: #121212; /* Solid color for consistency on iOS */
+    backdrop-filter: none; /* remove blur to avoid strange color artifacts */
+    -webkit-backdrop-filter: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
   }
 }
 

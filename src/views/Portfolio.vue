@@ -487,7 +487,7 @@ const copyLink = () => {
 /* Pill Styling */
 .mil-link.mil-pill {
     padding: 10px 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    background: transparent;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     font-size: 11px;
