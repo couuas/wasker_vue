@@ -46,6 +46,18 @@ const router = createRouter({
             meta: { bodyClass: 'mil-half-page' }
         },
         {
+            path: '/journal',
+            name: 'journal',
+            component: () => import('../views/Journal.vue'),
+            meta: { bodyClass: 'mil-half-page' }
+        },
+        {
+            path: '/journal/:id',
+            name: 'journal-detail',
+            component: () => import('../views/JournalDetail.vue'),
+            meta: { bodyClass: 'mil-half-page' }
+        },
+        {
             path: '/contact',
             name: 'contact',
             component: Contact,

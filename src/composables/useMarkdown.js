@@ -36,6 +36,7 @@ export function useMarkdown() {
             const isBlog = path.includes('/blog/');
             const isPortfolio = path.includes('/portfolio/');
             const isFriend = path.includes('/friend/');
+            const isJournal = path.includes('/journal/');
 
             // Determine language
             // Assume default 'zh' unless '/en/' is explicitly found
@@ -47,6 +48,14 @@ export function useMarkdown() {
             // Generate slug from filename
             const filename = path.split('/').pop().replace('.md', '');
 
+            // Enforce strict YYYY-MM-DD filename for Journal entries
+            if (isJournal) {
+                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                if (!datePattern.test(filename)) {
+                    continue;
+                }
+            }
+
             // Derive Category from Folder Name
             // Logic: path looks like .../content/blog/zh/[category]/post.md
             // OR .../content/blog/[category]/post.md (legacy/fallback)
@@ -55,7 +64,7 @@ export function useMarkdown() {
             const pathParts = path.split('/');
 
             // Find where 'blog' or 'portfolio' is
-            const typeKey = isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : null));
+            const typeKey = isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isJournal ? 'journal' : null)));
             const typeIndex = typeKey ? pathParts.findIndex(p => p === typeKey) : -1;
 
             if (typeIndex !== -1) {
@@ -82,7 +91,7 @@ export function useMarkdown() {
                 category: computedCategory, // Override or keep original
                 slug: filename,
                 body: content.body,
-                type: isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : 'other')),
+                type: isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isJournal ? 'journal' : 'other'))),
                 lang: lang,
                 path: path
             });

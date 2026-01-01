@@ -2037,10 +2037,12 @@ frame
     position: fixed;
     top: calc(100% - 9rem);
     left: 0;
-    background-color: #121212; /* Solid color for consistency on iOS */
-    backdrop-filter: none; /* remove blur to avoid strange color artifacts */
+    background-color: #121212;
+    /* Solid color for consistency on iOS */
+    backdrop-filter: none;
+    /* remove blur to avoid strange color artifacts */
     -webkit-backdrop-filter: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -2155,8 +2157,8 @@ main menu
   align-items: center;
   opacity: 0;
   display: block;
-  -webkit-transform: translateX(5rem) scale(0.6);
-  transform: translateX(5rem) scale(0.6);
+  -webkit-transform: translateX(10rem) scale(0.6);
+  transform: translateX(10rem) scale(0.6);
   position: absolute;
   font-size: 1.1rem;
   font-weight: 600;
@@ -2195,8 +2197,8 @@ main menu
 
 .mil-main-menu ul li a:hover span {
   opacity: 1;
-  -webkit-transform: translateX(3.5rem) scale(1);
-  transform: translateX(3.5rem) scale(1);
+  -webkit-transform: translateX(8.5rem) scale(1);
+  transform: translateX(12.5rem) scale(1);
   -webkit-filter: blur(0);
   filter: blur(0);
   -webkit-transition-delay: 1s;

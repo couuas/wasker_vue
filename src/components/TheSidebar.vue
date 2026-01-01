@@ -41,6 +41,14 @@ const appStore = useAppStore()
             </li>
           </router-link>
 
+          <router-link to="/journal" custom v-slot="{ href, navigate, isActive }">
+            <li :class="{ 'mil-current': isActive }" @click="appStore.closeMenu">
+              <a :href="href" @click="navigate" :class="{ 'mil-active': isActive }">
+                <i class="fal fa-pen-nib"></i><span>Journal</span>
+              </a>
+            </li>
+          </router-link>
+
           <router-link to="/friends" custom v-slot="{ href, navigate, isActive }">
             <li :class="{ 'mil-current': isActive }" @click="appStore.closeMenu">
               <a :href="href" @click="navigate" :class="{ 'mil-active': isActive }">

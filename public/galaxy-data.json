@@ -57,34 +57,6 @@
       "z": 24.8
     },
     {
-      "id": "zh/portfolio/wasker_vue",
-      "slug": "wasker_vue",
-      "type": "portfolio",
-      "lang": "zh",
-      "name": "Wasker Vue Site",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "融合 3D 星系交互与 AI 增强体验，具备全球感知优选能力的 Vue 3 终极个人站。",
-      "filePath": "portfolio/zh/wasker series/wasker_vue.md",
-      "x": -57.5,
-      "y": -14.5,
-      "z": 75.1
-    },
-    {
-      "id": "zh/portfolio/wasker_template",
-      "slug": "wasker_template",
-      "type": "portfolio",
-      "lang": "zh",
-      "name": "Wasker Template Theme",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
-      "filePath": "portfolio/zh/wasker series/wasker_template.md",
-      "x": 0.8,
-      "y": 10.5,
-      "z": 63.2
-    },
-    {
       "id": "en/portfolio/wasker_vue",
       "slug": "wasker_vue",
       "type": "portfolio",
@@ -111,6 +83,34 @@
       "x": 0.8,
       "y": 10.5,
       "z": 63.2
+    },
+    {
+      "id": "zh/portfolio/wasker_vue",
+      "slug": "wasker_vue",
+      "type": "portfolio",
+      "lang": "zh",
+      "name": "Wasker Vue Site",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "融合 3D 星系交互与 AI 增强体验，具备全球感知优选能力的 Vue 3 终极个人站。",
+      "filePath": "portfolio/zh/wasker series/wasker_vue.md",
+      "x": -57.5,
+      "y": -14.5,
+      "z": 75.1
+    },
+    {
+      "id": "zh/portfolio/wasker_template",
+      "slug": "wasker_template",
+      "type": "portfolio",
+      "lang": "zh",
+      "name": "Wasker Template Theme",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
+      "filePath": "portfolio/zh/wasker series/wasker_template.md",
+      "x": 0.8,
+      "y": 10.5,
+      "z": 63.2
     }
   ],
   "links": [
@@ -123,12 +123,12 @@
       "target": "en/portfolio/wasker_template"
     },
     {
-      "source": "zh/portfolio/wasker_template",
-      "target": "zh/portfolio/wasker_vue"
-    },
-    {
       "source": "en/portfolio/wasker_template",
       "target": "en/portfolio/wasker_vue"
+    },
+    {
+      "source": "zh/portfolio/wasker_template",
+      "target": "zh/portfolio/wasker_vue"
     }
   ]
 }
