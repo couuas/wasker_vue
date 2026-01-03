@@ -1,34 +1,6 @@
 {
   "nodes": [
     {
-      "id": "zh/blog/performance_bottleneck_analysis",
-      "slug": "performance_bottleneck_analysis",
-      "type": "blog",
-      "lang": "zh",
-      "name": "TRICYS 性能瓶颈分析与优化",
-      "category": "Performance",
-      "val": 1,
-      "desc": "深入剖析 TRICYS 仿真程序的性能瓶颈，提出基于“编译一次，运行多次”的核心优化策略，解决大规模并发下的崩溃与效率问题。",
-      "filePath": "blog/zh/performance_bottleneck_analysis.md",
-      "x": 23.1,
-      "y": 32.5,
-      "z": -163.1
-    },
-    {
-      "id": "zh/blog/about-wasker",
-      "slug": "about-wasker",
-      "type": "blog",
-      "lang": "zh",
-      "name": "关于 Wasker Vue",
-      "category": "Project",
-      "val": 1,
-      "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
-      "filePath": "blog/zh/about-wasker.md",
-      "x": 33.6,
-      "y": -28.4,
-      "z": 24.8
-    },
-    {
       "id": "en/blog/performance_bottleneck_analysis",
       "slug": "performance_bottleneck_analysis",
       "type": "blog",
@@ -57,32 +29,32 @@
       "z": 24.8
     },
     {
-      "id": "en/portfolio/wasker_vue",
-      "slug": "wasker_vue",
-      "type": "portfolio",
-      "lang": "en",
-      "name": "Wasker Vue Site",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "An ultimate Vue 3 personal site featuring 3D galaxy interaction, AI-enhanced experiences, and global routing optimization.",
-      "filePath": "portfolio/en/wasker series/wasker_vue.md",
-      "x": -57.5,
-      "y": -14.5,
-      "z": 75.1
+      "id": "zh/blog/performance_bottleneck_analysis",
+      "slug": "performance_bottleneck_analysis",
+      "type": "blog",
+      "lang": "zh",
+      "name": "TRICYS 性能瓶颈分析与优化",
+      "category": "Performance",
+      "val": 1,
+      "desc": "深入剖析 TRICYS 仿真程序的性能瓶颈，提出基于“编译一次，运行多次”的核心优化策略，解决大规模并发下的崩溃与效率问题。",
+      "filePath": "blog/zh/performance_bottleneck_analysis.md",
+      "x": 23.1,
+      "y": 32.5,
+      "z": -163.1
     },
     {
-      "id": "en/portfolio/wasker_template",
-      "slug": "wasker_template",
-      "type": "portfolio",
-      "lang": "en",
-      "name": "Wasker Template Theme",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "A minimalist, high-performance, and beautifully designed Vue 3 portfolio and blog theme.",
-      "filePath": "portfolio/en/wasker series/wasker_template.md",
-      "x": 0.8,
-      "y": 10.5,
-      "z": 63.2
+      "id": "zh/blog/about-wasker",
+      "slug": "about-wasker",
+      "type": "blog",
+      "lang": "zh",
+      "name": "关于 Wasker Vue",
+      "category": "Project",
+      "val": 1,
+      "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
+      "filePath": "blog/zh/about-wasker.md",
+      "x": 33.6,
+      "y": -28.4,
+      "z": 24.8
     },
     {
       "id": "zh/portfolio/wasker_vue",
@@ -111,24 +83,52 @@
       "x": 0.8,
       "y": 10.5,
       "z": 63.2
+    },
+    {
+      "id": "en/portfolio/wasker_vue",
+      "slug": "wasker_vue",
+      "type": "portfolio",
+      "lang": "en",
+      "name": "Wasker Vue Site",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "An ultimate Vue 3 personal site featuring 3D galaxy interaction, AI-enhanced experiences, and global routing optimization.",
+      "filePath": "portfolio/en/wasker series/wasker_vue.md",
+      "x": -57.5,
+      "y": -14.5,
+      "z": 75.1
+    },
+    {
+      "id": "en/portfolio/wasker_template",
+      "slug": "wasker_template",
+      "type": "portfolio",
+      "lang": "en",
+      "name": "Wasker Template Theme",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "A minimalist, high-performance, and beautifully designed Vue 3 portfolio and blog theme.",
+      "filePath": "portfolio/en/wasker series/wasker_template.md",
+      "x": 0.8,
+      "y": 10.5,
+      "z": 63.2
     }
   ],
   "links": [
-    {
-      "source": "zh/blog/about-wasker",
-      "target": "zh/portfolio/wasker_template"
-    },
     {
       "source": "en/blog/about-wasker",
       "target": "en/portfolio/wasker_template"
     },
     {
-      "source": "en/portfolio/wasker_template",
-      "target": "en/portfolio/wasker_vue"
+      "source": "zh/blog/about-wasker",
+      "target": "zh/portfolio/wasker_template"
     },
     {
       "source": "zh/portfolio/wasker_template",
       "target": "zh/portfolio/wasker_vue"
+    },
+    {
+      "source": "en/portfolio/wasker_template",
+      "target": "en/portfolio/wasker_vue"
     }
   ]
 }

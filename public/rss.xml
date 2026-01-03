@@ -5,15 +5,23 @@
     <link>https://couuas.pp.ua</link>
     <description>Personal portfolio and blog of a creative designer/developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Dec 2025 07:07:08 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jan 2026 13:39:47 GMT</lastBuildDate>
     <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+        <title><![CDATA[TRICYS Performance Bottleneck Analysis and Optimization]]></title>
+        <link>https://couuas.pp.ua/blog/performance_bottleneck_analysis</link>
+        <guid>https://couuas.pp.ua/blog/performance_bottleneck_analysis</guid>
+        <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
+        <description><![CDATA[An in-depth analysis of TRICYS simulation program bottlenecks, proposing the 'Compile Once, Run Many' strategy to solve crashes and efficiency issues in large-scale concurrency.]]></description>
+        <category>Performance</category>
+    </item>
     <item>
         <title><![CDATA[About Wasker Vue]]></title>
         <link>https://couuas.pp.ua/blog/about-wasker</link>
         <guid>https://couuas.pp.ua/blog/about-wasker</guid>
-        <pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate>
-        <description><![CDATA[A modern portfolio and blog theme based on Vue 3, featuring 3D interactions and responsive design.]]></description>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 GMT</pubDate>
+        <description><![CDATA[Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.]]></description>
         <category>Project</category>
     </item>
 </channel>

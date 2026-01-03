@@ -5,36 +5,47 @@ import { useMarkdown } from '@/composables/useMarkdown'
 import md from '@/utils/markdown'
 import { useAppStore } from '@/stores/app'
 import { storeToRefs } from 'pinia'
-import mermaid from 'mermaid'
+// Dynamic import of mermaid
+let mermaid;
+
 import ToastNotification from '@/components/ToastNotification.vue'
 
 // Mermaid config (same as Blog)
-mermaid.initialize({
-    startOnLoad: false,
-    theme: 'base',
-    themeVariables: {
-        darkMode: true,
-        fontFamily: '"Outfit", sans-serif',
-        fontSize: '14px',
-        primaryColor: '#FFFFFF',
-        primaryTextColor: '#121212',
-        primaryBorderColor: '#DBA91C',
-        nodeBorder: '#DBA91C',
-        mainBkg: '#FFFFFF',
-        rectRadius: '8',
-        lineColor: '#DBA91C',
-        defaultLinkColor: '#DBA91C',
-        edgeLabelBackground: '#DBA91C',
-        labelTextColor: '#121212',
-        clusterBkg: 'rgba(255, 255, 255, 0.05)',
-        clusterBorder: '#444444',
-        secondaryColor: '#DBA91C',
-        tertiaryColor: '#1A1A1A',
-        titleColor: '#E0E0E0',
-    },
-    flowchart: { htmlLabels: true, curve: 'basis' },
-    securityLevel: 'loose',
-})
+
+const initMermaid = async () => {
+    if (!mermaid) {
+        const m = await import('mermaid');
+        mermaid = m.default;
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                darkMode: true,
+                fontFamily: '"Outfit", sans-serif',
+                fontSize: '14px',
+                primaryColor: '#FFFFFF',
+                primaryTextColor: '#121212',
+                primaryBorderColor: '#DBA91C',
+                nodeBorder: '#DBA91C',
+                mainBkg: '#FFFFFF',
+                rectRadius: '8',
+                lineColor: '#DBA91C',
+                defaultLinkColor: '#DBA91C',
+                edgeLabelBackground: '#DBA91C',
+                labelTextColor: '#121212',
+                clusterBkg: 'rgba(255, 255, 255, 0.05)',
+                clusterBorder: '#444444',
+                secondaryColor: '#DBA91C',
+                tertiaryColor: '#1A1A1A',
+                titleColor: '#E0E0E0',
+            },
+            flowchart: { htmlLabels: true, curve: 'basis' },
+            securityLevel: 'loose',
+        });
+    }
+    await mermaid.run();
+};
+
 
 const route = useRoute()
 const router = useRouter()
@@ -190,8 +201,9 @@ const attachCopyListeners = () => {
     });
 };
 
-onMounted(() => { nextTick(() => { attachCopyListeners(); mermaid.run(); }); })
-onUpdated(() => { nextTick(() => { attachCopyListeners(); mermaid.run(); }); })
+onMounted(() => { nextTick(() => { attachCopyListeners(); initMermaid(); }); })
+onUpdated(() => { nextTick(() => { attachCopyListeners(); initMermaid(); }); })
+
 
 </script>
 

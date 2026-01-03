@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Portfolio from '../views/Portfolio.vue'
-import PortfolioDetail from '../views/PortfolioDetail.vue'
+
 import Blog from '../views/Blog.vue'
 import Contact from '../views/Contact.vue'
 import Friends from '../views/Friends.vue'
@@ -24,7 +24,7 @@ const router = createRouter({
         {
             path: '/portfolio/:id',
             name: 'portfolio-detail',
-            component: PortfolioDetail,
+            component: () => import('../views/PortfolioDetail.vue'),
             meta: { bodyClass: 'mil-half-page' }
         },
         {

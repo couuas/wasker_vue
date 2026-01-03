@@ -1,8 +1,7 @@
-import { onMounted, onUnmounted, nextTick } from 'vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { onUnmounted } from 'vue';
 
-gsap.registerPlugin(ScrollTrigger)
+let gsap;
+let ScrollTrigger;
 
 export function useScrollAnimations() {
 
@@ -12,7 +11,15 @@ export function useScrollAnimations() {
         // but usually just killing triggers is enough if we are unmounting.
     }
 
-    const initAnimations = () => {
+    const initAnimations = async () => {
+        if (!gsap || !ScrollTrigger) {
+            const gsapModule = await import('gsap');
+            const stModule = await import('gsap/ScrollTrigger');
+            gsap = gsapModule.gsap || gsapModule.default;
+            ScrollTrigger = stModule.ScrollTrigger || stModule.default;
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
         // Kill any existing triggers first to avoid duplication/conflicts
         killAnimations()
 

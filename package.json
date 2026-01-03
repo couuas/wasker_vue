@@ -33,6 +33,7 @@
     "d3-force-3d": "^3.0.6",
     "glob": "^13.0.0",
     "gray-matter": "^4.0.3",
+    "rollup-plugin-visualizer": "^6.0.5",
     "vite": "^7.2.4"
   }
 }
