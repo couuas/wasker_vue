@@ -22,6 +22,7 @@ const props = defineProps({
 
 const galaxyContainer = ref(null);
 let graph = null;
+let resizeObserver = null;
 
 // Resource Cache to prevent redundant object creation
 const materialCache = new Map();
@@ -185,8 +186,7 @@ onMounted(async () => {
   galaxyContainer.value.addEventListener('mousedown', stopAutoRotate);
   galaxyContainer.value.addEventListener('touchstart', stopAutoRotate);
 
-  // Handle container resizing
-  const resizeObserver = new ResizeObserver(() => {
+  resizeObserver = new ResizeObserver(() => {
     if (graph && galaxyContainer.value) {
       const { clientWidth, clientHeight } = galaxyContainer.value;
       graph.width(clientWidth);
@@ -233,17 +233,18 @@ onMounted(async () => {
     }
   });
   
-  onUnmounted(() => {
-      resizeObserver.disconnect();
-      if (graph) {
-          graph._destructor();
-      }
-      // Clear caches
-      materialCache.forEach(m => m.dispose());
-      textureCache.forEach(t => t.dispose());
-      materialCache.clear();
-      textureCache.clear();
-  });
+});
+
+onUnmounted(() => {
+    if (resizeObserver) resizeObserver.disconnect();
+    if (graph) {
+        graph._destructor();
+    }
+    // Clear caches
+    materialCache.forEach(m => m.dispose());
+    textureCache.forEach(t => t.dispose());
+    materialCache.clear();
+    textureCache.clear();
 });
 
 function getNodeColor(category) {

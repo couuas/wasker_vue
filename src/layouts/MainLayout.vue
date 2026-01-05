@@ -122,7 +122,7 @@ const onEnter = (el, done) => {
       rightPart.classList.add('mil-ready')
     }
     
-    // 5. Wait for animation to complete (0.8s), then cleanup
+    // 5. Wait for animation to complete (0.5s), then cleanup
     setTimeout(() => {
       appStore.setTransitioning(false)
       // Cleanup
@@ -137,7 +137,7 @@ const onEnter = (el, done) => {
       // Re-init scroll trigger animations
       initAnimations()
       done()
-    }, 800)
+    }, 500)
   }, 100)
 }
 
