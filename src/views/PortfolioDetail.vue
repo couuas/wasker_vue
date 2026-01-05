@@ -378,12 +378,6 @@ onUpdated(() => {
 
 <style>
 /* Basic styles for markdown content */
-.mil-markdown-content h1, 
-.mil-markdown-content h2, 
-.mil-markdown-content h3 {
-    margin-bottom: 20px;
-    margin-top: 30px;
-}
 .mil-markdown-content p {
     margin-bottom: 20px;
     line-height: 1.6;

@@ -190,6 +190,29 @@ Markdown Styles
   color: #fff;
 }
 
+.mil-markdown-content h1,
+.mil-markdown-content h2,
+.mil-markdown-content h3,
+.mil-markdown-content h4,
+.mil-markdown-content h5,
+.mil-markdown-content h6 {
+  line-height: 1.4;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.mil-markdown-content h1:first-child,
+.mil-markdown-content h2:first-child,
+.mil-markdown-content h3:first-child {
+  margin-top: 0;
+}
+
+.mil-markdown-content hr {
+  margin: 4.5rem 0;
+  border: none;
+  border-top: dotted 2px #2C2C2C;
+}
+
 /* Blockquotes */
 .mil-markdown-content blockquote {
   position: relative;
@@ -440,7 +463,7 @@ h5,
 .mil-h6 {
   font-family: "clesmont", sans-serif;
   color: #E0E0E0;
-  line-height: 100%;
+  line-height: 1.2;
 }
 
 h1.mil-line-height,
