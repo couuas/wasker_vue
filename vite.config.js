@@ -26,11 +26,8 @@ export default defineConfig({
         manualChunks(id) {
           // Isolate heavy libraries from node_modules
           if (id.includes('node_modules')) {
-            if (id.includes('3d-force-graph') || id.includes('force-graph')) {
-              return 'graph-libs';
-            }
-            if (id.includes('three')) {
-              return 'three';
+            if (id.includes('3d-force-graph') || id.includes('force-graph') || id.includes('three')) {
+              return 'three-libs';
             }
             if (id.includes('mermaid')) {
               return 'mermaid';

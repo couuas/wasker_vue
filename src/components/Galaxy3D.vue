@@ -1,8 +1,7 @@
 <script setup>
 import { onMounted, ref, onUnmounted, watch, toRaw } from 'vue';
+import * as THREE from 'three';
 import ForceGraph3D from '3d-force-graph';
-// Dynamic import of THREE for lazy loading
-let THREE;
 
 
 const props = defineProps({
@@ -100,10 +99,6 @@ defineExpose({ focusNode, resetView });
 
 
 onMounted(async () => {
-  // Dynamically load THREE for use in nodeThreeObject
-  const threeModule = await import('three');
-  THREE = threeModule;
-
   // Initialize graph
   graph = ForceGraph3D()(galaxyContainer.value)
     .graphData(structuredClone(toRaw(props.graphData)))
