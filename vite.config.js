@@ -24,7 +24,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // Isolate heavy libraries from node_modules
           if (id.includes('node_modules')) {
+            if (id.includes('3d-force-graph') || id.includes('force-graph')) {
+              return 'graph-libs';
+            }
             if (id.includes('three')) {
               return 'three';
             }
@@ -44,27 +48,27 @@ export default defineConfig({
               return 'markdown';
             }
             if (id.includes('pdf')) { // vue-pdf-embed
-              return 'pdf';
+              return 'pdf-libs';
             }
             if (id.includes('swiper')) {
               return 'swiper';
             }
-            // D3 is used by 3d-force-graph
             if (id.includes('d3-')) {
               return 'd3';
             }
           }
 
-          // Group main content views together to reduce navigation latency (INTERNAL navigation)
+          // Group common list views into one chunk to optimize navigation speed 
+          // while keeping detail pages dynamic.
           if (id.includes('src/views/')) {
             if (
-              id.includes('Blog') ||
-              id.includes('Portfolio') ||
-              id.includes('Journal') ||
-              id.includes('Contact') ||
-              id.includes('Friends')
+              id.endsWith('Blog.vue') ||
+              id.endsWith('Portfolio.vue') ||
+              id.endsWith('Journal.vue') ||
+              id.endsWith('Contact.vue') ||
+              id.endsWith('Friends.vue')
             ) {
-              return 'views-main';
+              return 'views-common';
             }
           }
         }

@@ -1,6 +1,11 @@
 <script setup>
+import { defineAsyncComponent } from 'vue'
 import MainLayout from './layouts/MainLayout.vue'
-import TheAiAssistant from './components/TheAiAssistant.vue'
+
+// Lazy load AI Assistant since it's an accessory feature
+const TheAiAssistant = defineAsyncComponent(() => 
+  import('./components/TheAiAssistant.vue')
+)
 </script>
 
 <template>

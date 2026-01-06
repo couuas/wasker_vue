@@ -1,11 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Portfolio from '../views/Portfolio.vue'
 import { useAppStore } from '../stores/app'
-
-import Blog from '../views/Blog.vue'
-import Contact from '../views/Contact.vue'
-import Friends from '../views/Friends.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,13 +7,13 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: Home,
+            component: () => import('../views/Home.vue'),
             meta: { bodyClass: 'mil-fw-page' }
         },
         {
             path: '/portfolio',
             name: 'portfolio',
-            component: Portfolio,
+            component: () => import('../views/Portfolio.vue'),
             meta: { bodyClass: 'mil-half-page' }
         },
         {
@@ -31,13 +25,13 @@ const router = createRouter({
         {
             path: '/blog',
             name: 'blog',
-            component: Blog,
+            component: () => import('../views/Blog.vue'),
             meta: { bodyClass: 'mil-half-page' }
         },
         {
             path: '/friends',
             name: 'friends',
-            component: Friends,
+            component: () => import('../views/Friends.vue'),
             meta: { bodyClass: 'mil-half-page' }
         },
         {
@@ -61,7 +55,7 @@ const router = createRouter({
         {
             path: '/contact',
             name: 'contact',
-            component: Contact,
+            component: () => import('../views/Contact.vue'),
             meta: { bodyClass: 'mil-half-page' }
         },
         {

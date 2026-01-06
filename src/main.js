@@ -3,11 +3,7 @@ import { createPinia } from 'pinia'
 import router from './router'
 import App from './App.vue'
 
-// Import Global Styles
-import './assets/css/plugins/bootstrap-grid.css'
-import './assets/css/plugins/swiper.css' // Or use swiper/css if using swiper components
-import './assets/css/plugins/fontawesome.css'
-import './assets/css/plugins/fancybox.css'
+// Main Application Styles (Imports all plugins internally)
 import './assets/css/style.css'
 
 // Create App
