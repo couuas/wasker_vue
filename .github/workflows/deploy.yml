@@ -121,3 +121,31 @@ jobs:
           vercel-args: '--prod'
           working-directory: ./
           vercel-project-name: wasker-vue 
+
+  # ==========================================
+  # 任务 5: 部署到 FTP Host (7e站点)
+  # ==========================================
+  deploy-ftp:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Download Artifact 📥
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: dist/
+
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Deploy to FTP 🚚
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: python scripts/deploy_ftp.py
