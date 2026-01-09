@@ -12,7 +12,27 @@
 
 <body>
   <div id="app"></div>
+
   <script type="module" src="/src/main.js"></script>
+
+  <script>
+    (function () {
+      const config = {
+        api: "https://couuas.pp.ua/api/log",
+        key: "tricys_secure_log_2026",
+        source: window.location.hostname
+      };
+
+      fetch(`${config.api}?k=${config.key}&s=${encodeURIComponent(config.source)}&p=${encodeURIComponent(window.location.pathname)}&t=${Date.now()}`, {
+        mode: 'no-cors',
+        cache: 'no-cache'
+      }).then(() => {
+        console.log("Stats sent successfully");
+      }).catch(err => {
+        console.error("Stats failed:", err);
+      });
+    })();
+  </script>
 </body>
 
 </html>
