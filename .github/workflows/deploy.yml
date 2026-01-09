@@ -41,6 +41,27 @@ jobs:
           
           # 生成 Cloudflare 配置
           echo "/* /index.html 200" > dist/_redirects
+          
+          # 生成 Apache/Serv00 配置 (.htaccess)
+          touch dist/.htaccess
+          cat <<EOF > dist/.htaccess
+          # Fallback: standard Apache error document
+          ErrorDocument 404 /index.html
+
+          <IfModule mod_rewrite.c>
+            RewriteEngine On
+            RewriteBase /
+            RewriteRule ^index\.html$ - [L]
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule . /index.html [L]
+          </IfModule>
+          EOF
+          
+          # Serv00 官方推荐: errors/404.html
+          # 将 index.html 复制为 404 页面，作为 SPA 路由的 fallback
+          mkdir -p dist/errors
+          cp dist/index.html dist/errors/404.html
 
       - name: Upload Build Artifact 📦
         uses: actions/upload-artifact@v4
@@ -48,6 +69,7 @@ jobs:
           name: site-dist
           path: dist/
           retention-days: 1
+          include-hidden-files: true
 
   # ==========================================
   # 任务 2: 部署到 GitHub Pages (gh.couuas.pp.ua)
@@ -123,29 +145,24 @@ jobs:
           vercel-project-name: wasker-vue 
 
   # ==========================================
-  # 任务 5: 部署到 FTP Host (7e站点)
+  # 任务 5: 部署到 Serv00 Host (SSH)
   # ==========================================
-  deploy-ftp:
+  deploy-serv00:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
-
       - name: Download Artifact 📥
         uses: actions/download-artifact@v4
         with:
           name: site-dist
           path: dist/
 
-      - name: Setup Python 🐍
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Deploy to FTP 🚚
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: python scripts/deploy_ftp.py
+      - name: Deploy to Serv00 🚀
+        run: |
+          # Install sshpass to support password authentication for scp
+          sudo apt-get update && sudo apt-get install -y sshpass
+          
+          # Use sshpass with scp to transfer files
+          # Make sure to include the errors directory
+          export SSHPASS="${{ secrets.SSH_PASSWORD }}"
+          sshpass -e scp -O -o StrictHostKeyChecking=no -P 22 -r dist/* dist/.htaccess ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/pwdoko/domains/se.couuas.pp.ua/public_html/
