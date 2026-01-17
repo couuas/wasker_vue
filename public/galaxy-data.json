@@ -10,9 +10,9 @@
       "val": 1,
       "desc": "深入剖析 TRICYS 仿真程序的性能瓶颈，提出基于“编译一次，运行多次”的核心优化策略，解决大规模并发下的崩溃与效率问题。",
       "filePath": "blog/zh/performance_bottleneck_analysis.md",
-      "x": 23.1,
-      "y": 32.5,
-      "z": -163.1
+      "x": 174.8,
+      "y": 37,
+      "z": -96.7
     },
     {
       "id": "zh/blog/about-wasker",
@@ -24,9 +24,9 @@
       "val": 1,
       "desc": "回望 Wasker 体系从静态模板到 3D + AI 实战版的演进之路，见证个人站点的技术迭代。",
       "filePath": "blog/zh/about-wasker.md",
-      "x": 33.6,
-      "y": -28.4,
-      "z": 24.8
+      "x": -109.5,
+      "y": -32.3,
+      "z": -70.9
     },
     {
       "id": "en/blog/performance_bottleneck_analysis",
@@ -38,9 +38,9 @@
       "val": 1,
       "desc": "An in-depth analysis of TRICYS simulation program bottlenecks, proposing the 'Compile Once, Run Many' strategy to solve crashes and efficiency issues in large-scale concurrency.",
       "filePath": "blog/en/performance_bottleneck_analysis.md",
-      "x": 23.1,
-      "y": 32.5,
-      "z": -163.1
+      "x": 174.8,
+      "y": 37,
+      "z": -96.7
     },
     {
       "id": "en/blog/about-wasker",
@@ -52,9 +52,37 @@
       "val": 1,
       "desc": "Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.",
       "filePath": "blog/en/about-wasker.md",
-      "x": 33.6,
-      "y": -28.4,
-      "z": 24.8
+      "x": -109.5,
+      "y": -32.3,
+      "z": -70.9
+    },
+    {
+      "id": "zh/blog/02",
+      "slug": "02",
+      "type": "blog",
+      "lang": "zh",
+      "name": "阿里云服务器折腾记录（二）",
+      "category": "Uncategorized",
+      "val": 1,
+      "desc": "frp与rustdesk云边协同方案",
+      "filePath": "blog/zh/aliyun/02.md",
+      "x": -100.1,
+      "y": -73.7,
+      "z": 175.9
+    },
+    {
+      "id": "zh/blog/01",
+      "slug": "01",
+      "type": "blog",
+      "lang": "zh",
+      "name": "阿里云服务器折腾记录（一）",
+      "category": "Uncategorized",
+      "val": 1,
+      "desc": "“云端（公网入口）”与“本地（计算中心）”协同",
+      "filePath": "blog/zh/aliyun/01.md",
+      "x": 102,
+      "y": 87.8,
+      "z": 159.1
     },
     {
       "id": "zh/portfolio/wasker_vue",
@@ -66,9 +94,9 @@
       "val": 2,
       "desc": "融合 3D 星系交互与 AI 增强体验，具备全球感知优选能力的 Vue 3 终极个人站。",
       "filePath": "portfolio/zh/wasker series/wasker_vue.md",
-      "x": -57.5,
-      "y": -14.5,
-      "z": 75.1
+      "x": -6.3,
+      "y": -26.6,
+      "z": -82
     },
     {
       "id": "zh/portfolio/wasker_template",
@@ -80,9 +108,9 @@
       "val": 2,
       "desc": "一个极简、高性能且富有设计感的 Vue 3 作品集与博客主题。",
       "filePath": "portfolio/zh/wasker series/wasker_template.md",
-      "x": 0.8,
-      "y": 10.5,
-      "z": 63.2
+      "x": -61,
+      "y": 7.9,
+      "z": -85.5
     },
     {
       "id": "en/portfolio/wasker_vue",
@@ -94,9 +122,9 @@
       "val": 2,
       "desc": "An ultimate Vue 3 personal site featuring 3D galaxy interaction, AI-enhanced experiences, and global routing optimization.",
       "filePath": "portfolio/en/wasker series/wasker_vue.md",
-      "x": -57.5,
-      "y": -14.5,
-      "z": 75.1
+      "x": -6.3,
+      "y": -26.6,
+      "z": -82
     },
     {
       "id": "en/portfolio/wasker_template",
@@ -108,9 +136,9 @@
       "val": 2,
       "desc": "A minimalist, high-performance, and beautifully designed Vue 3 portfolio and blog theme.",
       "filePath": "portfolio/en/wasker series/wasker_template.md",
-      "x": 0.8,
-      "y": 10.5,
-      "z": 63.2
+      "x": -61,
+      "y": 7.9,
+      "z": -85.5
     }
   ],
   "links": [
