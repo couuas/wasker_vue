@@ -166,3 +166,27 @@ jobs:
           # Make sure to include the errors directory
           export SSHPASS="${{ secrets.SSH_PASSWORD }}"
           sshpass -e scp -O -o StrictHostKeyChecking=no -P 22 -r dist/* dist/.htaccess ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/pwdoko/domains/se.couuas.pp.ua/public_html/
+
+  # ==========================================
+  # 任务 6: 部署到 阿里云 1Panel (SSH)
+  # ==========================================
+  deploy-aliyun:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact 📥
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: dist/
+
+      - name: Deploy to Aliyun via SCP 🚀
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.ALIYUN_HOST }}
+          username: ${{ secrets.ALIYUN_USERNAME }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+          port: 22
+          source: "dist/*"
+          target: "/opt/1panel/apps/openresty/openresty/www/sites/19980515.xyz/index" 
+          strip_components: 1
