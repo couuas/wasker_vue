@@ -215,7 +215,7 @@ jobs:
         with:
           host: ${{ secrets.ALIYUN_HOST }}
           username: ${{ secrets.ALIYUN_USERNAME }}
-          password: ${{ secrets.ALIYUN_PASSWORD }}
+          key: ${{ secrets.ALIYUN_KEY }}
           port: 22
           source: "dist/*"
           target: "/opt/1panel/apps/openresty/openresty/www/sites/19980515.xyz/index" 
