@@ -36,6 +36,7 @@ export function useMarkdown() {
             const isBlog = path.includes('/blog/');
             const isPortfolio = path.includes('/portfolio/');
             const isFriend = path.includes('/friend/');
+            const isMySite = path.includes('/mysites/');
             const isJournal = path.includes('/journal/');
 
             // Determine language
@@ -64,7 +65,7 @@ export function useMarkdown() {
             const pathParts = path.split('/');
 
             // Find where 'blog' or 'portfolio' is
-            const typeKey = isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isJournal ? 'journal' : null)));
+            const typeKey = isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isMySite ? 'mysites' : (isJournal ? 'journal' : null))));
             const typeIndex = typeKey ? pathParts.findIndex(p => p === typeKey) : -1;
 
             if (typeIndex !== -1) {
@@ -91,7 +92,7 @@ export function useMarkdown() {
                 category: computedCategory, // Override or keep original
                 slug: filename,
                 body: content.body,
-                type: isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isJournal ? 'journal' : 'other'))),
+                type: isBlog ? 'blog' : (isPortfolio ? 'portfolio' : (isFriend ? 'friend' : (isMySite ? 'mysite' : (isJournal ? 'journal' : 'other')))),
                 lang: lang,
                 path: path
             });

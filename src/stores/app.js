@@ -41,11 +41,26 @@ export const useAppStore = defineStore('app', () => {
         transitioning.value = val
     }
 
+    // Global Full Screen State
+    const isFullScreen = ref(false)
+    function toggleFullScreen() {
+        isFullScreen.value = !isFullScreen.value
+        if (isFullScreen.value) {
+            document.body.classList.remove('mil-half-page')
+            document.body.classList.add('mil-fw-page')
+        } else {
+            document.body.classList.remove('mil-fw-page')
+            document.body.classList.add('mil-half-page')
+        }
+    }
+
     return {
         isMenuOpen, toggleMenu, closeMenu,
         isLoading, setLoading,
         transitioning, setTransitioning,
         triggerAssistant, openAssistant,
-        currentLang, setLang, toggleLang
+        triggerAssistant, openAssistant,
+        currentLang, setLang, toggleLang,
+        isFullScreen, toggleFullScreen
     }
 })

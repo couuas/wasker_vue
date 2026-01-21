@@ -10,7 +10,7 @@ import { storeToRefs } from 'pinia'
 const { getPosts, getCategories } = useMarkdown()
 const { initAnimations } = useScrollAnimations()
 const appStore = useAppStore()
-const { currentLang } = storeToRefs(appStore)
+const { currentLang, isFullScreen } = storeToRefs(appStore)
 
 const allWorks = getPosts('portfolio')
 const categories = getCategories('portfolio')
@@ -93,7 +93,7 @@ watch([categories, currentLang], async () => {
 
 // Action Menu State
 const isActionMenuOpen = ref(false)
-const isFullScreen = ref(false)
+// const isFullScreen = ref(false) // Removed local state
 const isListView = ref(false)
 
 const toggleActionMenu = () => {
@@ -101,14 +101,7 @@ const toggleActionMenu = () => {
 }
 
 const toggleFullScreen = () => {
-    isFullScreen.value = !isFullScreen.value
-    if (isFullScreen.value) {
-        document.body.classList.remove('mil-half-page')
-        document.body.classList.add('mil-fw-page')
-    } else {
-        document.body.classList.remove('mil-fw-page')
-        document.body.classList.add('mil-half-page')
-    }
+    appStore.toggleFullScreen()
 }
 
 const toggleLayout = () => {
@@ -137,6 +130,44 @@ const copyLink = () => {
         toastRef.value.show('Link copied to clipboard', 'success')
     }
     setTimeout(() => { copied.value = false }, 2000)
+}
+// Drag to Scroll Logic
+const scrollContainer = ref(null)
+const isDragging = ref(false)
+const startX = ref(0)
+const scrollLeft = ref(0)
+const isDragClick = ref(false) // Distinguish drag from click
+
+const startDrag = (e) => {
+    isDragging.value = true
+    isDragClick.value = false
+    startX.value = e.pageX - scrollContainer.value.offsetLeft
+    scrollLeft.value = scrollContainer.value.scrollLeft
+}
+
+const stopDrag = () => {
+    isDragging.value = false
+}
+
+const doDrag = (e) => {
+    if (!isDragging.value) return;
+    e.preventDefault();
+    isDragClick.value = true // If moved, it's a drag
+    const x = e.pageX - scrollContainer.value.offsetLeft;
+    const walk = (x - startX.value) * 2; // Scroll-fast
+    scrollContainer.value.scrollLeft = scrollLeft.value - walk;
+}
+
+const handleWheel = (e) => {
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollLeft += e.deltaY;
+  }
+}
+
+const selectCategory = (cat) => {
+    if (!isDragClick.value) {
+        switchCategory(cat)
+    }
 }
 </script>
 
@@ -194,48 +225,58 @@ const copyLink = () => {
                 </div>
             </div>
 
-            <div class="mil-bottom-panel mil-up-instant">
-                <div class="mil-w-100 mil-list-footer">
+            <!-- Floating Bottom Navigation -->
+            <div class="mil-bottom-nav-container">
+                 <!-- Action Menu Overlay (Moved Inside) -->
+                 <div class="mil-action-menu-glass" :class="{ 'mil-active': isActionMenuOpen }">
+                     <div class="mil-action-btn" @click="toggleLayout" :title="isListView ? 'Grid View' : 'List View'">
+                        <i :class="['fas', isListView ? 'fa-th-large' : 'fa-list']"></i>
+                     </div>
+                     <div class="mil-action-btn" @click="toggleLang" title="Switch Language">
+                        <i class="fas fa-globe"></i>
+                     </div>
+                     <div class="mil-action-btn" @click="toggleFullScreen" :title="isFullScreen ? 'Original View' : 'Full Screen View'">
+                        <i :class="['fas', isFullScreen ? 'fa-compress-alt' : 'fa-expand-alt']"></i>
+                     </div>
+                 </div>
+
+                 <div class="mil-bottom-nav">
                     
                     <!-- Left: Share Button -->
-                    <div class="mil-fixed-icon mil-left-icon" @click="copyLink" style="cursor: pointer;" title="Copy Link">
+                    <button class="mil-add-btn" @click="copyLink" title="Copy Link" style="transform: none;">
                         <i :class="['fas', copied ? 'fa-check' : 'fa-share-alt']"></i>
-                    </div>
-
-                    <!-- Center: Filter Categories -->
-                    <div class="mil-filter-container" :class="{ 'mil-has-overflow': isOverflowing }">
-                        <div class="mil-filter" ref="filterContainer">
-                            <a v-for="cat in categories" :key="cat" 
-                                @click.prevent="switchCategory(cat)"
-                                href="#" 
-                                :class="['mil-link', 'mil-pill', { 'mil-current': activeCategory === cat }]" 
-                                data-no-swup>
-                                {{ cat }}
-                            </a>
-                        </div>
-                    </div>
+                    </button>
                     
-                    <!-- Right: Action Menu (Replaces standalone Language Switch) -->
-                    <div class="mil-action-menu-wrapper" :class="{ 'mil-active': isActionMenuOpen }">
-                        <div class="mil-action-list">
-                            <!-- Layout Toggle -->
-                            <div class="mil-action-btn" @click="toggleLayout" :title="isListView ? 'Grid View' : 'List View'">
-                                <i :class="['fas', isListView ? 'fa-th-large' : 'fa-list']"></i>
-                            </div>
-                            <!-- Language Toggle -->
-                            <div class="mil-action-btn" @click="toggleLang" title="Switch Language">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <!-- Full Screen Toggle -->
-                            <div class="mil-action-btn" @click="toggleFullScreen" :title="isFullScreen ? 'Original View' : 'Full Screen View'">
-                                <i :class="['fas', isFullScreen ? 'fa-compress-alt' : 'fa-expand-alt']"></i>
-                            </div>
-                        </div>
-                        <div class="mil-action-trigger mil-icon-btn" @click="toggleActionMenu" :class="{ 'mil-active': isActionMenuOpen }">
-                            <i :class="['fas', isActionMenuOpen ? 'fa-times' : 'fa-ellipsis-v']"></i>
-                        </div>
-                    </div>
-                </div>
+                    <div class="mil-nav-divider"></div>
+
+                    <!-- Center: Categories -->
+                    <ul 
+                        class="mil-bottom-menu"
+                        ref="scrollContainer"
+                        @mousedown="startDrag"
+                        @mouseleave="stopDrag"
+                        @mouseup="stopDrag"
+                        @mousemove="doDrag"
+                        @wheel.prevent="handleWheel"
+                    >
+                        <!-- Added 'All' category explicitly if not present in list, or rely on logic -->
+                         <li 
+                            v-for="cat in categories" 
+                            :key="cat" 
+                            :class="{ 'mil-active': activeCategory === cat }"
+                            @click="selectCategory(cat)"
+                        >
+                            {{ cat }}
+                        </li>
+                    </ul>
+
+                    <div class="mil-nav-divider"></div>
+
+                    <!-- Right: Action Menu Trigger -->
+                    <button class="mil-add-btn" @click="toggleActionMenu" :class="{ 'mil-active': isActionMenuOpen }">
+                        <i :class="['fas', isActionMenuOpen ? 'fa-times' : 'fa-ellipsis-v']"></i>
+                    </button>
+                 </div>
             </div>
         </div>
     </div>
@@ -356,116 +397,154 @@ const copyLink = () => {
     }
 }
 
-.mil-list-footer {
+/* Bottom Navigation Styles (Unified) */
+.mil-bottom-nav-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%; /* Mobile width */
+    max-width: 700px; /* Widened for desktop */
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+}
+
+.mil-bottom-nav {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 50px; 
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 15px;
-    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* Fixed Icons (Left & Right) */
-
-
-/* Center Container */
-.mil-filter-container {
-    flex: 1;
+.mil-bottom-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    overflow: hidden;
-    padding: 8px;
-    /* Removed heavy container styling */
-    background: transparent;
-    border-radius: 0;
-    border: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-/* Active Overflow State */
-.mil-filter-container.mil-has-overflow {
-    justify-content: flex-start;
-    /* Add subtle cue for overflow if needed, or keep clean */
-    mask-image: linear-gradient(to right, transparent, black 20px, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black 95%, transparent);
-}
-
-.mil-filter {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
     overflow-x: auto;
-    white-space: nowrap;
-    gap: 20px; /* Increased gap for cleaner look */
+    scrollbar-width: none; /* Hide Scrollbar */
     -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding: 6px;
-    width: 100%;
-}
-
-/* If not overflowing, let content be natural width to center properly */
-.mil-filter-container:not(.mil-has-overflow) .mil-filter {
-    width: auto;
+    flex-grow: 1;
+    gap: 5px;
+    cursor: grab;
     justify-content: center;
 }
 
-.mil-filter::-webkit-scrollbar {
+.mil-bottom-menu:active {
+    cursor: grabbing;
+}
+
+.mil-bottom-menu::-webkit-scrollbar {
     display: none;
 }
 
-/* Pill Styling - Simplified to Minimal Text */
-.mil-link.mil-pill {
-    padding: 8px 0; /* Removing horizontal padding for text-only look */
-    background: transparent;
-    border-radius: 0;
-    border: none; /* Removed border */
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+.mil-bottom-menu li {
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5); /* Dimmed default state */
-    text-decoration: none;
+    color: var(--mil-text-primary);
+    cursor: pointer;
+    border-radius: 30px;
     white-space: nowrap;
-    position: relative;
-    backdrop-filter: none;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-.mil-link.mil-pill:hover {
-    background: transparent;
-    color: #fff;
-    transform: translateY(0);
-    border-color: transparent;
-    box-shadow: none;
+.mil-bottom-menu li:hover,
+.mil-bottom-menu li.mil-active {
+    background-color: #FFD700;
+    color: #000;
 }
 
-.mil-link.mil-pill.mil-current {
-    background: transparent;
-    color: #fff; /* Active is bright white */
-    border-color: transparent;
-    box-shadow: none;
-    font-weight: 700;
-    transform: translateY(0);
+.mil-nav-divider {
+    width: 1px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 10px;
+    flex-shrink: 0;
 }
 
-/* Optional: Add a small dot for the active item */
-.mil-link.mil-pill.mil-current::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background-color: #DBA91C; /* Gold accent */
+.mil-add-btn {
+    background: var(--mil-dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--mil-text-primary);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 10px #DBA91C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-.mil-link.mil-pill.mil-current::before {
-    display: none;
+.mil-add-btn:hover,
+.mil-add-btn.mil-active {
+    background-color: #FFD700;
+    color: #000;
+    border-color: #FFD700;
 }
 
+/* Action Menu Glass Overlay */
+.mil-action-menu-glass {
+    position: absolute;
+    bottom: 70px; 
+    right: 0; 
+    transform: translateY(20px) scale(0.9);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 90;
+}
 
+.mil-action-menu-glass.mil-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.mil-action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mil-action-btn:hover {
+    background: #FFD700;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .mil-bottom-nav-container {
+        width: 95%;
+        bottom: 10px;
+    }
+}
 </style>
+

@@ -10,10 +10,10 @@ import JournalCalendar from '@/components/JournalCalendar.vue' // Will create in
 const { getPosts } = useMarkdown()
 const { initAnimations } = useScrollAnimations()
 const appStore = useAppStore()
-const { currentLang } = storeToRefs(appStore)
+const { currentLang, isFullScreen } = storeToRefs(appStore)
 
 const isActionMenuOpen = ref(false)
-const isFullScreen = ref(false)
+// const isFullScreen = ref(false) // Removed local ref
 
 const toggleActionMenu = () => {
     isActionMenuOpen.value = !isActionMenuOpen.value
@@ -24,14 +24,7 @@ const toggleLang = () => {
 }
 
 const toggleFullScreen = () => {
-    isFullScreen.value = !isFullScreen.value
-    if (isFullScreen.value) {
-        document.body.classList.remove('mil-half-page')
-        document.body.classList.add('mil-fw-page')
-    } else {
-        document.body.classList.remove('mil-fw-page')
-        document.body.classList.add('mil-half-page')
-    }
+    appStore.toggleFullScreen()
 }
 
 const allJournalPosts = getPosts('journal')
@@ -242,37 +235,40 @@ watch(groupedPosts, async () => {
                  </div>
             </div>
 
-            <!-- Bottom Panel -->
-            <div class="mil-bottom-panel mil-up-instant">
-                <div class="mil-w-100 mil-list-footer">
-                     <!-- Left: Calendar Toggle -->
-                     <div class="mil-fixed-icon mil-left-icon" @click="toggleCalendar" title="Open Calendar">
-                         <i class="fas fa-calendar-alt"></i>
+            <!-- Floating Bottom Navigation -->
+            <div class="mil-bottom-nav-container">
+                 <!-- Action Menu Overlay (Moved Inside) -->
+                 <div class="mil-action-menu-glass" :class="{ 'mil-active': isActionMenuOpen }">
+                     <div class="mil-action-btn" @click="toggleLang" title="Switch Language">
+                        <i class="fas fa-globe"></i>
                      </div>
+                     <div class="mil-action-btn" @click="toggleFullScreen" :title="isFullScreen ? 'Original View' : 'Full Screen View'">
+                        <i :class="['fas', isFullScreen ? 'fa-compress-alt' : 'fa-expand-alt']"></i>
+                     </div>
+                 </div>
 
-                     <!-- Center: Current Month Display -->
-                     <div class="mil-current-month-display">
-                         <span>{{ currentVisibleMonth }}</span>
-                     </div>
+                 <div class="mil-bottom-nav">
+                    
+                    <!-- Left: Calendar Toggle -->
+                    <button class="mil-add-btn" @click="toggleCalendar" title="Open Calendar" style="transform: none;">
+                        <i class="fas fa-calendar-alt"></i>
+                    </button>
+                    
+                    <div class="mil-nav-divider"></div>
 
-                     <!-- Right: Action Menu -->
-                     <div class="mil-action-menu-wrapper" :class="{ 'mil-active': isActionMenuOpen }">
-                         <div class="mil-action-list">
-                             <!-- Language Toggle -->
-                             <div class="mil-action-btn" @click="toggleLang" title="Switch Language">
-                                 <i class="fas fa-globe"></i>
-                             </div>
-                             <!-- Full Screen Toggle -->
-                             <div class="mil-action-btn" @click="toggleFullScreen" :title="isFullScreen ? 'Original View' : 'Full Screen View'">
-                                 <i :class="['fas', isFullScreen ? 'fa-compress-alt' : 'fa-expand-alt']"></i>
-                             </div>
-                         </div>
-                         <div class="mil-action-trigger mil-icon-btn" @click="toggleActionMenu" :class="{ 'mil-active': isActionMenuOpen }">
-                             <i :class="['fas', isActionMenuOpen ? 'fa-times' : 'fa-ellipsis-v']"></i>
-                         </div>
-                     </div>
-                </div>
-            </div> <!-- Close .mil-bottom-panel -->
+                    <!-- Center: Current Month Display -->
+                    <div class="mil-current-month-display">
+                        {{ currentVisibleMonth }}
+                    </div>
+
+                    <div class="mil-nav-divider"></div>
+
+                    <!-- Right: Action Menu Trigger -->
+                    <button class="mil-add-btn" @click="toggleActionMenu" :class="{ 'mil-active': isActionMenuOpen }">
+                        <i :class="['fas', isActionMenuOpen ? 'fa-times' : 'fa-ellipsis-v']"></i>
+                    </button>
+                 </div>
+            </div>
             </div> <!-- Close .mil-scroll -->
             
             <!-- Calendar Overlay -->
@@ -511,13 +507,63 @@ watch(groupedPosts, async () => {
     }
 }
 
-/* Footer Styling */
-.mil-list-footer {
+/* Bottom Navigation Styles (Unified) */
+.mil-bottom-nav-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%; /* Mobile width */
+    max-width: 500px; /* Constrain on desktop - smaller than portfolio for text */
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+}
+
+.mil-bottom-nav {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 50px; 
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.mil-nav-divider {
+    width: 1px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+.mil-add-btn {
+    background: var(--mil-dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--mil-text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.mil-add-btn:hover,
+.mil-add-btn.mil-active {
+    background-color: #FFD700;
+    color: #000;
+    border-color: #FFD700;
 }
 
 .mil-current-month-display {
@@ -528,25 +574,69 @@ watch(groupedPosts, async () => {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 10px; /* spacing from icons */
+    padding: 0 10px;
+    color: #fff;
+    flex-grow: 1;
+    text-align: center;
 }
 
-/* Action Menu Styles (Consistent with Blog) */
-.mil-action-menu-wrapper {
-    position: relative;
-    pointer-events: auto;
-    flex-shrink: 0;
+/* Action Menu Glass Overlay */
+.mil-action-menu-glass {
+    position: absolute;
+    bottom: 70px; /* Above nav bar */
+    right: 0; /* Align to right edge of container */
+    transform: translateY(20px) scale(0.9); /* Vertical pop only */
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Capsule shape for vertical */
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 90;
 }
 
+.mil-action-menu-glass.mil-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
 
+.mil-action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-/* Calendar Modal (Basic) */
+.mil-action-btn:hover {
+    background: #FFD700;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .mil-bottom-nav-container {
+        width: 95%;
+        bottom: 10px;
+    }
+}
+
+/* Calendar Modal (Restored & Fixed for Half-Page) */
 .mil-calendar-overlay {
-    position: fixed;
+    position: absolute; /* Changed from fixed to absolute to stay within mil-content-frame */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;       /* Fill container, not viewport */
+    height: 100%;      /* Fill container */
     z-index: 2000;
     display: flex;
     justify-content: center;
@@ -554,6 +644,7 @@ watch(groupedPosts, async () => {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
+    backdrop-filter: blur(10px); /* Move backdrop filter here from override */
 }
 
 .mil-calendar-overlay.mil-active {
@@ -571,15 +662,15 @@ watch(groupedPosts, async () => {
 
 .mil-calendar-modal {
     position: relative;
-    background: #181818; /* Solid dark bg for contrast */
+    background: #181818; 
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px; /* Softer corners */
+    border-radius: 24px; 
     width: 90%;
-    max-width: 420px; /* Slightly wider */
-    padding: 30px; /* More breathing room */
+    max-width: 420px; 
+    padding: 30px; 
     z-index: 2;
-    transform: translateY(30px) scale(0.95); /* Start smaller and lower */
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); /* Elegant easing */
+    transform: translateY(30px) scale(0.95); 
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); 
     box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
 }
 
@@ -610,36 +701,5 @@ watch(groupedPosts, async () => {
 .mil-close-btn:hover {
     background: rgba(255,255,255,0.1);
     color: #DBA91C;
-}
-
-/* New Layout Wrapper */
-
-.mil-content-frame {
-    position: relative;
-    overflow: hidden;
-}
-
-.mil-journal-container {
-    padding: 60px 0 120px;
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-    flex-grow: 1; /* Push footer down */
-}
-
-/* ... existing styles ... */
-
-.mil-scroll {
-    display: flex; /* Flex layout for sticky footer */
-    flex-direction: column;
-}
-
-/* Overlay Override for scoped positioning */
-.mil-calendar-overlay {
-    position: absolute; /* Absolute relative to layout */
-    width: 100%;       /* Fill the wrapper width */
-    height: 100%;      /* Fill the wrapper height */
-    backdrop-filter: blur(10px); /* Stronger blur since it's on top of content */
 }
 </style>
