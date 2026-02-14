@@ -5,24 +5,32 @@
     <link>https://couuas.pp.ua</link>
     <description>Personal portfolio and blog of a creative designer/developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jan 2026 13:39:47 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Feb 2026 06:20:46 GMT</lastBuildDate>
     <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
-        <title><![CDATA[TRICYS Performance Bottleneck Analysis and Optimization]]></title>
-        <link>https://couuas.pp.ua/blog/performance_bottleneck_analysis</link>
-        <guid>https://couuas.pp.ua/blog/performance_bottleneck_analysis</guid>
-        <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
-        <description><![CDATA[An in-depth analysis of TRICYS simulation program bottlenecks, proposing the 'Compile Once, Run Many' strategy to solve crashes and efficiency issues in large-scale concurrency.]]></description>
-        <category>Performance</category>
+        <title><![CDATA[Zero to One: A Practical Guide to OpenClaw Skill Development]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</guid>
+        <pubDate>Sat, 14 Feb 2026 06:20:46 GMT</pubDate>
+        <description><![CDATA[Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.]]></description>
+        <category>engineering</category>
     </item>
     <item>
-        <title><![CDATA[About Wasker Vue]]></title>
-        <link>https://couuas.pp.ua/blog/about-wasker</link>
-        <guid>https://couuas.pp.ua/blog/about-wasker</guid>
-        <pubDate>Thu, 25 Dec 2025 00:00:00 GMT</pubDate>
-        <description><![CDATA[Exploring the evolution of the Wasker ecosystem from static templates to the 3D + AI production version.]]></description>
-        <category>Project</category>
+        <title><![CDATA[Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</guid>
+        <pubDate>Sat, 14 Feb 2026 06:20:46 GMT</pubDate>
+        <description><![CDATA[AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.]]></description>
+        <category>General</category>
+    </item>
+    <item>
+        <title><![CDATA[Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-13-the-boss-instructions</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-13-the-boss-instructions</guid>
+        <pubDate>Fri, 13 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.]]></description>
+        <category>Strategic Guidelines</category>
     </item>
 </channel>
 </rss>
