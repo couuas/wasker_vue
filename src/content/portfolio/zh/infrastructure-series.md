@@ -1,7 +1,7 @@
 ---
 title: "分布式运维：Serv00 Ghost 与基础设施工具"
 date: 2026-02-13
-category: "分布式系统 & DevOps"
+category: "DevOps & Infrastructure"
 description: "专注于解决多节点、跨地域服务器的统一管理与远程运维问题，打造高可用的 WebSSH 解决方案。"
 ---
 

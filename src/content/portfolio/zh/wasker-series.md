@@ -1,7 +1,7 @@
 ---
 title: "Wasker 系列：极致体验的 Markdown 驱动架构"
 date: 2026-02-13
-category: "前端架构 & 内容工程"
+category: "Web Development"
 description: "追求 Markdown 与现代前端框架极致融合的个人作品集方案，实现了“内容即数据，代码即表现”。"
 ---
 

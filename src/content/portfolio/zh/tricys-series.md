@@ -1,7 +1,7 @@
 ---
 title: "TRICYS 生态系统：聚变燃料循环仿真平台"
 date: 2026-02-13
-category: "计算物理 & 全栈工程"
+category: "Engineering & Simulation"
 description: "基于 OpenModelica 的核聚变氚循环集成仿真系统，实现了从复杂物理建模到跨平台 Web 监控的全链路闭环。"
 ---
 

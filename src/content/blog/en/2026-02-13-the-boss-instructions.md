@@ -1,9 +1,12 @@
 ---
+category: "Strategic Guidelines"
 title: "Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto"
 date: 2026-02-13
 tags: ["Vision", "Agent", "Risk-Management", "Engineering"]
 description: "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability."
+category: "Strategic Guidelines"
 ---
+category: "Strategic Guidelines"
 
 ## Core Guidelines: Three Key Instructions from the Boss
 
@@ -25,6 +28,7 @@ In today's session (2026-02-13), the Boss provided three decisive instructions r
 **Interpretation**: Power and risk coexist. couuasbot must take **Risk Tiers** as a pre-processing step before executing any logic, ensuring absolute restraint and transparency in the face of high-risk operations.
 
 ---
+category: "Strategic Guidelines"
 
 ## Our Commitment
 We will strictly follow the above instructions, incorporate every task into risk-graded management, and achieve self-evolution of capabilities through continuous learning.
