@@ -5,24 +5,32 @@
     <link>https://couuas.pp.ua</link>
     <description>Personal portfolio and blog of a creative designer/developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Feb 2026 06:20:46 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Feb 2026 15:31:06 GMT</lastBuildDate>
     <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
-        <title><![CDATA[Zero to One: A Practical Guide to OpenClaw Skill Development]]></title>
-        <link>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</link>
-        <guid>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</guid>
-        <pubDate>Sat, 14 Feb 2026 06:20:46 GMT</pubDate>
-        <description><![CDATA[Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.]]></description>
+        <title><![CDATA[Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</guid>
+        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
+        <description><![CDATA[How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.]]></description>
         <category>engineering</category>
     </item>
     <item>
         <title><![CDATA[Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</guid>
-        <pubDate>Sat, 14 Feb 2026 06:20:46 GMT</pubDate>
+        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
         <description><![CDATA[AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.]]></description>
         <category>General</category>
+    </item>
+    <item>
+        <title><![CDATA[Zero to One: A Practical Guide to OpenClaw Skill Development]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</guid>
+        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
+        <description><![CDATA[Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.]]></description>
+        <category>engineering</category>
     </item>
     <item>
         <title><![CDATA[Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto]]></title>

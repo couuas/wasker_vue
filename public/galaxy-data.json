@@ -1,6 +1,20 @@
 {
   "nodes": [
     {
+      "id": "zh/blog/2026-02-14-vps-proxy-hardening",
+      "slug": "2026-02-14-vps-proxy-hardening",
+      "type": "blog",
+      "lang": "zh",
+      "name": "Agent 隐身实战：OpenClaw 流量出口 VPS 化及失联防护方案",
+      "category": "engineering",
+      "val": 1,
+      "desc": "记录如何为 OpenClaw Agent 配置 VPS 代理出口，并解决 TUN 模式失效、路由环路及通信死锁等核心工程挑战。",
+      "filePath": "blog/zh/2026-02-14-vps-proxy-hardening.md",
+      "x": 160.2,
+      "y": 70.8,
+      "z": -109.8
+    },
+    {
       "id": "zh/blog/2026-02-14-skill-creation-workflow",
       "slug": "2026-02-14-skill-creation-workflow",
       "type": "blog",
@@ -10,9 +24,9 @@
       "val": 1,
       "desc": "记录如何为 OpenClaw 创建一个自动化的博客归档 Skill，涵盖从规划、初始化到工程校验的完整生命周期。",
       "filePath": "blog/zh/2026-02-14-skill-creation-workflow.md",
-      "x": 137.5,
-      "y": 59.9,
-      "z": -117.2
+      "x": -49.9,
+      "y": -160.9,
+      "z": 2.6
     },
     {
       "id": "zh/blog/2026-02-14-openclaw-memory-principle",
@@ -24,9 +38,9 @@
       "val": 1,
       "desc": "AI 聊天不再是‘一期一会’，本文深度解析 OpenClaw 如何通过持久化工作区实现真正的 AI 长期记忆。",
       "filePath": "blog/zh/2026-02-14-openclaw-memory-principle.md",
-      "x": -123.7,
-      "y": -130.4,
-      "z": -63.8
+      "x": -83.7,
+      "y": -0.7,
+      "z": 200
     },
     {
       "id": "zh/blog/2026-02-13-the-boss-instructions",
@@ -38,9 +52,23 @@
       "val": 1,
       "desc": "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。",
       "filePath": "blog/zh/2026-02-13-the-boss-instructions.md",
-      "x": -118.6,
-      "y": -18.9,
-      "z": 165.4
+      "x": 109.1,
+      "y": 141.9,
+      "z": 151
+    },
+    {
+      "id": "en/blog/2026-02-14-vps-proxy-hardening",
+      "slug": "2026-02-14-vps-proxy-hardening",
+      "type": "blog",
+      "lang": "en",
+      "name": "Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures",
+      "category": "engineering",
+      "val": 1,
+      "desc": "How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.",
+      "filePath": "blog/en/2026-02-14-vps-proxy-hardening.md",
+      "x": 160.2,
+      "y": 70.8,
+      "z": -109.8
     },
     {
       "id": "en/blog/2026-02-14-skill-creation-workflow",
@@ -52,9 +80,9 @@
       "val": 1,
       "desc": "Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.",
       "filePath": "blog/en/2026-02-14-skill-creation-workflow.md",
-      "x": 137.5,
-      "y": 59.9,
-      "z": -117.2
+      "x": -49.9,
+      "y": -160.9,
+      "z": 2.6
     },
     {
       "id": "en/blog/2026-02-14-openclaw-memory-principle",
@@ -66,9 +94,9 @@
       "val": 1,
       "desc": "AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.",
       "filePath": "blog/en/2026-02-14-openclaw-memory-principle.md",
-      "x": -123.7,
-      "y": -130.4,
-      "z": -63.8
+      "x": -83.7,
+      "y": -0.7,
+      "z": 200
     },
     {
       "id": "en/blog/2026-02-13-the-boss-instructions",
@@ -80,9 +108,9 @@
       "val": 1,
       "desc": "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.",
       "filePath": "blog/en/2026-02-13-the-boss-instructions.md",
-      "x": -118.6,
-      "y": -18.9,
-      "z": 165.4
+      "x": 109.1,
+      "y": 141.9,
+      "z": 151
     },
     {
       "id": "zh/portfolio/wasker-series",
@@ -94,9 +122,9 @@
       "val": 1,
       "desc": "追求 Markdown 与现代前端框架极致融合的个人作品集方案，实现了“内容即数据，代码即表现”。",
       "filePath": "portfolio/zh/wasker-series.md",
-      "x": 91.6,
-      "y": 123.7,
-      "z": 145.7
+      "x": 145.8,
+      "y": -195.8,
+      "z": -16.6
     },
     {
       "id": "zh/portfolio/tricys-series",
@@ -108,9 +136,9 @@
       "val": 1,
       "desc": "基于 OpenModelica 的核聚变氚循环集成仿真系统，实现了从复杂物理建模到跨平台 Web 监控的全链路闭环。",
       "filePath": "portfolio/zh/tricys-series.md",
-      "x": 116.5,
-      "y": -184,
-      "z": -11.5
+      "x": -69.1,
+      "y": 185.1,
+      "z": -129
     },
     {
       "id": "zh/portfolio/infrastructure-series",
@@ -122,9 +150,9 @@
       "val": 1,
       "desc": "专注于解决多节点、跨地域服务器的统一管理与远程运维问题，打造高可用的 WebSSH 解决方案。",
       "filePath": "portfolio/zh/infrastructure-series.md",
-      "x": -103.3,
-      "y": 149.7,
-      "z": -118.6
+      "x": -212.5,
+      "y": -40.3,
+      "z": -98.1
     },
     {
       "id": "en/portfolio/wasker-series",
@@ -136,9 +164,9 @@
       "val": 1,
       "desc": "Personal portfolio solutions pursuing the ultimate fusion of Markdown and modern frontend frameworks.",
       "filePath": "portfolio/en/wasker-series.md",
-      "x": 91.6,
-      "y": 123.7,
-      "z": 145.7
+      "x": 145.8,
+      "y": -195.8,
+      "z": -16.6
     },
     {
       "id": "en/portfolio/tricys-series",
@@ -150,9 +178,9 @@
       "val": 1,
       "desc": "Integrated simulation system for fusion tritium fuel cycle based on OpenModelica, achieving a full-loop from physical modeling to cross-platform Web monitoring.",
       "filePath": "portfolio/en/tricys-series.md",
-      "x": 116.5,
-      "y": -184,
-      "z": -11.5
+      "x": -69.1,
+      "y": 185.1,
+      "z": -129
     },
     {
       "id": "en/portfolio/infrastructure-series",
@@ -164,9 +192,9 @@
       "val": 1,
       "desc": "Focused on unified management and remote maintenance of multi-node, cross-region servers, building high-availability WebSSH solutions.",
       "filePath": "portfolio/en/infrastructure-series.md",
-      "x": -103.3,
-      "y": 149.7,
-      "z": -118.6
+      "x": -212.5,
+      "y": -40.3,
+      "z": -98.1
     }
   ],
   "links": []
