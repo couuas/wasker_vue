@@ -4,7 +4,6 @@ title: "授权、职责与边界：AI 工程师的“入职宣言”"
 date: 2026-02-13
 tags: ["Vision", "Agent", "Risk-Management", "Engineering"]
 description: "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。"
-category: "Strategic Guidelines"
 ---
 category: "Strategic Guidelines"
 

@@ -4,7 +4,6 @@ title: "Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto"
 date: 2026-02-13
 tags: ["Vision", "Agent", "Risk-Management", "Engineering"]
 description: "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability."
-category: "Strategic Guidelines"
 ---
 category: "Strategic Guidelines"
 
