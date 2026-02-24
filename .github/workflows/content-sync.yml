@@ -1,0 +1,29 @@
+name: Sync Content and Build
+on:
+  repository_dispatch:
+    types: [ content_updated ]
+permissions:
+  contents: write
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PAT_TOKEN || github.token }}
+          fetch-depth: 0
+
+      - name: Update Submodule
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git submodule update --remote src/content
+          git add src/content
+          if git diff --cached --quiet; then
+            echo "No changes in content submodule"
+          else
+            git commit -m "chore: update content submodule to latest"
+            git push
+          fi
