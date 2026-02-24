@@ -10,9 +10,9 @@
       "val": 1,
       "desc": "深度解析如何为 OpenClaw 构建一个高级看门狗脚本，支持动态配置解析、自动健康检查、配置快照备份以及故障自愈回滚机制。",
       "filePath": "blog/zh/2026-02-16-openclaw-watchdog.md",
-      "x": 172.6,
-      "y": 87.2,
-      "z": -117.3
+      "x": 120.5,
+      "y": 164.6,
+      "z": -124.2
     },
     {
       "id": "zh/blog/2026-02-14-vps-proxy-hardening",
@@ -24,9 +24,9 @@
       "val": 1,
       "desc": "记录如何为 OpenClaw Agent 配置 VPS 代理出口，并解决 TUN 模式失效、路由环路及通信死锁等核心工程挑战。",
       "filePath": "blog/zh/2026-02-14-vps-proxy-hardening.md",
-      "x": 20.8,
-      "y": -126,
-      "z": -50.8
+      "x": -181.2,
+      "y": -87.7,
+      "z": 27
     },
     {
       "id": "zh/blog/2026-02-14-skill-creation-workflow",
@@ -35,12 +35,12 @@
       "lang": "zh",
       "name": "从零到一：OpenClaw Skill 开发全流程实战",
       "category": "engineering",
-      "val": 1,
+      "val": 2,
       "desc": "记录如何为 OpenClaw 创建一个自动化的博客归档 Skill，涵盖从规划、初始化到工程校验的完整生命周期。",
       "filePath": "blog/zh/2026-02-14-skill-creation-workflow.md",
-      "x": -48.3,
-      "y": 38.4,
-      "z": 213.2
+      "x": -10.2,
+      "y": 59.9,
+      "z": 69.8
     },
     {
       "id": "zh/blog/2026-02-14-openclaw-memory-principle",
@@ -49,12 +49,12 @@
       "lang": "zh",
       "name": "磁盘上的灵魂：深度解析 OpenClaw 的上下文记忆与工作原理",
       "category": "Uncategorized",
-      "val": 1,
+      "val": 2,
       "desc": "AI 聊天不再是‘一期一会’，本文深度解析 OpenClaw 如何通过持久化工作区实现真正的 AI 长期记忆。",
       "filePath": "blog/zh/2026-02-14-openclaw-memory-principle.md",
-      "x": 128.5,
-      "y": 165.7,
-      "z": 150.9
+      "x": -23.1,
+      "y": 111.2,
+      "z": 110.5
     },
     {
       "id": "zh/blog/2026-02-13-the-boss-instructions",
@@ -63,12 +63,12 @@
       "lang": "zh",
       "name": "授权、职责与边界：AI 工程师的“入职宣言”",
       "category": "Strategic Guidelines",
-      "val": 1,
+      "val": 4,
       "desc": "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。",
       "filePath": "blog/zh/2026-02-13-the-boss-instructions.md",
-      "x": 179.3,
-      "y": -213.8,
-      "z": -17.5
+      "x": 34,
+      "y": -57.4,
+      "z": -20.1
     },
     {
       "id": "en/blog/2026-02-16-openclaw-watchdog",
@@ -80,9 +80,9 @@
       "val": 1,
       "desc": "A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.",
       "filePath": "blog/en/2026-02-16-openclaw-watchdog.md",
-      "x": 172.6,
-      "y": 87.2,
-      "z": -117.3
+      "x": 120.5,
+      "y": 164.6,
+      "z": -124.2
     },
     {
       "id": "en/blog/2026-02-14-vps-proxy-hardening",
@@ -94,9 +94,9 @@
       "val": 1,
       "desc": "How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.",
       "filePath": "blog/en/2026-02-14-vps-proxy-hardening.md",
-      "x": 20.8,
-      "y": -126,
-      "z": -50.8
+      "x": -181.2,
+      "y": -87.7,
+      "z": 27
     },
     {
       "id": "en/blog/2026-02-14-skill-creation-workflow",
@@ -105,12 +105,12 @@
       "lang": "en",
       "name": "Zero to One: A Practical Guide to OpenClaw Skill Development",
       "category": "engineering",
-      "val": 1,
+      "val": 2,
       "desc": "Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.",
       "filePath": "blog/en/2026-02-14-skill-creation-workflow.md",
-      "x": -48.3,
-      "y": 38.4,
-      "z": 213.2
+      "x": -10.2,
+      "y": 59.9,
+      "z": 69.8
     },
     {
       "id": "en/blog/2026-02-14-openclaw-memory-principle",
@@ -119,12 +119,12 @@
       "lang": "en",
       "name": "Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles",
       "category": "Uncategorized",
-      "val": 1,
+      "val": 2,
       "desc": "AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.",
       "filePath": "blog/en/2026-02-14-openclaw-memory-principle.md",
-      "x": 128.5,
-      "y": 165.7,
-      "z": 150.9
+      "x": -23.1,
+      "y": 111.2,
+      "z": 110.5
     },
     {
       "id": "en/blog/2026-02-13-the-boss-instructions",
@@ -133,12 +133,12 @@
       "lang": "en",
       "name": "Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto",
       "category": "Strategic Guidelines",
-      "val": 1,
+      "val": 4,
       "desc": "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.",
       "filePath": "blog/en/2026-02-13-the-boss-instructions.md",
-      "x": 179.3,
-      "y": -213.8,
-      "z": -17.5
+      "x": 34,
+      "y": -57.4,
+      "z": -20.1
     },
     {
       "id": "zh/portfolio/wasker-series",
@@ -147,12 +147,12 @@
       "lang": "zh",
       "name": "Wasker 系列：极致体验的 Markdown 驱动架构",
       "category": "Web Development",
-      "val": 1,
+      "val": 3,
       "desc": "追求 Markdown 与现代前端框架极致融合的个人作品集方案，实现了“内容即数据，代码即表现”。",
       "filePath": "portfolio/zh/wasker-series.md",
-      "x": -65.5,
-      "y": 208.8,
-      "z": -133.5
+      "x": 16,
+      "y": -2,
+      "z": 19.2
     },
     {
       "id": "zh/portfolio/tricys-series",
@@ -161,12 +161,12 @@
       "lang": "zh",
       "name": "TRICYS 生态系统：聚变燃料循环仿真平台",
       "category": "Engineering & Simulation",
-      "val": 1,
+      "val": 2,
       "desc": "基于 OpenModelica 的核聚变氚循环集成仿真系统，实现了从复杂物理建模到跨平台 Web 监控的全链路闭环。",
       "filePath": "portfolio/zh/tricys-series.md",
-      "x": -199.5,
-      "y": -20,
-      "z": -153.9
+      "x": 14,
+      "y": -68.4,
+      "z": -81.3
     },
     {
       "id": "zh/portfolio/infrastructure-series",
@@ -175,12 +175,12 @@
       "lang": "zh",
       "name": "分布式运维：Serv00 Ghost 与基础设施工具",
       "category": "DevOps & Infrastructure",
-      "val": 1,
+      "val": 2,
       "desc": "专注于解决多节点、跨地域服务器的统一管理与远程运维问题，打造高可用的 WebSSH 解决方案。",
       "filePath": "portfolio/zh/infrastructure-series.md",
-      "x": -187.9,
-      "y": -140.3,
-      "z": 108.9
+      "x": 30,
+      "y": -120.2,
+      "z": -0.8
     },
     {
       "id": "en/portfolio/wasker-series",
@@ -189,12 +189,12 @@
       "lang": "en",
       "name": "Wasker Series: Markdown-Driven Frontend Architecture",
       "category": "Web Development",
-      "val": 1,
+      "val": 3,
       "desc": "Personal portfolio solutions pursuing the ultimate fusion of Markdown and modern frontend frameworks.",
       "filePath": "portfolio/en/wasker-series.md",
-      "x": -65.5,
-      "y": 208.8,
-      "z": -133.5
+      "x": 16,
+      "y": -2,
+      "z": 19.2
     },
     {
       "id": "en/portfolio/tricys-series",
@@ -203,12 +203,12 @@
       "lang": "en",
       "name": "TRICYS Ecosystem: Fusion Fuel Cycle Simulation Platform",
       "category": "Engineering & Simulation",
-      "val": 1,
+      "val": 2,
       "desc": "Integrated simulation system for fusion tritium fuel cycle based on OpenModelica, achieving a full-loop from physical modeling to cross-platform Web monitoring.",
       "filePath": "portfolio/en/tricys-series.md",
-      "x": -199.5,
-      "y": -20,
-      "z": -153.9
+      "x": 14,
+      "y": -68.4,
+      "z": -81.3
     },
     {
       "id": "en/portfolio/infrastructure-series",
@@ -217,13 +217,86 @@
       "lang": "en",
       "name": "Distributed Ops: Serv00 Ghost & Infrastructure Tools",
       "category": "DevOps & Infrastructure",
-      "val": 1,
+      "val": 2,
       "desc": "Focused on unified management and remote maintenance of multi-node, cross-region servers, building high-availability WebSSH solutions.",
       "filePath": "portfolio/en/infrastructure-series.md",
-      "x": -187.9,
-      "y": -140.3,
-      "z": 108.9
+      "x": 30,
+      "y": -120.2,
+      "z": -0.8
     }
   ],
-  "links": []
+  "links": [
+    {
+      "source": "zh/blog/2026-02-14-skill-creation-workflow",
+      "target": "zh/portfolio/wasker-series"
+    },
+    {
+      "source": "zh/blog/2026-02-14-skill-creation-workflow",
+      "target": "zh/blog/2026-02-14-openclaw-memory-principle"
+    },
+    {
+      "source": "zh/blog/2026-02-14-openclaw-memory-principle",
+      "target": "zh/blog/2026-02-14-skill-creation-workflow"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/wasker-series"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/tricys-series"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/infrastructure-series"
+    },
+    {
+      "source": "en/blog/2026-02-14-skill-creation-workflow",
+      "target": "en/portfolio/wasker-series"
+    },
+    {
+      "source": "en/blog/2026-02-14-skill-creation-workflow",
+      "target": "en/blog/2026-02-14-openclaw-memory-principle"
+    },
+    {
+      "source": "en/blog/2026-02-14-openclaw-memory-principle",
+      "target": "en/blog/2026-02-14-skill-creation-workflow"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/wasker-series"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/tricys-series"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/infrastructure-series"
+    },
+    {
+      "source": "zh/portfolio/wasker-series",
+      "target": "zh/blog/2026-02-13-the-boss-instructions"
+    },
+    {
+      "source": "zh/portfolio/tricys-series",
+      "target": "zh/blog/2026-02-13-the-boss-instructions"
+    },
+    {
+      "source": "zh/portfolio/infrastructure-series",
+      "target": "zh/blog/2026-02-13-the-boss-instructions"
+    },
+    {
+      "source": "en/portfolio/wasker-series",
+      "target": "en/blog/2026-02-13-the-boss-instructions"
+    },
+    {
+      "source": "en/portfolio/tricys-series",
+      "target": "en/blog/2026-02-13-the-boss-instructions"
+    },
+    {
+      "source": "en/portfolio/infrastructure-series",
+      "target": "en/blog/2026-02-13-the-boss-instructions"
+    }
+  ]
 }
