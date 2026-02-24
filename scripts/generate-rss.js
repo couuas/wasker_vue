@@ -14,6 +14,7 @@ const OUTPUT_FILE = path.join(PUBLIC_DIR, 'rss.xml');
 // Recursive function to get all markdown files
 function getFiles(dir) {
     let results = [];
+    if (!fs.existsSync(dir)) return [];
     const list = fs.readdirSync(dir);
     list.forEach(file => {
         file = path.join(dir, file);
