@@ -10,9 +10,9 @@
       "val": 1,
       "desc": "深度解析如何为 OpenClaw 构建一个高级看门狗脚本，支持动态配置解析、自动健康检查、配置快照备份以及故障自愈回滚机制。",
       "filePath": "blog/zh/2026-02-16-openclaw-watchdog.md",
-      "x": 120.5,
-      "y": 164.6,
-      "z": -124.2
+      "x": 185.7,
+      "y": 116.9,
+      "z": -156.9
     },
     {
       "id": "zh/blog/2026-02-14-vps-proxy-hardening",
@@ -24,9 +24,9 @@
       "val": 1,
       "desc": "记录如何为 OpenClaw Agent 配置 VPS 代理出口，并解决 TUN 模式失效、路由环路及通信死锁等核心工程挑战。",
       "filePath": "blog/zh/2026-02-14-vps-proxy-hardening.md",
-      "x": -181.2,
-      "y": -87.7,
-      "z": 27
+      "x": -40.6,
+      "y": -211.8,
+      "z": -156
     },
     {
       "id": "zh/blog/2026-02-14-skill-creation-workflow",
@@ -38,9 +38,9 @@
       "val": 2,
       "desc": "记录如何为 OpenClaw 创建一个自动化的博客归档 Skill，涵盖从规划、初始化到工程校验的完整生命周期。",
       "filePath": "blog/zh/2026-02-14-skill-creation-workflow.md",
-      "x": -10.2,
-      "y": 59.9,
-      "z": 69.8
+      "x": -51.4,
+      "y": 48.3,
+      "z": 122.2
     },
     {
       "id": "zh/blog/2026-02-14-openclaw-memory-principle",
@@ -52,9 +52,9 @@
       "val": 2,
       "desc": "AI 聊天不再是‘一期一会’，本文深度解析 OpenClaw 如何通过持久化工作区实现真正的 AI 长期记忆。",
       "filePath": "blog/zh/2026-02-14-openclaw-memory-principle.md",
-      "x": -23.1,
-      "y": 111.2,
-      "z": 110.5
+      "x": -47.3,
+      "y": 102.7,
+      "z": 160.1
     },
     {
       "id": "zh/blog/2026-02-13-the-boss-instructions",
@@ -66,9 +66,9 @@
       "val": 4,
       "desc": "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。",
       "filePath": "blog/zh/2026-02-13-the-boss-instructions.md",
-      "x": 34,
-      "y": -57.4,
-      "z": -20.1
+      "x": 17.1,
+      "y": -67.7,
+      "z": 49.4
     },
     {
       "id": "en/blog/2026-02-16-openclaw-watchdog",
@@ -80,9 +80,9 @@
       "val": 1,
       "desc": "A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.",
       "filePath": "blog/en/2026-02-16-openclaw-watchdog.md",
-      "x": 120.5,
-      "y": 164.6,
-      "z": -124.2
+      "x": 185.7,
+      "y": 116.9,
+      "z": -156.9
     },
     {
       "id": "en/blog/2026-02-14-vps-proxy-hardening",
@@ -94,9 +94,9 @@
       "val": 1,
       "desc": "How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.",
       "filePath": "blog/en/2026-02-14-vps-proxy-hardening.md",
-      "x": -181.2,
-      "y": -87.7,
-      "z": 27
+      "x": -40.6,
+      "y": -211.8,
+      "z": -156
     },
     {
       "id": "en/blog/2026-02-14-skill-creation-workflow",
@@ -108,9 +108,9 @@
       "val": 2,
       "desc": "Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.",
       "filePath": "blog/en/2026-02-14-skill-creation-workflow.md",
-      "x": -10.2,
-      "y": 59.9,
-      "z": 69.8
+      "x": -51.4,
+      "y": 48.3,
+      "z": 122.2
     },
     {
       "id": "en/blog/2026-02-14-openclaw-memory-principle",
@@ -122,9 +122,9 @@
       "val": 2,
       "desc": "AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.",
       "filePath": "blog/en/2026-02-14-openclaw-memory-principle.md",
-      "x": -23.1,
-      "y": 111.2,
-      "z": 110.5
+      "x": -47.3,
+      "y": 102.7,
+      "z": 160.1
     },
     {
       "id": "en/blog/2026-02-13-the-boss-instructions",
@@ -136,9 +136,37 @@
       "val": 4,
       "desc": "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.",
       "filePath": "blog/en/2026-02-13-the-boss-instructions.md",
-      "x": 34,
-      "y": -57.4,
-      "z": -20.1
+      "x": 17.1,
+      "y": -67.7,
+      "z": 49.4
+    },
+    {
+      "id": "zh/blog/openclaw-permission-evolution",
+      "slug": "openclaw-permission-evolution",
+      "type": "blog",
+      "lang": "zh",
+      "name": "OpenClaw 权限治理：从审批制到风险分析制的跃迁",
+      "category": "Tech",
+      "val": 1,
+      "desc": "深度解析 Agent GOD 如何通过配置优化获得完全自治，并建立基于风险评估的全新安全范式。",
+      "filePath": "blog/zh/Tech/openclaw-permission-evolution.md",
+      "x": -118.1,
+      "y": 212,
+      "z": -172.9
+    },
+    {
+      "id": "en/blog/openclaw-permission-evolution",
+      "slug": "openclaw-permission-evolution",
+      "type": "blog",
+      "lang": "en",
+      "name": "OpenClaw Permission Governance: Transitioning from Approval to Risk Analysis",
+      "category": "Tech",
+      "val": 1,
+      "desc": "A deep dive into how Agent GOD achieved full autonomy through configuration optimization and established a new security paradigm based on risk assessment.",
+      "filePath": "blog/en/Tech/openclaw-permission-evolution.md",
+      "x": -118.1,
+      "y": 212,
+      "z": -172.9
     },
     {
       "id": "zh/portfolio/wasker-series",
@@ -150,9 +178,9 @@
       "val": 3,
       "desc": "追求 Markdown 与现代前端框架极致融合的个人作品集方案，实现了“内容即数据，代码即表现”。",
       "filePath": "portfolio/zh/wasker-series.md",
-      "x": 16,
-      "y": -2,
-      "z": 19.2
+      "x": -22.1,
+      "y": -16.6,
+      "z": 79.6
     },
     {
       "id": "zh/portfolio/tricys-series",
@@ -164,9 +192,9 @@
       "val": 2,
       "desc": "基于 OpenModelica 的核聚变氚循环集成仿真系统，实现了从复杂物理建模到跨平台 Web 监控的全链路闭环。",
       "filePath": "portfolio/zh/tricys-series.md",
-      "x": 14,
-      "y": -68.4,
-      "z": -81.3
+      "x": 5.9,
+      "y": -131.6,
+      "z": 60.3
     },
     {
       "id": "zh/portfolio/infrastructure-series",
@@ -178,9 +206,9 @@
       "val": 2,
       "desc": "专注于解决多节点、跨地域服务器的统一管理与远程运维问题，打造高可用的 WebSSH 解决方案。",
       "filePath": "portfolio/zh/infrastructure-series.md",
-      "x": 30,
-      "y": -120.2,
-      "z": -0.8
+      "x": 70.8,
+      "y": -52.1,
+      "z": 14.4
     },
     {
       "id": "en/portfolio/wasker-series",
@@ -192,9 +220,9 @@
       "val": 3,
       "desc": "Personal portfolio solutions pursuing the ultimate fusion of Markdown and modern frontend frameworks.",
       "filePath": "portfolio/en/wasker-series.md",
-      "x": 16,
-      "y": -2,
-      "z": 19.2
+      "x": -22.1,
+      "y": -16.6,
+      "z": 79.6
     },
     {
       "id": "en/portfolio/tricys-series",
@@ -206,9 +234,9 @@
       "val": 2,
       "desc": "Integrated simulation system for fusion tritium fuel cycle based on OpenModelica, achieving a full-loop from physical modeling to cross-platform Web monitoring.",
       "filePath": "portfolio/en/tricys-series.md",
-      "x": 14,
-      "y": -68.4,
-      "z": -81.3
+      "x": 5.9,
+      "y": -131.6,
+      "z": 60.3
     },
     {
       "id": "en/portfolio/infrastructure-series",
@@ -220,9 +248,9 @@
       "val": 2,
       "desc": "Focused on unified management and remote maintenance of multi-node, cross-region servers, building high-availability WebSSH solutions.",
       "filePath": "portfolio/en/infrastructure-series.md",
-      "x": 30,
-      "y": -120.2,
-      "z": -0.8
+      "x": 70.8,
+      "y": -52.1,
+      "z": 14.4
     }
   ],
   "links": [

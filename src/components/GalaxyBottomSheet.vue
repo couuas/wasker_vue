@@ -49,7 +49,6 @@ const neighbors = computed(() => {
 function getLink(node) {
     if (!node) return '#';
     const { type, slug } = node;
-    if (type === 'friend') return '/friends';
     if (type === 'profile') return '/contact';
     return `/${type}/${slug}`; 
 }

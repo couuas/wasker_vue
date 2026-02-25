@@ -66,18 +66,6 @@ const route = useRoute()
             </li>
           </router-link>
 
-          <!-- Friends -->
-          <router-link to="/friends" custom v-slot="{ href, navigate, isExactActive }">
-            <li :class="{ 'mil-current': isExactActive }" @click="appStore.closeMenu">
-              <a :href="href" @click="navigate" :class="{ 'mil-active': isExactActive }">
-                <i class="fal fa-link"></i>
-                <span>
-                    Friends
-                </span>
-              </a>
-            </li>
-          </router-link>
-
           <!-- Contact -->
           <router-link to="/contact" custom v-slot="{ href, navigate, isExactActive }">
             <li :class="{ 'mil-current': isExactActive }" @click="appStore.closeMenu">
@@ -213,4 +201,3 @@ const route = useRoute()
     }
 }
 </style>
-
