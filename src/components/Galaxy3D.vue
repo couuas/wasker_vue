@@ -33,15 +33,16 @@ function getOrCreateNodeMaterial(category, isSelected = false) {
 
     const color = isSelected ? '#DBA91C' : getNodeColor(category);
     
-    // Create Texture
-    let texture = textureCache.get(color);
+    // Create Texture with "Glitch" influence
+    let texture = textureCache.get(`${color}-${isSelected}`);
     if (!texture) {
         const canvas = document.createElement('canvas');
         canvas.width = 64;
         canvas.height = 64;
         const context = canvas.getContext('2d');
-        const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
         
+        // Base Glow
+        const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
         gradient.addColorStop(0, color);
         gradient.addColorStop(0.2, color);
         gradient.addColorStop(0.5, 'rgba(' + hexToRgb(color) + ', 0.3)');
@@ -49,8 +50,22 @@ function getOrCreateNodeMaterial(category, isSelected = false) {
         
         context.fillStyle = gradient;
         context.fillRect(0, 0, 64, 64);
+
+        // Subtle Glitch Lines for selected nodes
+        if (isSelected) {
+            context.strokeStyle = '#ffffff';
+            context.lineWidth = 1;
+            for(let i=0; i<3; i++) {
+                const y = Math.random() * 64;
+                context.beginPath();
+                context.moveTo(10, y);
+                context.lineTo(54, y);
+                context.stroke();
+            }
+        }
+        
         texture = new THREE.CanvasTexture(canvas);
-        textureCache.set(color, texture);
+        textureCache.set(`${color}-${isSelected}`, texture);
     }
 
     const material = new THREE.SpriteMaterial({ 
