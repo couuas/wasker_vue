@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { pulseEntropy } from '../utils/glitch'
 
 export const useMusicStore = defineStore('music', () => {
     // Audio element (single instance)
@@ -164,6 +165,11 @@ export const useMusicStore = defineStore('music', () => {
             console.log('Please click play button to start music')
         }
     }
+
+    // Effect: Pulse entropy on play/pause
+    watch(isPlaying, (val) => {
+        pulseEntropy(val ? 0.05 : -0.05)
+    })
 
     return {
         // State
