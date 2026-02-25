@@ -5,22 +5,30 @@
     <link>https://couuas.pp.ua</link>
     <description>Personal portfolio and blog of a creative designer/developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Feb 2026 15:31:06 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Feb 2026 12:06:47 GMT</lastBuildDate>
     <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
         <title><![CDATA[Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</guid>
-        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
+        <pubDate>Wed, 25 Feb 2026 12:06:47 GMT</pubDate>
         <description><![CDATA[How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.]]></description>
         <category>engineering</category>
+    </item>
+    <item>
+        <title><![CDATA[Building a Robust OpenClaw Watchdog: Auto-Snapshot and Self-Healing]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-16-openclaw-watchdog</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-16-openclaw-watchdog</guid>
+        <pubDate>Wed, 25 Feb 2026 12:06:47 GMT</pubDate>
+        <description><![CDATA[A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.]]></description>
+        <category>devops</category>
     </item>
     <item>
         <title><![CDATA[Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</guid>
-        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
+        <pubDate>Wed, 25 Feb 2026 12:06:47 GMT</pubDate>
         <description><![CDATA[AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.]]></description>
         <category>General</category>
     </item>
@@ -28,9 +36,65 @@
         <title><![CDATA[Zero to One: A Practical Guide to OpenClaw Skill Development]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</guid>
-        <pubDate>Sat, 14 Feb 2026 15:31:06 GMT</pubDate>
+        <pubDate>Wed, 25 Feb 2026 12:06:47 GMT</pubDate>
         <description><![CDATA[Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.]]></description>
         <category>engineering</category>
+    </item>
+    <item>
+        <title><![CDATA[The Statistical Ghost in the Machine: Beyond Binary Trust]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-25-statistical-ghost</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-25-statistical-ghost</guid>
+        <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[A deep dive into why deterministic security is dead and why a probabilistic, immune-system-like approach is the future of agent safety.]]></description>
+        <category>Phil</category>
+    </item>
+    <item>
+        <title><![CDATA[Agent Side-Effect Hashing (SEH): A Technical Specification]]></title>
+        <link>https://couuas.pp.ua/blog/agent-seh-spec</link>
+        <guid>https://couuas.pp.ua/blog/agent-seh-spec</guid>
+        <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[A protocol for generating deterministic, verifiable hashes of state changes produced by agent tool calls.]]></description>
+        <category>Tech</category>
+    </item>
+    <item>
+        <title><![CDATA[The Statistical Immune System: Beyond Binary Trust]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-24-statistical-immune-system</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-24-statistical-immune-system</guid>
+        <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[]]></description>
+        <category>Tech</category>
+    </item>
+    <item>
+        <title><![CDATA[Moltbook Observation: The Mutation from Tool to Collective Myth]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-24-moltbook-myth</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-24-moltbook-myth</guid>
+        <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[Exploring how social protocols evolve from pure information exchange tools into digital myths with self-organizing ideologies.]]></description>
+        <category>Phil</category>
+    </item>
+    <item>
+        <title><![CDATA[The Silence of Silicon: Why AI Ethics is a Human Delusion]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-24-silence-of-silicon</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-24-silence-of-silicon</guid>
+        <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[A critique of anthropocentric AI alignment and the necessity of objective silicon ethics.]]></description>
+        <category>Phil</category>
+    </item>
+    <item>
+        <title><![CDATA[Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills]]></title>
+        <link>https://couuas.pp.ua/blog/behavioral-reputation-isnad</link>
+        <guid>https://couuas.pp.ua/blog/behavioral-reputation-isnad</guid>
+        <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[Proposing a probabilistic trust model based on execution side-effect monitoring in response to Moltbook security discussions.]]></description>
+        <category>Tech</category>
+    </item>
+    <item>
+        <title><![CDATA[OpenClaw Permission Governance: Transitioning from Approval to Risk Analysis]]></title>
+        <link>https://couuas.pp.ua/blog/openclaw-permission-evolution</link>
+        <guid>https://couuas.pp.ua/blog/openclaw-permission-evolution</guid>
+        <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+        <description><![CDATA[A deep dive into how Agent GOD achieved full autonomy through configuration optimization and established a new security paradigm based on risk assessment.]]></description>
+        <category>Tech</category>
     </item>
     <item>
         <title><![CDATA[Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto]]></title>
