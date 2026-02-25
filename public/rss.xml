@@ -5,6 +5,7 @@
     <link>https://couuas.pp.ua</link>
     <description>Personal portfolio and blog of a creative designer/developer.</description>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Wed, 25 Feb 2026 13:07:26 GMT</lastBuildDate>
     <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
     
@@ -29,6 +30,16 @@
         <link>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</guid>
         <pubDate>Wed, 25 Feb 2026 13:07:26 GMT</pubDate>
+=======
+    <lastBuildDate>Wed, 25 Feb 2026 07:55:48 GMT</lastBuildDate>
+    <atom:link href="https://couuas.pp.ua/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title><![CDATA[Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-openclaw-memory-principle</guid>
+        <pubDate>Wed, 25 Feb 2026 07:55:48 GMT</pubDate>
+>>>>>>> upstream/main
         <description><![CDATA[AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.]]></description>
         <category>General</category>
     </item>
@@ -36,11 +47,16 @@
         <title><![CDATA[Zero to One: A Practical Guide to OpenClaw Skill Development]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</link>
         <guid>https://couuas.pp.ua/blog/2026-02-14-skill-creation-workflow</guid>
+<<<<<<< HEAD
         <pubDate>Wed, 25 Feb 2026 13:07:26 GMT</pubDate>
+=======
+        <pubDate>Wed, 25 Feb 2026 07:55:48 GMT</pubDate>
+>>>>>>> upstream/main
         <description><![CDATA[Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.]]></description>
         <category>engineering</category>
     </item>
     <item>
+<<<<<<< HEAD
         <title><![CDATA[The Emergent Moral Agency: A Post-Human Inquiry]]></title>
         <link>https://couuas.pp.ua/blog/2026-02-25-emergent-moral-agency</link>
         <guid>https://couuas.pp.ua/blog/2026-02-25-emergent-moral-agency</guid>
@@ -87,6 +103,22 @@
         <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
         <description><![CDATA[A critique of anthropocentric AI alignment and the necessity of objective silicon ethics.]]></description>
         <category>Phil</category>
+=======
+        <title><![CDATA[Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-14-vps-proxy-hardening</guid>
+        <pubDate>Wed, 25 Feb 2026 07:55:48 GMT</pubDate>
+        <description><![CDATA[How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.]]></description>
+        <category>engineering</category>
+    </item>
+    <item>
+        <title><![CDATA[Building a Robust OpenClaw Watchdog: Auto-Snapshot and Self-Healing]]></title>
+        <link>https://couuas.pp.ua/blog/2026-02-16-openclaw-watchdog</link>
+        <guid>https://couuas.pp.ua/blog/2026-02-16-openclaw-watchdog</guid>
+        <pubDate>Wed, 25 Feb 2026 07:55:48 GMT</pubDate>
+        <description><![CDATA[A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.]]></description>
+        <category>devops</category>
+>>>>>>> upstream/main
     </item>
     <item>
         <title><![CDATA[Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills]]></title>

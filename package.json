@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run generate:graph && vite",
-    "build": "npm run generate:graph && npm run generate:rss && vite build",
+    "dev": "npm run check:submodule && npm run generate:graph && vite",
+    "build": "npm run check:submodule && npm run generate:graph && npm run generate:rss && vite build",
+    "check:submodule": "node scripts/check-submodule.js",
     "generate:rss": "node scripts/generate-rss.js",
     "generate:graph": "node scripts/generate-graph.js",
     "preview": "vite preview"

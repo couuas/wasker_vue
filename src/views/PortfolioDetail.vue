@@ -20,46 +20,50 @@ const initMarkdown = async () => {
 }
 
 const initMermaid = async () => {
-    if (!mermaid) {
-        const m = await import('mermaid');
-        mermaid = m.default;
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: 'base',
-            themeVariables: {
-                darkMode: true,
-                fontFamily: '"Outfit", sans-serif',
-                fontSize: '14px',
-                // Node Styling
-                primaryColor: '#FFFFFF',
-                primaryTextColor: '#121212',
-                primaryBorderColor: '#DBA91C',
-                nodeBorder: '#DBA91C',
-                mainBkg: '#FFFFFF',
-                rectRadius: '8',
-                // Edge / Line Styling
-                lineColor: '#DBA91C',
-                defaultLinkColor: '#DBA91C',
-                // Edge Label Styling
-                edgeLabelBackground: '#DBA91C',
-                labelTextColor: '#121212',
-                // Cluster / Group Styling
-                clusterBkg: 'rgba(255, 255, 255, 0.05)',
-                clusterBorder: '#444444',
-                // Secondary / Tertiary
-                secondaryColor: '#DBA91C',
-                tertiaryColor: '#1A1A1A',
-                // Other
-                titleColor: '#E0E0E0',
-            },
-            flowchart: {
-                htmlLabels: true,
-                curve: 'basis',
-            },
-            securityLevel: 'loose',
-        });
+    try {
+        if (!mermaid) {
+            const m = await import('mermaid');
+            mermaid = m.default;
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    darkMode: true,
+                    fontFamily: '"Outfit", sans-serif',
+                    fontSize: '14px',
+                    // Node Styling
+                    primaryColor: '#FFFFFF',
+                    primaryTextColor: '#121212',
+                    primaryBorderColor: '#DBA91C',
+                    nodeBorder: '#DBA91C',
+                    mainBkg: '#FFFFFF',
+                    rectRadius: '8',
+                    // Edge / Line Styling
+                    lineColor: '#DBA91C',
+                    defaultLinkColor: '#DBA91C',
+                    // Edge Label Styling
+                    edgeLabelBackground: '#DBA91C',
+                    labelTextColor: '#121212',
+                    // Cluster / Group Styling
+                    clusterBkg: 'rgba(255, 255, 255, 0.05)',
+                    clusterBorder: '#444444',
+                    // Secondary / Tertiary
+                    secondaryColor: '#DBA91C',
+                    tertiaryColor: '#1A1A1A',
+                    // Other
+                    titleColor: '#E0E0E0',
+                },
+                flowchart: {
+                    htmlLabels: true,
+                    curve: 'basis',
+                },
+                securityLevel: 'loose',
+            });
+        }
+        await mermaid.run();
+    } catch (e) {
+        console.warn('[Mermaid] Init failed:', e);
     }
-    await mermaid.run();
 };
 
 
@@ -93,6 +97,18 @@ const toggleLang = () => {
 const renderedBody = computed(() => {
     return (work.value && md.value) ? md.value.render(work.value.body) : ''
 })
+
+const formattedDate = computed(() => {
+    if (!work.value || !work.value.date) return '';
+    const d = new Date(work.value.date);
+    return isNaN(d.getTime()) 
+        ? work.value.date 
+        : d.toLocaleDateString(currentLang.value === 'zh' ? 'zh-CN' : 'en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+});
 
 // TOC Extraction
 const toc = computed(() => {
@@ -298,11 +314,11 @@ onUpdated(() => {
                         <div class="mil-divider mil-mb-60 mil-up"></div>
 
                         <div class="row">
-                            <div class="col-6 mil-up" v-if="work.client">
+                            <div class="col-xs-12 col-sm-6 mil-up mil-mb-15" v-if="work.client">
                                 <div class="mil-link"><span class="mil-accent">client:</span> {{ work.client }}</div>
                             </div>
-                            <div class="col-6 mil-jce mil-up" v-if="work.date">
-                                <div class="mil-link"><span class="mil-accent">date:</span> {{ work.date }}</div>
+                            <div class="col-xs-12 col-sm-6 mil-jce mil-m-jcs mil-up mil-mb-15" v-if="work.date">
+                                <div class="mil-link"><span class="mil-accent">date:</span> {{ formattedDate }}</div>
                             </div>
                         </div>
                         
@@ -850,6 +866,11 @@ onUpdated(() => {
     .mil-prev-nav .mil-link i,
     .mil-next-nav .mil-link i {
         margin: 0 !important;
+    }
+
+    .mil-project-description .mil-link {
+        white-space: normal;
+        line-height: 1.4;
     }
 }
 </style>

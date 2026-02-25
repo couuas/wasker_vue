@@ -34,9 +34,17 @@
 ### Installation
 
 ```bash
+# Clone the repository with submodules
+git clone --recurse-submodules https://github.com/couuas/wasker_vue.git
+
+# Or if already cloned, initialize the submodule
+git submodule update --init --recursive
+
 # Install dependencies
 npm install
 ```
+
+> **Important**: The `src/content` directory is a git submodule. You must initialize it before building or running the development server.
 
 ### Development
 
@@ -55,7 +63,9 @@ npm run build
 
 ## 📂 Content Management
 
-All content lives in the `src/content/` directory.
+All content lives in the `src/content/` directory (managed as a **git submodule** from [wasker_content](https://github.com/couuas/wasker_content)).
+
+> **Note**: The content is stored in a separate repository as a submodule. Make sure to initialize it with `git submodule update --init --recursive` before development.
 
 ### 1. **Profile Configuration**
 Edit `src/content/profile/profile.md` to update your personal info without touching Vue code.

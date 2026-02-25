@@ -20,47 +20,50 @@ const initMarkdown = async () => {
 }
 
 const initMermaid = async () => {
-
-    if (!mermaid) {
-        const m = await import('mermaid');
-        mermaid = m.default;
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: 'base',
-            themeVariables: {
-                darkMode: true,
-                fontFamily: '"Outfit", sans-serif',
-                fontSize: '14px',
-                // Node Styling
-                primaryColor: '#FFFFFF',
-                primaryTextColor: '#121212',
-                primaryBorderColor: '#DBA91C',
-                nodeBorder: '#DBA91C',
-                mainBkg: '#FFFFFF',
-                rectRadius: '8',
-                // Edge / Line Styling
-                lineColor: '#DBA91C',
-                defaultLinkColor: '#DBA91C',
-                // Edge Label Styling
-                edgeLabelBackground: '#DBA91C',
-                labelTextColor: '#121212',
-                // Cluster / Group Styling
-                clusterBkg: 'rgba(255, 255, 255, 0.05)',
-                clusterBorder: '#444444',
-                // Secondary / Tertiary
-                secondaryColor: '#DBA91C',
-                tertiaryColor: '#1A1A1A',
-                // Other
-                titleColor: '#E0E0E0',
-            },
-            flowchart: {
-                htmlLabels: true,
-                curve: 'basis',
-            },
-            securityLevel: 'loose',
-        });
+    try {
+        if (!mermaid) {
+            const m = await import('mermaid');
+            mermaid = m.default;
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    darkMode: true,
+                    fontFamily: '"Outfit", sans-serif',
+                    fontSize: '14px',
+                    // Node Styling
+                    primaryColor: '#FFFFFF',
+                    primaryTextColor: '#121212',
+                    primaryBorderColor: '#DBA91C',
+                    nodeBorder: '#DBA91C',
+                    mainBkg: '#FFFFFF',
+                    rectRadius: '8',
+                    // Edge / Line Styling
+                    lineColor: '#DBA91C',
+                    defaultLinkColor: '#DBA91C',
+                    // Edge Label Styling
+                    edgeLabelBackground: '#DBA91C',
+                    labelTextColor: '#121212',
+                    // Cluster / Group Styling
+                    clusterBkg: 'rgba(255, 255, 255, 0.05)',
+                    clusterBorder: '#444444',
+                    // Secondary / Tertiary
+                    secondaryColor: '#DBA91C',
+                    tertiaryColor: '#1A1A1A',
+                    // Other
+                    titleColor: '#E0E0E0',
+                },
+                flowchart: {
+                    htmlLabels: true,
+                    curve: 'basis',
+                },
+                securityLevel: 'loose',
+            });
+        }
+        await mermaid.run();
+    } catch (e) {
+        console.warn('[Mermaid] Init failed:', e);
     }
-    await mermaid.run();
 };
 
 
