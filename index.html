@@ -13,6 +13,13 @@
 <body>
   <div id="app"></div>
 
+  <!-- Shim: prevent mermaid/core-js crash in CI builds -->
+  <script>
+    if (typeof globalThis !== 'undefined' && !globalThis['__core-js_shared__']) {
+      globalThis['__core-js_shared__'] = {};
+    }
+  </script>
+
   <script type="module" src="/src/main.js"></script>
 
   <script>
