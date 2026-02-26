@@ -2216,7 +2216,7 @@ main menu
 
 .mil-main-menu ul li {
   list-style-type: none;
-  margin-bottom: 3rem;
+  margin-bottom: 0.8rem;
 }
 
 .mil-main-menu ul li:last-child {
