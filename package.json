@@ -9,7 +9,10 @@
     "check:submodule": "node scripts/check-submodule.js",
     "generate:rss": "node scripts/generate-rss.js",
     "generate:graph": "node scripts/generate-graph.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@fancyapps/ui": "^6.1.7",
@@ -30,11 +33,15 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
     "d3-force-3d": "^3.0.6",
     "glob": "^13.0.6",
     "gray-matter": "^4.0.3",
+    "jsdom": "^28.1.0",
     "rollup-plugin-visualizer": "^6.0.5",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vitest": "^4.0.18"
   }
 }

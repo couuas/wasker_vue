@@ -4,7 +4,11 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 // import md from '@/utils/markdown'
 const md = shallowRef(null)
-import SimplePdfViewer from '@/components/SimplePdfViewer.vue'
+import { defineAsyncComponent } from 'vue'
+// Lazy-load SimplePdfViewer to reduce initial bundle size
+const SimplePdfViewer = defineAsyncComponent(() =>
+  import('@/components/SimplePdfViewer.vue')
+)
 import { useAppStore } from '@/stores/app'
 import { storeToRefs } from 'pinia'
 // Dynamic import of mermaid
