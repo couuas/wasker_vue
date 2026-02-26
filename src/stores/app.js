@@ -59,7 +59,6 @@ export const useAppStore = defineStore('app', () => {
         isLoading, setLoading,
         transitioning, setTransitioning,
         triggerAssistant, openAssistant,
-        triggerAssistant, openAssistant,
         currentLang, setLang, toggleLang,
         isFullScreen, toggleFullScreen
     }

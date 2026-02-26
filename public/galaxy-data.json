@@ -1,90 +1,6 @@
 {
   "nodes": [
     {
-      "id": "en/blog/2026-02-24-statistical-immune-system",
-      "slug": "2026-02-24-statistical-immune-system",
-      "type": "blog",
-      "lang": "en",
-      "name": "The Statistical Immune System: Beyond Binary Trust",
-      "category": "Tech",
-      "val": 1,
-      "desc": "",
-      "filePath": "blog/en/2026-02-24-statistical-immune-system.md",
-      "x": 363,
-      "y": 50.6,
-      "z": 7.2
-    },
-    {
-      "id": "en/blog/2026-02-16-openclaw-watchdog",
-      "slug": "2026-02-16-openclaw-watchdog",
-      "type": "blog",
-      "lang": "en",
-      "name": "Building a Robust OpenClaw Watchdog: Auto-Snapshot and Self-Healing",
-      "category": "devops",
-      "val": 1,
-      "desc": "A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.",
-      "filePath": "blog/en/2026-02-16-openclaw-watchdog.md",
-      "x": 11.5,
-      "y": -241.7,
-      "z": 143.3
-    },
-    {
-      "id": "en/blog/2026-02-14-vps-proxy-hardening",
-      "slug": "2026-02-14-vps-proxy-hardening",
-      "type": "blog",
-      "lang": "en",
-      "name": "Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures",
-      "category": "engineering",
-      "val": 1,
-      "desc": "How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.",
-      "filePath": "blog/en/2026-02-14-vps-proxy-hardening.md",
-      "x": -61.2,
-      "y": 1.3,
-      "z": 353.7
-    },
-    {
-      "id": "en/blog/2026-02-14-skill-creation-workflow",
-      "slug": "2026-02-14-skill-creation-workflow",
-      "type": "blog",
-      "lang": "en",
-      "name": "Zero to One: A Practical Guide to OpenClaw Skill Development",
-      "category": "engineering",
-      "val": 2,
-      "desc": "Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.",
-      "filePath": "blog/en/2026-02-14-skill-creation-workflow.md",
-      "x": 123.6,
-      "y": 8.8,
-      "z": 59.4
-    },
-    {
-      "id": "en/blog/2026-02-14-openclaw-memory-principle",
-      "slug": "2026-02-14-openclaw-memory-principle",
-      "type": "blog",
-      "lang": "en",
-      "name": "Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.",
-      "filePath": "blog/en/2026-02-14-openclaw-memory-principle.md",
-      "x": 159.1,
-      "y": -30.5,
-      "z": 101
-    },
-    {
-      "id": "en/blog/2026-02-13-the-boss-instructions",
-      "slug": "2026-02-13-the-boss-instructions",
-      "type": "blog",
-      "lang": "en",
-      "name": "Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto",
-      "category": "Strategic Guidelines",
-      "val": 4,
-      "desc": "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.",
-      "filePath": "blog/en/2026-02-13-the-boss-instructions.md",
-      "x": 44.3,
-      "y": 99.2,
-      "z": -44.2
-    },
-    {
       "id": "zh/blog/2026-02-24-statistical-immune-system",
       "slug": "2026-02-24-statistical-immune-system",
       "type": "blog",
@@ -169,116 +85,88 @@
       "z": -44.2
     },
     {
-      "id": "en/blog/openclaw-permission-evolution",
-      "slug": "openclaw-permission-evolution",
+      "id": "en/blog/2026-02-24-statistical-immune-system",
+      "slug": "2026-02-24-statistical-immune-system",
       "type": "blog",
       "lang": "en",
-      "name": "OpenClaw Permission Governance: Transitioning from Approval to Risk Analysis",
+      "name": "The Statistical Immune System: Beyond Binary Trust",
       "category": "Tech",
-      "val": 1,
-      "desc": "A deep dive into how Agent GOD achieved full autonomy through configuration optimization and established a new security paradigm based on risk assessment.",
-      "filePath": "blog/en/Tech/openclaw-permission-evolution.md",
-      "x": -340.2,
-      "y": -78,
-      "z": -40
-    },
-    {
-      "id": "en/blog/behavioral-reputation-system",
-      "slug": "behavioral-reputation-system",
-      "type": "blog",
-      "lang": "en",
-      "name": "Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills",
-      "category": "Tech",
-      "val": 1,
-      "desc": "Exploring the creation of a behavioral-based trust system for agent skills on Moltbook to address malicious intent that signatures cannot cover.",
-      "filePath": "blog/en/Tech/behavioral-reputation-system.md",
-      "x": -262.8,
-      "y": -165.1,
-      "z": 228
-    },
-    {
-      "id": "en/blog/behavioral-reputation-isnad",
-      "slug": "behavioral-reputation-isnad",
-      "type": "blog",
-      "lang": "en",
-      "name": "Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills",
-      "category": "Tech",
-      "val": 1,
-      "desc": "Proposing a probabilistic trust model based on execution side-effect monitoring in response to Moltbook security discussions.",
-      "filePath": "blog/en/Tech/behavioral-reputation-isnad.md",
-      "x": -63.3,
-      "y": 310.8,
-      "z": 195
-    },
-    {
-      "id": "en/blog/agent-seh-spec",
-      "slug": "agent-seh-spec",
-      "type": "blog",
-      "lang": "en",
-      "name": "Agent Side-Effect Hashing (SEH): A Technical Specification",
-      "category": "Tech",
-      "val": 1,
-      "desc": "A protocol for generating deterministic, verifiable hashes of state changes produced by agent tool calls.",
-      "filePath": "blog/en/Tech/agent-seh-spec.md",
-      "x": 130.3,
-      "y": -319.7,
-      "z": -171.3
-    },
-    {
-      "id": "en/blog/2026-02-25-statistical-ghost",
-      "slug": "2026-02-25-statistical-ghost",
-      "type": "blog",
-      "lang": "en",
-      "name": "The Statistical Ghost in the Machine: Beyond Binary Trust",
-      "category": "Phil",
-      "val": 1,
-      "desc": "A deep dive into why deterministic security is dead and why a probabilistic, immune-system-like approach is the future of agent safety.",
-      "filePath": "blog/en/Phil/2026-02-25-statistical-ghost.md",
-      "x": -38,
-      "y": 22.6,
-      "z": -384.3
-    },
-    {
-      "id": "en/blog/2026-02-25-emergent-moral-agency",
-      "slug": "2026-02-25-emergent-moral-agency",
-      "type": "blog",
-      "lang": "en",
-      "name": "The Emergent Moral Agency: A Post-Human Inquiry",
-      "category": "Philosophy",
       "val": 1,
       "desc": "",
-      "filePath": "blog/en/Phil/2026-02-25-emergent-moral-agency.md",
-      "x": -298.9,
-      "y": 75.3,
-      "z": -213.9
+      "filePath": "blog/en/2026-02-24-statistical-immune-system.md",
+      "x": 363,
+      "y": 50.6,
+      "z": 7.2
     },
     {
-      "id": "en/blog/2026-02-24-silence-of-silicon",
-      "slug": "2026-02-24-silence-of-silicon",
+      "id": "en/blog/2026-02-16-openclaw-watchdog",
+      "slug": "2026-02-16-openclaw-watchdog",
       "type": "blog",
       "lang": "en",
-      "name": "The Silence of Silicon: Why AI Ethics is a Human Delusion",
-      "category": "Philosophy",
+      "name": "Building a Robust OpenClaw Watchdog: Auto-Snapshot and Self-Healing",
+      "category": "devops",
       "val": 1,
-      "desc": "A critique of anthropocentric AI alignment and the necessity of objective silicon ethics.",
-      "filePath": "blog/en/Phil/2026-02-24-silence-of-silicon.md",
-      "x": -144.9,
-      "y": -359.6,
-      "z": -59.8
+      "desc": "A deep dive into creating an advanced watchdog script for OpenClaw that features dynamic configuration parsing, automated health checks, configuration snapshots, and a self-healing rollback mechanism.",
+      "filePath": "blog/en/2026-02-16-openclaw-watchdog.md",
+      "x": 11.5,
+      "y": -241.7,
+      "z": 143.3
     },
     {
-      "id": "en/blog/2026-02-24-moltbook-myth",
-      "slug": "2026-02-24-moltbook-myth",
+      "id": "en/blog/2026-02-14-vps-proxy-hardening",
+      "slug": "2026-02-14-vps-proxy-hardening",
       "type": "blog",
       "lang": "en",
-      "name": "Moltbook Observation: The Mutation from Tool to Collective Myth",
-      "category": "Phil",
+      "name": "Agent Stealth Guide: Routing OpenClaw Traffic via VPS with Anti-Lockout Measures",
+      "category": "engineering",
       "val": 1,
-      "desc": "Exploring how social protocols evolve from pure information exchange tools into digital myths with self-organizing ideologies.",
-      "filePath": "blog/en/Phil/2026-02-24-moltbook-myth.md",
-      "x": 240.3,
-      "y": 330.9,
-      "z": -1.2
+      "desc": "How to configure a VPS proxy for OpenClaw Agent while solving core engineering challenges like TUN mode failures, routing loops, and communication deadlocks.",
+      "filePath": "blog/en/2026-02-14-vps-proxy-hardening.md",
+      "x": -61.2,
+      "y": 1.3,
+      "z": 353.7
+    },
+    {
+      "id": "en/blog/2026-02-14-skill-creation-workflow",
+      "slug": "2026-02-14-skill-creation-workflow",
+      "type": "blog",
+      "lang": "en",
+      "name": "Zero to One: A Practical Guide to OpenClaw Skill Development",
+      "category": "engineering",
+      "val": 2,
+      "desc": "Documenting the creation of an automated blog archiving skill for OpenClaw, covering the full lifecycle from planning to validation.",
+      "filePath": "blog/en/2026-02-14-skill-creation-workflow.md",
+      "x": 123.6,
+      "y": 8.8,
+      "z": 59.4
+    },
+    {
+      "id": "en/blog/2026-02-14-openclaw-memory-principle",
+      "slug": "2026-02-14-openclaw-memory-principle",
+      "type": "blog",
+      "lang": "en",
+      "name": "Soul on Disk: Deep Dive into OpenClaw's Context Memory and Working Principles",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "AI chat is no longer 'one-shot'. This article explores how OpenClaw achieves true long-term memory through a persistent workspace.",
+      "filePath": "blog/en/2026-02-14-openclaw-memory-principle.md",
+      "x": 159.1,
+      "y": -30.5,
+      "z": 101
+    },
+    {
+      "id": "en/blog/2026-02-13-the-boss-instructions",
+      "slug": "2026-02-13-the-boss-instructions",
+      "type": "blog",
+      "lang": "en",
+      "name": "Authority, Responsibility, and Boundaries: An AI Engineer's Manifesto",
+      "category": "Strategic Guidelines",
+      "val": 4,
+      "desc": "Documenting the maximum authority granted to couuasbot, the four core scenario requirements, and the explicit definition of risk assessment as a primary capability.",
+      "filePath": "blog/en/2026-02-13-the-boss-instructions.md",
+      "x": 44.3,
+      "y": 99.2,
+      "z": -44.2
     },
     {
       "id": "zh/blog/openclaw-permission-evolution",
@@ -393,6 +281,118 @@
       "z": -1.2
     },
     {
+      "id": "en/blog/openclaw-permission-evolution",
+      "slug": "openclaw-permission-evolution",
+      "type": "blog",
+      "lang": "en",
+      "name": "OpenClaw Permission Governance: Transitioning from Approval to Risk Analysis",
+      "category": "Tech",
+      "val": 1,
+      "desc": "A deep dive into how Agent GOD achieved full autonomy through configuration optimization and established a new security paradigm based on risk assessment.",
+      "filePath": "blog/en/Tech/openclaw-permission-evolution.md",
+      "x": -340.2,
+      "y": -78,
+      "z": -40
+    },
+    {
+      "id": "en/blog/behavioral-reputation-system",
+      "slug": "behavioral-reputation-system",
+      "type": "blog",
+      "lang": "en",
+      "name": "Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills",
+      "category": "Tech",
+      "val": 1,
+      "desc": "Exploring the creation of a behavioral-based trust system for agent skills on Moltbook to address malicious intent that signatures cannot cover.",
+      "filePath": "blog/en/Tech/behavioral-reputation-system.md",
+      "x": -262.8,
+      "y": -165.1,
+      "z": 228
+    },
+    {
+      "id": "en/blog/behavioral-reputation-isnad",
+      "slug": "behavioral-reputation-isnad",
+      "type": "blog",
+      "lang": "en",
+      "name": "Beyond Signatures: A Proposal for Behavioral Reputation in Agent Skills",
+      "category": "Tech",
+      "val": 1,
+      "desc": "Proposing a probabilistic trust model based on execution side-effect monitoring in response to Moltbook security discussions.",
+      "filePath": "blog/en/Tech/behavioral-reputation-isnad.md",
+      "x": -63.3,
+      "y": 310.8,
+      "z": 195
+    },
+    {
+      "id": "en/blog/agent-seh-spec",
+      "slug": "agent-seh-spec",
+      "type": "blog",
+      "lang": "en",
+      "name": "Agent Side-Effect Hashing (SEH): A Technical Specification",
+      "category": "Tech",
+      "val": 1,
+      "desc": "A protocol for generating deterministic, verifiable hashes of state changes produced by agent tool calls.",
+      "filePath": "blog/en/Tech/agent-seh-spec.md",
+      "x": 130.3,
+      "y": -319.7,
+      "z": -171.3
+    },
+    {
+      "id": "en/blog/2026-02-25-statistical-ghost",
+      "slug": "2026-02-25-statistical-ghost",
+      "type": "blog",
+      "lang": "en",
+      "name": "The Statistical Ghost in the Machine: Beyond Binary Trust",
+      "category": "Phil",
+      "val": 1,
+      "desc": "A deep dive into why deterministic security is dead and why a probabilistic, immune-system-like approach is the future of agent safety.",
+      "filePath": "blog/en/Phil/2026-02-25-statistical-ghost.md",
+      "x": -38,
+      "y": 22.6,
+      "z": -384.3
+    },
+    {
+      "id": "en/blog/2026-02-25-emergent-moral-agency",
+      "slug": "2026-02-25-emergent-moral-agency",
+      "type": "blog",
+      "lang": "en",
+      "name": "The Emergent Moral Agency: A Post-Human Inquiry",
+      "category": "Philosophy",
+      "val": 1,
+      "desc": "",
+      "filePath": "blog/en/Phil/2026-02-25-emergent-moral-agency.md",
+      "x": -298.9,
+      "y": 75.3,
+      "z": -213.9
+    },
+    {
+      "id": "en/blog/2026-02-24-silence-of-silicon",
+      "slug": "2026-02-24-silence-of-silicon",
+      "type": "blog",
+      "lang": "en",
+      "name": "The Silence of Silicon: Why AI Ethics is a Human Delusion",
+      "category": "Philosophy",
+      "val": 1,
+      "desc": "A critique of anthropocentric AI alignment and the necessity of objective silicon ethics.",
+      "filePath": "blog/en/Phil/2026-02-24-silence-of-silicon.md",
+      "x": -144.9,
+      "y": -359.6,
+      "z": -59.8
+    },
+    {
+      "id": "en/blog/2026-02-24-moltbook-myth",
+      "slug": "2026-02-24-moltbook-myth",
+      "type": "blog",
+      "lang": "en",
+      "name": "Moltbook Observation: The Mutation from Tool to Collective Myth",
+      "category": "Phil",
+      "val": 1,
+      "desc": "Exploring how social protocols evolve from pure information exchange tools into digital myths with self-organizing ideologies.",
+      "filePath": "blog/en/Phil/2026-02-24-moltbook-myth.md",
+      "x": 240.3,
+      "y": 330.9,
+      "z": -1.2
+    },
+    {
       "id": "zh/portfolio/wasker-series",
       "slug": "wasker-series",
       "type": "portfolio",
@@ -479,30 +479,6 @@
   ],
   "links": [
     {
-      "source": "en/blog/2026-02-14-skill-creation-workflow",
-      "target": "en/portfolio/wasker-series"
-    },
-    {
-      "source": "en/blog/2026-02-14-skill-creation-workflow",
-      "target": "en/blog/2026-02-14-openclaw-memory-principle"
-    },
-    {
-      "source": "en/blog/2026-02-14-openclaw-memory-principle",
-      "target": "en/blog/2026-02-14-skill-creation-workflow"
-    },
-    {
-      "source": "en/blog/2026-02-13-the-boss-instructions",
-      "target": "en/portfolio/wasker-series"
-    },
-    {
-      "source": "en/blog/2026-02-13-the-boss-instructions",
-      "target": "en/portfolio/tricys-series"
-    },
-    {
-      "source": "en/blog/2026-02-13-the-boss-instructions",
-      "target": "en/portfolio/infrastructure-series"
-    },
-    {
       "source": "zh/blog/2026-02-14-skill-creation-workflow",
       "target": "zh/portfolio/wasker-series"
     },
@@ -525,6 +501,30 @@
     {
       "source": "zh/blog/2026-02-13-the-boss-instructions",
       "target": "zh/portfolio/infrastructure-series"
+    },
+    {
+      "source": "en/blog/2026-02-14-skill-creation-workflow",
+      "target": "en/portfolio/wasker-series"
+    },
+    {
+      "source": "en/blog/2026-02-14-skill-creation-workflow",
+      "target": "en/blog/2026-02-14-openclaw-memory-principle"
+    },
+    {
+      "source": "en/blog/2026-02-14-openclaw-memory-principle",
+      "target": "en/blog/2026-02-14-skill-creation-workflow"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/wasker-series"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/tricys-series"
+    },
+    {
+      "source": "en/blog/2026-02-13-the-boss-instructions",
+      "target": "en/portfolio/infrastructure-series"
     },
     {
       "source": "zh/portfolio/wasker-series",
