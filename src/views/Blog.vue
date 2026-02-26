@@ -220,6 +220,14 @@ const handleWheel = (e) => {
                     <p>No posts found in this category.</p>
                 </div>
 
+                <!-- Show All / Show Less Button -->
+                <div v-if="filteredPosts.length > 6" class="col-12" style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 50px;">
+                    <button @click="isExpanded = !isExpanded" class="mil-show-all-btn" :class="{ 'expanded': isExpanded }">
+                        <span>{{ isExpanded ? (currentLang === 'zh' ? '收起' : 'Show Less') : (currentLang === 'zh' ? '显示全部' : 'Show All') }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+
             </div>
             
 
@@ -543,5 +551,40 @@ const handleWheel = (e) => {
         width: 95%;
         bottom: 10px;
     }
+}
+
+/* Beautiful Show All Button */
+.mil-show-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    color: var(--mil-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mil-show-all-btn:hover {
+    background: rgba(255, 255, 255, 0.08); /* Matches other hovers */
+    transform: translateY(-3px); /* Matches list-row hover */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Matches list-row */
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--mil-accent);
+}
+
+.mil-show-all-btn i {
+    font-size: 12px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mil-show-all-btn.expanded i {
+    transform: rotate(180deg);
 }
 </style>

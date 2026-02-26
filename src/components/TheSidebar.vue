@@ -13,11 +13,11 @@ const route = useRoute()
       <!-- text logo -->
       <span>wa</span>
     </router-link>
-    <div class="mil-menu-panel mil-relative-panel">
+    <div class="mil-menu-panel mil-relative-panel" style="padding-top: 20px;">
 
       <nav class="mil-main-menu" :class="{ 'mil-active': appStore.isMenuOpen }">
         
-        <ul id="swupMenu">
+        <ul id="swupMenu" style="gap: 5px;">
           <!-- Home -->
           <router-link to="/" custom v-slot="{ href, navigate, isExactActive }">
             <li :class="{ 'mil-current': isExactActive }" @click="appStore.closeMenu">
@@ -103,7 +103,7 @@ const route = useRoute()
       </nav>
 
 
-      <div class="mil-sidebar-player">
+      <div class="mil-sidebar-player" style="margin-top: 15px; margin-bottom: 10px;">
         <CompactMusicPlayer />
       </div>
 
@@ -146,6 +146,11 @@ const route = useRoute()
     vertical-align: top;
 }
 
+/* Margin to space out the menu items and provide some breathing room */
+.mil-main-menu ul li {
+    margin-bottom: 15px; /* Spacings */
+}
+
 /* Lab Badge Styles */
 .mil-lab-item a {
     position: relative;
@@ -176,9 +181,9 @@ const route = useRoute()
 /* Separator */
 .mil-sidebar-separator {
     border-top: dotted 2px #2C2C2C;
-    margin: 0.3rem 0 0.3rem 0; /* Reduced from 0.5rem */
+    margin: 1rem 0 1rem 0; /* Add more margin */
     list-style: none;
-    width: 50%; /* Reduced from 60% */
+    width: 60%; /* Back to 60 for consistency */
     margin-left: auto;
     margin-right: auto;
 }
