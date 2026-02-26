@@ -2,18 +2,10 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { detectRegion, getBotId, getToken } from '../config/ai';
 import { useAppStore } from '../stores/app';
-import { useMoltbookHome } from '../composables/useMoltbookHome';
 
 const appStore = useAppStore();
 const isVisible = ref(false);
 
-// Optional: lightweight Moltbook signal overlay (token-gated)
-const moltbook = useMoltbookHome({ pollMs: 60_000 });
-const showMoltbookBadge = computed(() => {
-  if (!moltbook.isConfigured.value) return false;
-  // show even if error (so we can hint), but only when chat icon is visible
-  return true;
-});
 
 watch(() => appStore.isLoading, (loading) => {
   if (!loading) {
@@ -313,23 +305,6 @@ onUnmounted(() => {
     <!-- Coze Container target -->
     <div id="coze-chat-container" class="coze-target"></div>
 
-    <!-- Optional Moltbook signal overlay (token-gated) -->
-    <a
-      v-if="showMoltbookBadge"
-      class="moltbook-badge"
-      :href="moltbook.baseUrl"
-      target="_blank"
-      rel="noreferrer"
-      :title="moltbook.lastError ? `Moltbook: ${moltbook.lastError}` : 'Moltbook: open'"
-      @mousedown.stop
-      @touchstart.stop
-    >
-      <span class="dot" :class="{ err: Boolean(moltbook.lastError) }"></span>
-      <span v-if="moltbook.notificationsCount !== null" class="n">{{ moltbook.notificationsCount }}</span>
-      <span v-else class="n">–</span>
-      <span v-if="moltbook.karma !== null" class="k">K {{ moltbook.karma }}</span>
-    </a>
-
     <!-- Drag Shield:
          - Closed: Covers Icon (full)
          - Desktop Open: Covers Header (Top Strip) for dragging
@@ -387,51 +362,6 @@ onUnmounted(() => {
     left: 0;
     background: transparent;
     border-bottom: 1px solid rgba(255,255,255,0.12);
-}
-
-/* If the container grows (chat opens), we must disable the shield so user can interact with chat */
-/* We can use :has() or JS logic. Since we used ResizeObserver before, let's reuse logic? 
-   Actually, simply check if height is large?
-*/
-
-.moltbook-badge {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  z-index: 10001;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  line-height: 1;
-  color: inherit;
-  text-decoration: none;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
-}
-
-.moltbook-badge .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 99px;
-  background: rgba(0, 255, 160, 0.85);
-  box-shadow: 0 0 10px rgba(0, 255, 160, 0.35);
-}
-
-.moltbook-badge .dot.err {
-  background: rgba(255, 80, 80, 0.9);
-  box-shadow: 0 0 10px rgba(255, 80, 80, 0.35);
-}
-
-.moltbook-badge .n {
-  font-weight: 800;
-}
-
-.moltbook-badge .k {
-  opacity: 0.85;
 }
 
 .coze-target {
