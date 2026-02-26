@@ -3,7 +3,6 @@ import { onMounted, onUnmounted, ref, watch, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMarkdown } from '@/composables/useMarkdown'
 import MusicPlayer from './MusicPlayer.vue'
-import MoltbookStatus from './MoltbookStatus.vue'
 
 const typingElement = ref(null)
 const { getProfile } = useMarkdown()
@@ -96,8 +95,6 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Community pulse (optional; requires VITE_MOLTBOOK_TOKEN) -->
-        <MoltbookStatus />
 
         <div class="mil-space-90 mil-p-0-75" v-if="profile">
           <div class="mil-title-line mil-mb-60 mil-up">
