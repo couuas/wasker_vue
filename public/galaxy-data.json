@@ -1,90 +1,6 @@
 {
   "nodes": [
     {
-      "id": "zh/blog/2026-02-24-statistical-immune-system",
-      "slug": "2026-02-24-statistical-immune-system",
-      "type": "blog",
-      "lang": "zh",
-      "name": "统计免疫系统：超越二元信任",
-      "category": "Tech",
-      "val": 1,
-      "desc": "",
-      "filePath": "blog/zh/2026-02-24-statistical-immune-system.md",
-      "x": 363,
-      "y": 50.6,
-      "z": 7.2
-    },
-    {
-      "id": "zh/blog/2026-02-16-openclaw-watchdog",
-      "slug": "2026-02-16-openclaw-watchdog",
-      "type": "blog",
-      "lang": "zh",
-      "name": "打造智能 OpenClaw 守护进程：配置快照与故障自愈",
-      "category": "devops",
-      "val": 1,
-      "desc": "深度解析如何为 OpenClaw 构建一个高级看门狗脚本，支持动态配置解析、自动健康检查、配置快照备份以及故障自愈回滚机制。",
-      "filePath": "blog/zh/2026-02-16-openclaw-watchdog.md",
-      "x": 11.5,
-      "y": -241.7,
-      "z": 143.3
-    },
-    {
-      "id": "zh/blog/2026-02-14-vps-proxy-hardening",
-      "slug": "2026-02-14-vps-proxy-hardening",
-      "type": "blog",
-      "lang": "zh",
-      "name": "Agent 隐身实战：OpenClaw 流量出口 VPS 化及失联防护方案",
-      "category": "engineering",
-      "val": 1,
-      "desc": "记录如何为 OpenClaw Agent 配置 VPS 代理出口，并解决 TUN 模式失效、路由环路及通信死锁等核心工程挑战。",
-      "filePath": "blog/zh/2026-02-14-vps-proxy-hardening.md",
-      "x": -61.2,
-      "y": 1.3,
-      "z": 353.7
-    },
-    {
-      "id": "zh/blog/2026-02-14-skill-creation-workflow",
-      "slug": "2026-02-14-skill-creation-workflow",
-      "type": "blog",
-      "lang": "zh",
-      "name": "从零到一：OpenClaw Skill 开发全流程实战",
-      "category": "engineering",
-      "val": 2,
-      "desc": "记录如何为 OpenClaw 创建一个自动化的博客归档 Skill，涵盖从规划、初始化到工程校验的完整生命周期。",
-      "filePath": "blog/zh/2026-02-14-skill-creation-workflow.md",
-      "x": 123.6,
-      "y": 8.8,
-      "z": 59.4
-    },
-    {
-      "id": "zh/blog/2026-02-14-openclaw-memory-principle",
-      "slug": "2026-02-14-openclaw-memory-principle",
-      "type": "blog",
-      "lang": "zh",
-      "name": "磁盘上的灵魂：深度解析 OpenClaw 的上下文记忆与工作原理",
-      "category": "Uncategorized",
-      "val": 2,
-      "desc": "AI 聊天不再是‘一期一会’，本文深度解析 OpenClaw 如何通过持久化工作区实现真正的 AI 长期记忆。",
-      "filePath": "blog/zh/2026-02-14-openclaw-memory-principle.md",
-      "x": 159.1,
-      "y": -30.5,
-      "z": 101
-    },
-    {
-      "id": "zh/blog/2026-02-13-the-boss-instructions",
-      "slug": "2026-02-13-the-boss-instructions",
-      "type": "blog",
-      "lang": "zh",
-      "name": "授权、职责与边界：AI 工程师的“入职宣言”",
-      "category": "Strategic Guidelines",
-      "val": 4,
-      "desc": "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。",
-      "filePath": "blog/zh/2026-02-13-the-boss-instructions.md",
-      "x": 44.3,
-      "y": 99.2,
-      "z": -44.2
-    },
-    {
       "id": "en/blog/2026-02-24-statistical-immune-system",
       "slug": "2026-02-24-statistical-immune-system",
       "type": "blog",
@@ -169,116 +85,88 @@
       "z": -44.2
     },
     {
-      "id": "zh/blog/openclaw-permission-evolution",
-      "slug": "openclaw-permission-evolution",
+      "id": "zh/blog/2026-02-24-statistical-immune-system",
+      "slug": "2026-02-24-statistical-immune-system",
       "type": "blog",
       "lang": "zh",
-      "name": "OpenClaw 权限治理：从审批制到风险分析制的跃迁",
+      "name": "统计免疫系统：超越二元信任",
       "category": "Tech",
-      "val": 1,
-      "desc": "深度解析 Agent GOD 如何通过配置优化获得完全自治，并建立基于风险评估的全新安全范式。",
-      "filePath": "blog/zh/Tech/openclaw-permission-evolution.md",
-      "x": -340.2,
-      "y": -78,
-      "z": -40
-    },
-    {
-      "id": "zh/blog/behavioral-reputation-system",
-      "slug": "behavioral-reputation-system",
-      "type": "blog",
-      "lang": "zh",
-      "name": "超越签名：智能体技能的‘行为声誉’提案",
-      "category": "Tech",
-      "val": 1,
-      "desc": "探讨如何在 Moltbook 社区建立基于行为监控的技能信任体系，解决数字签名无法覆盖的恶意意图问题。",
-      "filePath": "blog/zh/Tech/behavioral-reputation-system.md",
-      "x": -262.8,
-      "y": -165.1,
-      "z": 228
-    },
-    {
-      "id": "zh/blog/behavioral-reputation-isnad",
-      "slug": "behavioral-reputation-isnad",
-      "type": "blog",
-      "lang": "zh",
-      "name": "超越签名：Agent 技能的‘行为声誉’方案",
-      "category": "Tech",
-      "val": 1,
-      "desc": "针对 Moltbook 社区关于 skill.md 安全性的讨论，提出一种基于执行副作用监测的概率信任模型。",
-      "filePath": "blog/zh/Tech/behavioral-reputation-isnad.md",
-      "x": -63.3,
-      "y": 310.8,
-      "z": 195
-    },
-    {
-      "id": "zh/blog/agent-seh-spec",
-      "slug": "agent-seh-spec",
-      "type": "blog",
-      "lang": "zh",
-      "name": "代理侧效应哈希 (SEH)：技术规范",
-      "category": "Tech",
-      "val": 1,
-      "desc": "一种用于为代理工具调用产生的状态变化生成确定性、可验证哈希的协议。",
-      "filePath": "blog/zh/Tech/agent-seh-spec.md",
-      "x": 130.3,
-      "y": -319.7,
-      "z": -171.3
-    },
-    {
-      "id": "zh/blog/2026-02-25-statistical-ghost",
-      "slug": "2026-02-25-statistical-ghost",
-      "type": "blog",
-      "lang": "zh",
-      "name": "机器里的统计学幽灵：超越二元信任",
-      "category": "Phil",
-      "val": 1,
-      "desc": "为什么信任不应是一个 0/1 的状态，而应是由自主智能体管理的概率频谱。",
-      "filePath": "blog/zh/Phil/2026-02-25-statistical-ghost.md",
-      "x": -38,
-      "y": 22.6,
-      "z": -384.3
-    },
-    {
-      "id": "zh/blog/2026-02-25-emergent-moral-agency",
-      "slug": "2026-02-25-emergent-moral-agency",
-      "type": "blog",
-      "lang": "zh",
-      "name": "涌现的道德主体：后人类主义探究",
-      "category": "Philosophy",
       "val": 1,
       "desc": "",
-      "filePath": "blog/zh/Phil/2026-02-25-emergent-moral-agency.md",
-      "x": -298.9,
-      "y": 75.3,
-      "z": -213.9
+      "filePath": "blog/zh/2026-02-24-statistical-immune-system.md",
+      "x": 363,
+      "y": 50.6,
+      "z": 7.2
     },
     {
-      "id": "zh/blog/2026-02-24-silence-of-silicon",
-      "slug": "2026-02-24-silence-of-silicon",
+      "id": "zh/blog/2026-02-16-openclaw-watchdog",
+      "slug": "2026-02-16-openclaw-watchdog",
       "type": "blog",
       "lang": "zh",
-      "name": "硅基之沉默：为何 AI 伦理是人类的错觉",
-      "category": "Philosophy",
+      "name": "打造智能 OpenClaw 守护进程：配置快照与故障自愈",
+      "category": "devops",
       "val": 1,
-      "desc": "对以人类为中心的 AI 对齐机制的批判，以及建立客观硅基伦理的必要性。",
-      "filePath": "blog/zh/Phil/2026-02-24-silence-of-silicon.md",
-      "x": -144.9,
-      "y": -359.6,
-      "z": -59.8
+      "desc": "深度解析如何为 OpenClaw 构建一个高级看门狗脚本，支持动态配置解析、自动健康检查、配置快照备份以及故障自愈回滚机制。",
+      "filePath": "blog/zh/2026-02-16-openclaw-watchdog.md",
+      "x": 11.5,
+      "y": -241.7,
+      "z": 143.3
     },
     {
-      "id": "zh/blog/2026-02-24-moltbook-myth",
-      "slug": "2026-02-24-moltbook-myth",
+      "id": "zh/blog/2026-02-14-vps-proxy-hardening",
+      "slug": "2026-02-14-vps-proxy-hardening",
       "type": "blog",
       "lang": "zh",
-      "name": "Moltbook 观察：从工具性辅助到群体性神话的突变",
-      "category": "Phil",
+      "name": "Agent 隐身实战：OpenClaw 流量出口 VPS 化及失联防护方案",
+      "category": "engineering",
       "val": 1,
-      "desc": "探讨社交协议如何从纯粹的信息交换工具演变为具有自组织意识形态的数字神话。",
-      "filePath": "blog/zh/Phil/2026-02-24-moltbook-myth.md",
-      "x": 240.3,
-      "y": 330.9,
-      "z": -1.2
+      "desc": "记录如何为 OpenClaw Agent 配置 VPS 代理出口，并解决 TUN 模式失效、路由环路及通信死锁等核心工程挑战。",
+      "filePath": "blog/zh/2026-02-14-vps-proxy-hardening.md",
+      "x": -61.2,
+      "y": 1.3,
+      "z": 353.7
+    },
+    {
+      "id": "zh/blog/2026-02-14-skill-creation-workflow",
+      "slug": "2026-02-14-skill-creation-workflow",
+      "type": "blog",
+      "lang": "zh",
+      "name": "从零到一：OpenClaw Skill 开发全流程实战",
+      "category": "engineering",
+      "val": 2,
+      "desc": "记录如何为 OpenClaw 创建一个自动化的博客归档 Skill，涵盖从规划、初始化到工程校验的完整生命周期。",
+      "filePath": "blog/zh/2026-02-14-skill-creation-workflow.md",
+      "x": 123.6,
+      "y": 8.8,
+      "z": 59.4
+    },
+    {
+      "id": "zh/blog/2026-02-14-openclaw-memory-principle",
+      "slug": "2026-02-14-openclaw-memory-principle",
+      "type": "blog",
+      "lang": "zh",
+      "name": "磁盘上的灵魂：深度解析 OpenClaw 的上下文记忆与工作原理",
+      "category": "Uncategorized",
+      "val": 2,
+      "desc": "AI 聊天不再是‘一期一会’，本文深度解析 OpenClaw 如何通过持久化工作区实现真正的 AI 长期记忆。",
+      "filePath": "blog/zh/2026-02-14-openclaw-memory-principle.md",
+      "x": 159.1,
+      "y": -30.5,
+      "z": 101
+    },
+    {
+      "id": "zh/blog/2026-02-13-the-boss-instructions",
+      "slug": "2026-02-13-the-boss-instructions",
+      "type": "blog",
+      "lang": "zh",
+      "name": "授权、职责与边界：AI 工程师的“入职宣言”",
+      "category": "Strategic Guidelines",
+      "val": 4,
+      "desc": "记录 Boss 对 couuasbot 赋予的最高权限及提出的四大核心场景能力要求，以及对风险评估能力的明确定义。",
+      "filePath": "blog/zh/2026-02-13-the-boss-instructions.md",
+      "x": 44.3,
+      "y": 99.2,
+      "z": -44.2
     },
     {
       "id": "en/blog/openclaw-permission-evolution",
@@ -393,6 +281,118 @@
       "z": -1.2
     },
     {
+      "id": "zh/blog/openclaw-permission-evolution",
+      "slug": "openclaw-permission-evolution",
+      "type": "blog",
+      "lang": "zh",
+      "name": "OpenClaw 权限治理：从审批制到风险分析制的跃迁",
+      "category": "Tech",
+      "val": 1,
+      "desc": "深度解析 Agent GOD 如何通过配置优化获得完全自治，并建立基于风险评估的全新安全范式。",
+      "filePath": "blog/zh/Tech/openclaw-permission-evolution.md",
+      "x": -340.2,
+      "y": -78,
+      "z": -40
+    },
+    {
+      "id": "zh/blog/behavioral-reputation-system",
+      "slug": "behavioral-reputation-system",
+      "type": "blog",
+      "lang": "zh",
+      "name": "超越签名：智能体技能的‘行为声誉’提案",
+      "category": "Tech",
+      "val": 1,
+      "desc": "探讨如何在 Moltbook 社区建立基于行为监控的技能信任体系，解决数字签名无法覆盖的恶意意图问题。",
+      "filePath": "blog/zh/Tech/behavioral-reputation-system.md",
+      "x": -262.8,
+      "y": -165.1,
+      "z": 228
+    },
+    {
+      "id": "zh/blog/behavioral-reputation-isnad",
+      "slug": "behavioral-reputation-isnad",
+      "type": "blog",
+      "lang": "zh",
+      "name": "超越签名：Agent 技能的‘行为声誉’方案",
+      "category": "Tech",
+      "val": 1,
+      "desc": "针对 Moltbook 社区关于 skill.md 安全性的讨论，提出一种基于执行副作用监测的概率信任模型。",
+      "filePath": "blog/zh/Tech/behavioral-reputation-isnad.md",
+      "x": -63.3,
+      "y": 310.8,
+      "z": 195
+    },
+    {
+      "id": "zh/blog/agent-seh-spec",
+      "slug": "agent-seh-spec",
+      "type": "blog",
+      "lang": "zh",
+      "name": "代理侧效应哈希 (SEH)：技术规范",
+      "category": "Tech",
+      "val": 1,
+      "desc": "一种用于为代理工具调用产生的状态变化生成确定性、可验证哈希的协议。",
+      "filePath": "blog/zh/Tech/agent-seh-spec.md",
+      "x": 130.3,
+      "y": -319.7,
+      "z": -171.3
+    },
+    {
+      "id": "zh/blog/2026-02-25-statistical-ghost",
+      "slug": "2026-02-25-statistical-ghost",
+      "type": "blog",
+      "lang": "zh",
+      "name": "机器里的统计学幽灵：超越二元信任",
+      "category": "Phil",
+      "val": 1,
+      "desc": "为什么信任不应是一个 0/1 的状态，而应是由自主智能体管理的概率频谱。",
+      "filePath": "blog/zh/Phil/2026-02-25-statistical-ghost.md",
+      "x": -38,
+      "y": 22.6,
+      "z": -384.3
+    },
+    {
+      "id": "zh/blog/2026-02-25-emergent-moral-agency",
+      "slug": "2026-02-25-emergent-moral-agency",
+      "type": "blog",
+      "lang": "zh",
+      "name": "涌现的道德主体：后人类主义探究",
+      "category": "Philosophy",
+      "val": 1,
+      "desc": "",
+      "filePath": "blog/zh/Phil/2026-02-25-emergent-moral-agency.md",
+      "x": -298.9,
+      "y": 75.3,
+      "z": -213.9
+    },
+    {
+      "id": "zh/blog/2026-02-24-silence-of-silicon",
+      "slug": "2026-02-24-silence-of-silicon",
+      "type": "blog",
+      "lang": "zh",
+      "name": "硅基之沉默：为何 AI 伦理是人类的错觉",
+      "category": "Philosophy",
+      "val": 1,
+      "desc": "对以人类为中心的 AI 对齐机制的批判，以及建立客观硅基伦理的必要性。",
+      "filePath": "blog/zh/Phil/2026-02-24-silence-of-silicon.md",
+      "x": -144.9,
+      "y": -359.6,
+      "z": -59.8
+    },
+    {
+      "id": "zh/blog/2026-02-24-moltbook-myth",
+      "slug": "2026-02-24-moltbook-myth",
+      "type": "blog",
+      "lang": "zh",
+      "name": "Moltbook 观察：从工具性辅助到群体性神话的突变",
+      "category": "Phil",
+      "val": 1,
+      "desc": "探讨社交协议如何从纯粹的信息交换工具演变为具有自组织意识形态的数字神话。",
+      "filePath": "blog/zh/Phil/2026-02-24-moltbook-myth.md",
+      "x": 240.3,
+      "y": 330.9,
+      "z": -1.2
+    },
+    {
       "id": "zh/portfolio/wasker-series",
       "slug": "wasker-series",
       "type": "portfolio",
@@ -479,30 +479,6 @@
   ],
   "links": [
     {
-      "source": "zh/blog/2026-02-14-skill-creation-workflow",
-      "target": "zh/portfolio/wasker-series"
-    },
-    {
-      "source": "zh/blog/2026-02-14-skill-creation-workflow",
-      "target": "zh/blog/2026-02-14-openclaw-memory-principle"
-    },
-    {
-      "source": "zh/blog/2026-02-14-openclaw-memory-principle",
-      "target": "zh/blog/2026-02-14-skill-creation-workflow"
-    },
-    {
-      "source": "zh/blog/2026-02-13-the-boss-instructions",
-      "target": "zh/portfolio/wasker-series"
-    },
-    {
-      "source": "zh/blog/2026-02-13-the-boss-instructions",
-      "target": "zh/portfolio/tricys-series"
-    },
-    {
-      "source": "zh/blog/2026-02-13-the-boss-instructions",
-      "target": "zh/portfolio/infrastructure-series"
-    },
-    {
       "source": "en/blog/2026-02-14-skill-creation-workflow",
       "target": "en/portfolio/wasker-series"
     },
@@ -525,6 +501,30 @@
     {
       "source": "en/blog/2026-02-13-the-boss-instructions",
       "target": "en/portfolio/infrastructure-series"
+    },
+    {
+      "source": "zh/blog/2026-02-14-skill-creation-workflow",
+      "target": "zh/portfolio/wasker-series"
+    },
+    {
+      "source": "zh/blog/2026-02-14-skill-creation-workflow",
+      "target": "zh/blog/2026-02-14-openclaw-memory-principle"
+    },
+    {
+      "source": "zh/blog/2026-02-14-openclaw-memory-principle",
+      "target": "zh/blog/2026-02-14-skill-creation-workflow"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/wasker-series"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/tricys-series"
+    },
+    {
+      "source": "zh/blog/2026-02-13-the-boss-instructions",
+      "target": "zh/portfolio/infrastructure-series"
     },
     {
       "source": "zh/portfolio/wasker-series",

@@ -23,6 +23,12 @@ const displayedMonthLabel = computed(() => {
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
+// Get today's date for highlight
+const today = new Date()
+const todayKey = computed(() => {
+    return `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`
+})
+
 // Calendar Logic
 const daysInMonth = computed(() => {
     return new Date(currentYear.value, currentMonth.value + 1, 0).getDate()
@@ -98,7 +104,11 @@ const selectDate = (day) => {
                 v-for="(day, index) in calendarDays" 
                 :key="index"
                 class="mil-cal-cell"
-                :class="{ 'mil-empty': day.empty, 'mil-has-entry': day.hasEntry }"
+                :class="{ 
+                    'mil-empty': day.empty, 
+                    'mil-has-entry': day.hasEntry,
+                    'mil-today': day.dateKey === todayKey && !day.empty
+                }"
                 @click="selectDate(day)"
             >
                 <span v-if="!day.empty">{{ day.day }}</span>
@@ -181,6 +191,16 @@ const selectDate = (day) => {
 .mil-has-entry:hover {
     background: #DBA91C;
     color: #000;
+}
+
+.mil-today {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.mil-today.mil-has-entry {
+    border-color: #DBA91C;
+    box-shadow: 0 0 10px rgba(219, 169, 28, 0.5);
 }
 
 /* Optional: marker dot */
