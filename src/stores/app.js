@@ -17,13 +17,6 @@ export const useAppStore = defineStore('app', () => {
         isLoading.value = val
     }
 
-    // AI Assistant Trigger
-    const triggerAssistant = ref(0)
-    function openAssistant() {
-        triggerAssistant.value++
-        closeMenu()
-    }
-
     const currentLang = ref(localStorage.getItem('wasker_lang') || 'en')
 
     function setLang(lang) {
@@ -58,7 +51,6 @@ export const useAppStore = defineStore('app', () => {
         isMenuOpen, toggleMenu, closeMenu,
         isLoading, setLoading,
         transitioning, setTransitioning,
-        triggerAssistant, openAssistant,
         currentLang, setLang, toggleLang,
         isFullScreen, toggleFullScreen
     }

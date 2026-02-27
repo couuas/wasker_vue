@@ -93,12 +93,6 @@ const route = useRoute()
             </li>
           </router-link>
           
-          <li class="mil-lab-item" @click="appStore.openAssistant">
-              <a href="javascript:void(0);">
-                 <i class="fal fa-robot"></i><span>Assistant</span>
-              </a>
-          </li>
-
         </ul>
       </nav>
 
