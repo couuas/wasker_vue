@@ -204,7 +204,6 @@ onUnmounted(() => {
           <p v-if="profile.footer.icp_number && showICP" style="margin: 0 10px;">
             <a href="https://beian.miit.gov.cn/" target="_blank" class="mil-text-link">{{ profile.footer.icp_number }}</a>
           </p>
-          <p>Design by: <a :href="profile.footer.designer_url" class="mil-text-link" target="_blank">{{ profile.footer.designer }}</a></p>
         </div>
       </footer>
     </div>
