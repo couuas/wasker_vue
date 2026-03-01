@@ -11,13 +11,13 @@ export default defineConfig(() => {
   return {
     plugins: [
       vue(),
-      enableBundleAnalysis && visualizer({ filename: 'dist/stats.html' }),
+      ...(enableBundleAnalysis ? [visualizer({ filename: 'dist/stats.html' })] : []),
 
     // pursecss removed for now to ensure build stability with Vite 7
     // imagemin configuration
     // Note: vite-plugin-imagemin might require binary downloads which can fail. 
     // If it fails, we might need to remove it or use a different strategy.
-    ].filter(Boolean),
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

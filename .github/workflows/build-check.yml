@@ -6,6 +6,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     if: ${{ github.repository == 'couuasbot/wasker_vue' }}
