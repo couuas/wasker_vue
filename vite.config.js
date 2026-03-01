@@ -6,12 +6,12 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig(() => {
-  const enableBundleReport = process.env.BUNDLE_ANALYZE === 'true'
+  const enableBundleAnalysis = process.env.BUNDLE_ANALYZE === 'true'
 
   return {
     plugins: [
       vue(),
-      enableBundleReport && visualizer({ filename: 'dist/stats.html' }),
+      enableBundleAnalysis && visualizer({ filename: 'dist/stats.html' }),
 
     // pursecss removed for now to ensure build stability with Vite 7
     // imagemin configuration
