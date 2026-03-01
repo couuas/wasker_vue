@@ -16,6 +16,7 @@ jobs:
   # 任务 1: 统一构建 (Single Build Source)
   # ==========================================
   build:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -79,6 +80,7 @@ jobs:
   # 任务 1.1: Aliyun 专用构建 (With ICP)
   # ==========================================
   build-aliyun:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -113,6 +115,7 @@ jobs:
   # 任务 2: 部署到 GitHub Pages (gh.couuas.pp.ua)
   # ==========================================
   deploy-github:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -136,6 +139,7 @@ jobs:
   # 任务 3: 部署到 Cloudflare Pages (cf.couuas.pp.ua)
   # ==========================================
   deploy-cloudflare:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -158,6 +162,7 @@ jobs:
   # 任务 4: 部署到 Vercel (vc.couuas.pp.ua)
   # ==========================================
   deploy-vercel:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -188,6 +193,7 @@ jobs:
   # 任务 5: 部署到 Serv00 Host (SSH)
   # ==========================================
   deploy-serv00:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -211,6 +217,7 @@ jobs:
   # 任务 6: 部署到 阿里云 1Panel (SSH)
   # ==========================================
   deploy-aliyun:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     needs: build-aliyun
     runs-on: ubuntu-latest
     steps:

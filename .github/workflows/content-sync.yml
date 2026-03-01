@@ -6,6 +6,7 @@ permissions:
   contents: write
 jobs:
   update-submodule:
+    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

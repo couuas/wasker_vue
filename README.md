@@ -61,6 +61,15 @@ npm run dev
 npm run build
 ```
 
+### Vite 静态站点优化建议（已落地）
+
+- **需要改进点**：`rollup-plugin-visualizer` 报告文件默认会写入 `dist/stats.html`，会进入部署产物，增加静态资源体积且无线上运行价值。
+- **实现方案**：仅在显式分析时生成报告。日常构建不输出 `stats.html`，需要分析时使用：
+
+```bash
+BUNDLE_ANALYZE=true npm run build
+```
+
 ## 📂 Content Management
 
 All content lives in the `src/content/` directory (managed as a **git submodule** from [wasker_content](https://github.com/couuas/wasker_content)).
