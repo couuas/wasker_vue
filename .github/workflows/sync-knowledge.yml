@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   sync:
-    if: ${{ github.repository == 'couuasbot/wasker_vue' }}
+    if: ${{ github.repository == 'couuas/wasker_vue' }}
     runs-on: ubuntu-latest
     
     steps:
